@@ -23,25 +23,15 @@ public class Domicilio extends Base {
     private String calle;
 
     @NotNull
+    @Column(precision = 5)
+    private Integer numero;
+
+    @NotNull
     @Column(precision = 4)
     private Integer codigoPostal;
 
     @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @NotNull
-    @Column(precision = 5)
-    private Integer numero;
+    private String localidad;
 
     @Column(name = "numero_vivienda")
     private Integer numeroDpto;
@@ -49,8 +39,22 @@ public class Domicilio extends Base {
     @Column(name = "piso_vivienda")
     private Integer pisoDpto;
 
+    @NotNull
     @ManyToOne()
-    @JoinColumn(name = "fk_localidad")
-    private Localidad localidad;
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @NotNull
+    @Column(name = "fecha_alta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+
+    @Column(name = "fecha_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+
+    @Column(name = "fecha_baja")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
 }

@@ -1,5 +1,8 @@
 package com.tup.buensabor.enums;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 public enum EstadoPedido {
     PENDIENTE_PAGO,
     PAGADO ,

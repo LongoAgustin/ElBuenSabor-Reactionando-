@@ -1,10 +1,9 @@
 package com.tup.buensabor.entities;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "rubro-")
@@ -14,21 +13,4 @@ import java.util.Date;
 @Setter
 @ToString
 public class RubroArticuloProducto extends Base{
-
-    @Column(name = "denominacion")
-    private String denominacion;
-
-    @Column(name = "fecha_hora_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHoraAlta;
-
-    @Column(name = "fecha_hora_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHoraBaja;
-
-    @Column(name = "fecha_hora_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHoraModificacion;
-
-
 }

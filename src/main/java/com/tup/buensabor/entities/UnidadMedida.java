@@ -18,26 +18,25 @@ import java.util.Date;
 @Setter
 public class UnidadMedida extends Base {
 
+    @NotNull
+    @Column(length = 255)
+    private String denominacion;
 
     @NotNull
     @Column(length = 25)
     private String abreviatura;
 
     @NotNull
-    @Column(length = 255)
-    private String denominacion;
-
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
+
+    @Column(name = "fecha_baja")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
 }
