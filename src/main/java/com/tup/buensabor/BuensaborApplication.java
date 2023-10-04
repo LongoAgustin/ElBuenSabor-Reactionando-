@@ -123,6 +123,29 @@ public class BuensaborApplication {
 
 			articulo1.addRubroArticuloProducto(rubroArticuloProducto1);
 
+			//CompraIngredientes
+
+			CompraIngredientes compraIngredientes1 =new CompraIngredientes();
+			compraIngredientes1.setCostoTotalCompra(9600);
+			compraIngredientes1.setFechaHoraCompraIngredientes(LocalDate.of(2023,4,10));
+			compraIngredientes1.setDetalleCompraIngrediente(detalleCompraIngrediente1);
+
+
+			//DetalleCompraIngrediente
+
+			DetalleCompraIngrediente detalleCompraIngrediente1 =new DetalleCompraIngrediente();
+			detalleCompraIngrediente1.setCantidadComprada(90);
+			detalleCompraIngrediente1.setPrecioCompra(107);
+			detalleCompraIngrediente1.setSubTotalCompra(9630);
+			ArticuloIngrediente.setDetallecompraIngrediente(detalleCompraIngrediente1);
+
+
+			//saves compra ingred y detallecompraingred
+
+			CompraIngredienteRepository.save(compraIngredientes1);
+			DetalleCompraIngredienteRepository.save(detalleCompraIngrediente1);
+
+
 
 
 			//Asociaciones
