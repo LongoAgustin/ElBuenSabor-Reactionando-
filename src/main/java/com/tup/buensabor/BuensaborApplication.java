@@ -103,11 +103,13 @@ public class BuensaborApplication {
 			rubroArticuloIngrediente1.setFehaBaja(new Date());
 			rubroArticuloIngrediente1.setFechaModificacion(new Date());
 
-			//
+			//RubroArticuloProducto
 
 			RubroArticuloProducto rubroArticuloProducto1 = new RubroArticuloProducto ();
 			rubroArticuloProducto1.setDenominacion("burgas");
 			rubroArticuloProducto1.setFechaAlta(new Date());
+
+			//Articulo
 
 			ArticuloProducto articulo1 = new ArticuloProducto ();
 
