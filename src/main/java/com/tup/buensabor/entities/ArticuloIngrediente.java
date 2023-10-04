@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "articulo_insumo")
+@Table(name = "articulo_ingrediente")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,10 +20,21 @@ import java.util.Date;
 public class ArticuloIngrediente extends Base {
 
     @NotNull
+    @Column(name = "denominacion")
     private String denominacion;
 
-    @Column(name = "url_imagen")
-    private String urlImagen;
+    @NotNull
+    @Column(name = "fecha_alta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+
+    @Column(name = "fecha_baja")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
+
+    @Column(name = "fecha_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
 
     @NotNull
     @Column(name = "precio_compra", precision = 10, scale = 2)
@@ -37,22 +48,16 @@ public class ArticuloIngrediente extends Base {
     @Column(name = "stock_minimo", precision = 10, scale = 2)
     private BigDecimal stockMinimo;
 
+    @Column(name = "url_imagen")
+    private String urlImagen;
+
     @NotNull
     @ManyToOne()
-    @JoinColumn(name = "id_unidad_medida")
+    @JoinColumn(name = "fk_unidad_medida")
     private UnidadMedida unidadMedida;
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+    @ManyToOne()
+    @JoinColumn(name = "fk_rubro_articulo_ingrediente")
+    private RubroArticuloIngrediente rubroArticuloIngrediente;
 
 }

@@ -24,12 +24,8 @@ public class DetalleArticuloManufacturado extends Base {
 
     @NotNull
     @ManyToOne()
-    @JoinColumn(name = "id_articulo_insumo")
+    @JoinColumn(name = "fk_articulo_insumo")
     private ArticuloIngrediente articuloIngrediente;
 
-    @NotNull
-    @ManyToOne()
-    @JoinColumn(name = "id_articulo_manufacturado")
-    private ArticuloProducto articuloProducto;
 
 }
