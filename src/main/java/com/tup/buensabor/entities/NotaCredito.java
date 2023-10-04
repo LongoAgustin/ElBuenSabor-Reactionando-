@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "nota_credito")
@@ -34,9 +36,9 @@ public class NotaCredito extends Base{
     @JoinColumn(name = "fk_factura")
     private Factura factura;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_DetalleNotaCredito")
-    private DetalleNotaCredito detalleNotaCredito;
+    private List<DetalleNotaCredito> detalleNotaCredito = new ArrayList<>();
 
 
 }

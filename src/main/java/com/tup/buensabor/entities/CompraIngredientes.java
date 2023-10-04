@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "CompraIngredientes")
@@ -22,8 +24,8 @@ public class CompraIngredientes extends Base{
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraCompraIngredientes;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_DetalleCompraIngredientes")
-    private DetalleCompraIngrediente detalleCompraIngrediente;
+    private List<DetalleCompraIngrediente> detalleCompraIngrediente = new ArrayList<>();
 
 }

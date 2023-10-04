@@ -7,7 +7,9 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "articulo_producto")
@@ -56,11 +58,11 @@ public class ArticuloProducto extends Base {
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalleArticuloFacturado")
-    private DetalleArticuloManufacturado detalleArticuloManufacturado;
+    private List<DetalleArticuloManufacturado> detalleArticuloManufacturados = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "fk_rubroArticuloProducto")
     private RubroArticuloProducto rubroarticuloproducto;
 

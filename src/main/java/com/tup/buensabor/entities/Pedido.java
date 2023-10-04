@@ -12,7 +12,9 @@ import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "pedido")
@@ -76,7 +78,7 @@ public class Pedido extends Base {
     private Usuario usuario;
 
     @OneToMany()
-    @JoinColumn(name = "fk_detalleFactura")
-    private DetalleFactura detalleFactura;
+    @JoinColumn(name = "fk_detalle_pedido")
+    private List<DetallePedido> detallePedido = new ArrayList<>();
 
 }
