@@ -3,10 +3,13 @@ package com.tup.buensabor;
 
 import com.tup.buensabor.entities.*;
 import com.tup.buensabor.enums.EstadoPedido;
+import com.tup.buensabor.enums.FormaPago;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Date;
 
 @SpringBootApplication
 public class BuensaborApplication {
@@ -62,11 +65,33 @@ public class BuensaborApplication {
 			factura1.setTotal(2323);
 			factura1.setDescuento(0);
 			factura1.setNumero(2735);
-			factura1.setFormaPago("Mercado Pago");
+			factura1.setFormaPago(FormaPago.MERCADO_PAGO);
 
-			PedidoEstadoPedido pedidoEstadoPedido = new PedidoEstadoPedido();
-			pedidoEstadoPedido.setEstadoPedido(EstadoPedido.COMPLETADO);
-			pedidoEstadoPedido.setFechaHoraCambioEstado(new Date)
+			//PedidoEstadoPedido
+
+			PedidoEstadoPedido pedidoEstadoPedido1 = new PedidoEstadoPedido();
+			pedidoEstadoPedido1.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido1.setFechaHoraCambioEstado(new Date());
+
+			PedidoEstadoPedido pedidoEstadoPedido2 = new PedidoEstadoPedido();
+			pedidoEstadoPedido2.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido2.setFechaHoraCambioEstado(new Date());
+
+			//RubroIngrediente
+
+			RubroArticuloIngrediente rubroArticuloIngrediente1 = new RubroArticuloIngrediente();
+			rubroArticuloIngrediente1.setDenominacion("verdura");
+			rubroArticuloIngrediente1.setFechaAlta(new Date());
+			rubroArticuloIngrediente1.setFehaBaja(new Date());
+			rubroArticuloIngrediente1.setFechaModificacion(new Date());
+
+			RubroArticuloIngrediente rubroArticuloIngrediente2 = new RubroArticuloIngrediente();
+			rubroArticuloIngrediente1.setDenominacion("condimento");
+			rubroArticuloIngrediente1.setFechaAlta(new Date());
+			rubroArticuloIngrediente1.setFehaBaja(new Date());
+			rubroArticuloIngrediente1.setFechaModificacion(new Date());
+
+
 
 
 			DetallePedido detallePedido = new DetallePedido();
