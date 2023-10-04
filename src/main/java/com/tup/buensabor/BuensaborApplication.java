@@ -1,10 +1,8 @@
 
 package com.tup.buensabor;
 
-import com.tup.buensabor.entities.Domicilio;
-import com.tup.buensabor.entities.Pedido;
-import com.tup.buensabor.entities.Persona;
-import com.tup.buensabor.entities.Usuario;
+import com.tup.buensabor.entities.*;
+import com.tup.buensabor.enums.EstadoPedido;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -66,15 +64,17 @@ public class BuensaborApplication {
 			factura1.setNumero(2735);
 			factura1.setFormaPago("Mercado Pago");
 
+			PedidoEstadoPedido pedidoEstadoPedido = new PedidoEstadoPedido();
+			pedidoEstadoPedido.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido.setFechaHoraCambioEstado(new Date)
+
 
 			DetallePedido detallePedido = new DetallePedido();
 			detallePedido.setCantidad(3);
 			detallePedido.setSubTotal(80);
 
-
-
-			Rubro rubro = new Rubro();
-			rubro.setDenominacion("Carnes");
+			// ESTO NO EXISTE 	Rubro rubro = new Rubro();
+			//					rubro.setDenominacion("Carnes");
 
 
 
@@ -90,7 +90,7 @@ public class BuensaborApplication {
 			cliente.addDomicilio(domicilio);
 
 			clienteRepository.save(cliente);
-			rubroRepository.save(rubro);
+			// rubroRepository.save(rubro);
 
 		};
 	}
