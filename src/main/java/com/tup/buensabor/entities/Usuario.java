@@ -1,5 +1,6 @@
 package com.tup.buensabor.entities;
 
+import com.tup.buensabor.enums.Rol;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -23,22 +24,28 @@ public class Usuario extends Base {
     private String auth0Id;
 
     @NotNull
-    @Column(name = "username", nullable = false)
-    private String username;
-
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
 
     @Column(name = "fecha_baja")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
-    @OneToOne
+    @Column(name = "fecha_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
+    @NotNull
+    @Column(name = "username", nullable = false)
+    private String username;
+
+    @OneToOne()
+    @JoinColumn(name = "fk_persona")
+    private Persona persona;
 
 }
