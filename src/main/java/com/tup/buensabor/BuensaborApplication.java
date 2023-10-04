@@ -52,19 +52,6 @@ public class BuensaborApplication {
 			pedido1.setTipoEnvio("Aero");
 			pedido1.setTotal(23322);
 
-			//Producto
-
-			Producto producto1=new Producto();
-			producto1.setTiempoEstimadoCocina(30);
-			producto1.setReceta("1. hervir 2. Condimentar 3. Servir");
-			producto1.setDenominacion("Huevo Hervido");
-			producto1.setTipo("Huevo");
-			producto1.setPrecioCompra(80);
-			producto1.setPrecioVenta(100);
-			producto1.setStockActual(300);
-			producto1.setStockMinimo(100);
-			producto1.setUnidadMedida("ctdad");
-
 			//Factura
 
 			Factura factura1=new Factura();
@@ -139,17 +126,36 @@ public class BuensaborApplication {
 			detalleCompraIngrediente1.setSubTotalCompra(9630);
 			ArticuloIngrediente.setDetallecompraIngrediente(detalleCompraIngrediente1);
 
+			//ArticuloIngrediente
+
+			ArticuloIngrediente articuloIngrediente = new ArticuloIngrediente();
+			articuloIngrediente.setDenominacion("Orégano");
+			articuloIngrediente.setFechaAlta(new Date());
+			articuloIngrediente.setFechaBaja(new Date());
+			articuloIngrediente.setFechaModificacion(new Date());
+			articuloIngrediente.setPrecioCompra(500);
+			articuloIngrediente.setStockMinimo(150);
+			articuloIngrediente.setStockActual(210);
+			articuloIngrediente.setUnidadMedida(100);
+			articuloIngrediente.setUrlImagen("");
+			articuloIngrediente.setRubroArticuloIngrediente(rubroArticuloIngrediente1);
+
+			//DetalleArticuloManufacturado
+
+			DetalleArticuloManufacturado detalleArticuloManufacturado = new DetalleArticuloManufacturado();
+			detalleArticuloManufacturado.setCantidad(150);
+			detalleArticuloManufacturado.setArticuloIngrediente(articuloIngrediente);
+
+			Localidad localidad = new Localidad();
+			localidad.setDenominacion("Guaymallén");
+
 
 			//saves compra ingred y detallecompraingred
 
 			CompraIngredienteRepository.save(compraIngredientes1);
 			DetalleCompraIngredienteRepository.save(detalleCompraIngrediente1);
 
-
-
-
 			//Asociaciones
-			rubro.addProducto(producto1);
 
 			pedido1.setFactura(factura1);
 			pedido1.addDetallePedido(detallePedido);
