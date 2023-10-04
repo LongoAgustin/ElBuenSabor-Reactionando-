@@ -1,10 +1,8 @@
-package com.example.demo.repositories;
-
+package com.tup.buensabor.repositories;
 
 import com.tup.buensabor.entities.CompraIngredientes;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompraIngredienteRepository extends JpaRepository<CompraIngredientes, Long> {
+public interface CompraIngredienteRepository extends BaseRepository<CompraIngredientes, Long> {
 }
