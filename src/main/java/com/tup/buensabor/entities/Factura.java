@@ -62,4 +62,8 @@ public class Factura extends Base {
     @JoinColumn(name = "fk_detalle_factura")
     private List<DetalleFactura> detalleFactura;
 
+    public void addDetalleFactura(DetalleFactura detail){
+        detalleFactura.add(detail);
+    }
+
 }

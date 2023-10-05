@@ -49,8 +49,8 @@ public class Domicilio extends Base {
     @Column(name = "piso_vivienda")
     private Integer pisoDpto;
 
-    @ManyToOne()
-    @JoinColumn(name = "fk_localidad")
-    private Localidad localidad;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_usuario")
+    private Usuario usuario;
 
 }
