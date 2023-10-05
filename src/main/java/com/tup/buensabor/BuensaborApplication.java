@@ -93,22 +93,21 @@ public class BuensaborApplication {
 			//RubroArticuloProducto
 
 			RubroArticuloProducto rubroArticuloProducto1 = new RubroArticuloProducto ();
-			rubroArticuloProducto1.setDenominacion("burgas");
+			rubroArticuloProducto1.setDenominacion("Hamburguesas");
 			rubroArticuloProducto1.setFechaAlta(new Date());
 
-			//Articulo
+			//ArticuloProducto
 
 			ArticuloProducto articulo1 = new ArticuloProducto ();
 
 			articulo1.setCosto("50");
-			articulo1.setDenominacion("burga con queso");
+			articulo1.setDenominacion("Hamburguesa con queso");
 			articulo1.setDescripcion("ta buena");
 			articulo1.setFechaAlta(new Date());
 			articulo1.setPrecioVenta("2900");
 			articulo1.setTiempoEstimadoCocina(30);
 			articulo1.setUrlImagen("");
-
-			articulo1.addRubroArticuloProducto(rubroArticuloProducto1);
+			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
 
 			//CompraIngredientes
 
