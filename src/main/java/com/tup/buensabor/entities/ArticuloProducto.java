@@ -63,7 +63,9 @@ public class ArticuloProducto extends Base {
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturados = new ArrayList<>();
 
 
-
+    public void addDetalleArticuloManufacturado(DetalleArticuloManufacturado detalleArticuloManufacturado){
+        this.detalleArticuloManufacturados.add(detalleArticuloManufacturado);
+    }
 
 
     @ManyToOne(cascade =  CascadeType.REFRESH)

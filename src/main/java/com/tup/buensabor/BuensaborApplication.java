@@ -2,6 +2,7 @@ package com.tup.buensabor;
 
 import com.tup.buensabor.entities.*;
 import com.tup.buensabor.enums.EstadoPedido;
+import com.tup.buensabor.repositories.DetalleArticuloManufacturadoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -108,6 +109,7 @@ public class BuensaborApplication {
 			articulo1.setTiempoEstimadoCocina(30);
 			articulo1.setUrlImagen("");
 			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
+			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
 
 			//CompraIngredientes
 
@@ -163,6 +165,8 @@ public class BuensaborApplication {
 
 			cliente.addPedido(pedido1);
 			cliente.addDomicilio(domicilio);
+
+			DetalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado);
 
 			clienteRepository.save(cliente);
 			rubroRepository.save(rubro);
