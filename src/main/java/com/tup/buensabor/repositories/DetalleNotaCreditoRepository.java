@@ -1,10 +1,8 @@
-package com.example.demo.repositories;
-
+package com.tup.buensabor.repositories;
 
 import com.tup.buensabor.entities.DetalleNotaCredito;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DetalleNotaCreditoRepository extends JpaRepository<DetalleNotaCredito, Long> {
+public interface DetalleNotaCreditoRepository extends BaseRepository<DetalleNotaCredito, Long> {
 }

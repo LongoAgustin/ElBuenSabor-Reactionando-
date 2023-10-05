@@ -1,10 +1,8 @@
-package com.example.demo.repositories;
-
+package com.tup.buensabor.repositories;
 
 import com.tup.buensabor.entities.DetalleArticuloManufacturado;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DetalleArticuloManufacturadoRepository extends JpaRepository<DetalleArticuloManufacturado, Long> {
+public interface DetalleArticuloManufacturadoRepository extends BaseRepository<DetalleArticuloManufacturado, Long> {
 }

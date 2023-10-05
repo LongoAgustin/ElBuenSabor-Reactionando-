@@ -1,10 +1,8 @@
-package com.example.demo.repositories;
-
+package com.tup.buensabor.repositories;
 
 import com.tup.buensabor.entities.PedidoEstadoPedido;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PedidoEstadoPedidoRepository extends JpaRepository<PedidoEstadoPedido, Long> {
+public interface PedidoEstadoPedidoRepository extends BaseRepository<PedidoEstadoPedido, Long> {
 }
