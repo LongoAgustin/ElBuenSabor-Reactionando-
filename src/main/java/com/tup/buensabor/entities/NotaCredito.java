@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +30,7 @@ public class NotaCredito extends Base{
 
     @Column(name = "total_Importe_Credito")
     @Temporal(TemporalType.TIME)
-    private Date totalImporteCredito;
+    private BigDecimal totalImporteCredito;
 
     @Nullable
     @OneToOne(cascade = CascadeType.REFRESH)
@@ -40,5 +41,8 @@ public class NotaCredito extends Base{
     @JoinColumn(name = "fk_DetalleNotaCredito")
     private List<DetalleNotaCredito> detalleNotaCredito = new ArrayList<>();
 
+    public void addDetalleNotaCredito(DetalleNotaCredito detailNC) {
+        detalleNotaCredito.add(detailNC);
 
+    }
 }
