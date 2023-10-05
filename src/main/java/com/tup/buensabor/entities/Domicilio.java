@@ -53,8 +53,4 @@ public class Domicilio extends Base {
     @JoinColumn(name = "fk_localidad")
     private Localidad localidad;
 
-    @JoinColumn(name = "fk_usuario")
-    private Usuario usuario;
-
-
 }
