@@ -28,4 +28,5 @@ public class CompraIngredientes extends Base{
     @JoinColumn(name = "fk_DetalleCompraIngredientes")
     private List<DetalleCompraIngrediente> detalleCompraIngrediente = new ArrayList<>();
 
+
 }

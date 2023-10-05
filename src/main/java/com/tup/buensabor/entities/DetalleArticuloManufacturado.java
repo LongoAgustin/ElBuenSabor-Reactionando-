@@ -23,7 +23,7 @@ public class DetalleArticuloManufacturado extends Base {
     private BigDecimal cantidad;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articulo_insumo")
     private ArticuloIngrediente articuloIngrediente;
 

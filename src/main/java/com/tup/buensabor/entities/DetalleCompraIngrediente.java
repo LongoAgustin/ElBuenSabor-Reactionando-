@@ -25,7 +25,7 @@ public class DetalleCompraIngrediente extends Base{
     @Column(name = "subTotalCompra")
     private BigDecimal subTotalCompra;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_Articulo_Ingrediente")
     private ArticuloIngrediente articuloIngrediente;
 

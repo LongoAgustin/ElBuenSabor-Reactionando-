@@ -23,7 +23,6 @@ import java.util.List;
 @Setter
 public class Factura extends Base {
 
-
     @NotNull
     @Enumerated(EnumType.STRING)
     private EstadoFactura estadoFactura;
@@ -61,5 +60,6 @@ public class Factura extends Base {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalle_factura")
     private List<DetalleFactura> detalleFactura;
+
 
 }

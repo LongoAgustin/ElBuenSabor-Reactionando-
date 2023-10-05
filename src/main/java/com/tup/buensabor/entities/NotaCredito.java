@@ -32,7 +32,7 @@ public class NotaCredito extends Base{
     private Date totalImporteCredito;
 
     @Nullable
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_factura")
     private Factura factura;
 

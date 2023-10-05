@@ -69,11 +69,11 @@ public class Pedido extends Base {
     @Column(name = "total_costo", precision = 10, scale = 2)
     private BigDecimal totalCosto;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_domicilio_entrega")
     private Domicilio domicilioEntrega;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
