@@ -107,6 +107,7 @@ public class BuensaborApplication {
 			articulo1.setFechaAlta(new Date());
 			articulo1.setPrecioVenta("2900");
 			articulo1.setTiempoEstimadoCocina(30);
+			articulo1.setTipoProducto("Cocina");
 			articulo1.setUrlImagen("");
 			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
 			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
