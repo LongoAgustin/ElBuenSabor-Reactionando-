@@ -18,15 +18,12 @@ import java.util.Date;
 @Setter
 public class Domicilio extends Base {
 
-    @NotNull
-    @Column(length = 500)
+    @Column(name = "calle" ,length = 500, nullable = false)
     private String calle;
 
-    @NotNull
-    @Column(precision = 4)
+    @Column(precision = 4, name = "codigo_postal", nullable = false)
     private Integer codigoPostal;
 
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
@@ -39,14 +36,13 @@ public class Domicilio extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @NotNull
-    @Column(precision = 5)
+    @Column(precision = 5, name = "numero")
     private Integer numero;
 
-    @Column(name = "numero_vivienda")
+    @Column(name = "numero_dpto")
     private Integer numeroDpto;
 
-    @Column(name = "piso_vivienda")
+    @Column(name = "piso_dpto")
     private Integer pisoDpto;
 
     @ManyToOne(cascade = CascadeType.REFRESH)

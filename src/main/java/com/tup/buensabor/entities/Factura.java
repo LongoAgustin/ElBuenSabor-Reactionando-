@@ -23,16 +23,16 @@ import java.util.List;
 @Setter
 public class Factura extends Base {
 
-    @NotNull
+    //NOTNULL
     @Enumerated(EnumType.STRING)
     private EstadoFactura estadoFactura;
 
-    @NotNull
+    //NOTNULL
     @Column(name = "fecha_facturacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaFacturacion;
 
-    @NotNull
+    //NOTNULL
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
 
@@ -48,11 +48,11 @@ public class Factura extends Base {
     @Column(name = "mp_preference_id")
     private String mpPreferenceId;
 
-    @NotNull
+    //NOTNULL
     @Column(name = "total_venta", precision = 10, scale = 2)
     private BigDecimal totalVenta;
 
-    @NotNull
+    //NOTNULL
     @OneToOne
     @JoinColumn(name = "fk_pedido")
     private Pedido pedido;

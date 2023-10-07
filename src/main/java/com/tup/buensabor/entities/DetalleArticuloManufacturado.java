@@ -21,7 +21,7 @@ public class DetalleArticuloManufacturado extends Base {
     @Column(name = "cantidad", precision = 10, scale = 2)
     private BigDecimal cantidad;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne(cascade = CascadeType.REFRESH, optional = false)
     @JoinColumn(name = "fk_articulo_insumo")
     private ArticuloIngrediente articuloIngrediente;
 

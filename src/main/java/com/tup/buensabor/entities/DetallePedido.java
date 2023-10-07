@@ -18,15 +18,13 @@ import java.math.BigDecimal;
 @Setter
 public class DetallePedido extends Base {
 
-    @NotNull
+    @Column(name = "cantidad")
     private Integer cantidad;
 
-    @NotNull
-    @Column(name = "subtotal", precision = 10, scale = 2)
+    @Column(name = "subtotal", precision = 10, scale = 2, nullable = false)
     private BigDecimal subtotal;
 
-    @NotNull
-    @Column(name = "subtotal_costo", precision = 10, scale = 2)
+    @Column(name = "subtotal_costo", precision = 10, scale = 2, nullable = false)
     private BigDecimal subtotalCosto;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
