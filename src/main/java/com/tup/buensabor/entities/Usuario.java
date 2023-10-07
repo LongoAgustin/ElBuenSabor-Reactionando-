@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 import java.util.Date;
 
@@ -19,11 +19,11 @@ import java.util.Date;
 @Table(name = "usuario")
 public class Usuario extends Base {
 
-    @NotNull
+
     @Column(name = "auth0_id", nullable = false, unique = true)
     private String auth0Id;
 
-    @NotNull
+
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
@@ -36,15 +36,15 @@ public class Usuario extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @NotNull
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @NotNull
+
     @Column(name = "username", nullable = false)
     private String username;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_persona")
     private Persona persona;
 

@@ -23,7 +23,6 @@ import java.util.List;
 @Setter
 public class Factura extends Base {
 
-
     @NotNull
     @Enumerated(EnumType.STRING)
     private EstadoFactura estadoFactura;
@@ -62,8 +61,5 @@ public class Factura extends Base {
     @JoinColumn(name = "fk_detalle_factura")
     private List<DetalleFactura> detalleFactura;
 
-    public void addDetalleFactura(DetalleFactura detail){
-        detalleFactura.add(detail);
-    }
 
 }

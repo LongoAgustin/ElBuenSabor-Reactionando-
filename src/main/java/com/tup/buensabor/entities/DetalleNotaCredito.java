@@ -17,7 +17,7 @@ public class DetalleNotaCredito extends Base{
     @Column(name = "cantidad")
     private Integer cantidad;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk-Articulo-Producto")
     private ArticuloProducto articuloProducto;
 

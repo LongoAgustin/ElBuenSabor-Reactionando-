@@ -62,7 +62,13 @@ public class ArticuloProducto extends Base {
     @JoinColumn(name = "fk_detalleArticuloFacturado")
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturados = new ArrayList<>();
 
-    @ManyToOne()
+
+    public void addDetalleArticuloManufacturado(DetalleArticuloManufacturado detalleArticuloManufacturado){
+        this.detalleArticuloManufacturados.add(detalleArticuloManufacturado);
+    }
+
+
+    @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroArticuloProducto")
     private RubroArticuloProducto rubroarticuloproducto;
 

@@ -52,11 +52,11 @@ public class ArticuloIngrediente extends Base {
     private String urlImagen;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_unidad_medida")
     private UnidadMedida unidadMedida;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubro_articulo_ingrediente")
     private RubroArticuloIngrediente rubroArticuloIngrediente;
 
