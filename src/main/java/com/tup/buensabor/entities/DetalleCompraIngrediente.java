@@ -16,17 +16,17 @@ import java.math.BigDecimal;
 @Setter
 public class DetalleCompraIngrediente extends Base{
 
-    @Column(name = "cantidadComprada")
+    @Column(name = "cantidad_comprada")
     private int cantidadComprada;
 
-    @Column(name = "precioCompra")
+    @Column(name = "precio_compra")
     private BigDecimal precioCompra;
 
-    @Column(name = "subTotalCompra")
+    @Column(name = "subtotal_compra")
     private BigDecimal subTotalCompra;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_Articulo_Ingrediente")
+    @JoinColumn(name = "fk_articulo_ingrediente")
     private ArticuloIngrediente articuloIngrediente;
 
 

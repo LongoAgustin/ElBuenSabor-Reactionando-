@@ -18,10 +18,8 @@ import java.math.BigDecimal;
 @Setter
 public class DetalleArticuloManufacturado extends Base {
 
-
     @Column(name = "cantidad", precision = 10, scale = 2)
     private BigDecimal cantidad;
-
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articulo_insumo")

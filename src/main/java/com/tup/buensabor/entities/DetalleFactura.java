@@ -18,14 +18,13 @@ import java.math.BigDecimal;
 @Setter
 public class DetalleFactura extends Base {
 
-    @NotNull
+    @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
 
-    @NotNull
-    @Column(name = "subtotal", precision = 10, scale = 2)
+    @Column(name = "subtotal", precision = 10, scale = 2, nullable = false)
     private BigDecimal subtotal;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne(cascade = CascadeType.REFRESH, optional = false)
     @JoinColumn(name = "fk_articulo_producto")
     private ArticuloProducto articuloProducto;
 

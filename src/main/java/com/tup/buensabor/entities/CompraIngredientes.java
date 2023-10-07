@@ -28,5 +28,7 @@ public class CompraIngredientes extends Base{
     @JoinColumn(name = "fk_DetalleCompraIngredientes")
     private List<DetalleCompraIngrediente> detalleCompraIngrediente = new ArrayList<>();
 
-
+    public void addDetalleCompraIngrediente(DetalleCompraIngrediente detalleCompraIngrediente){
+        this.detalleCompraIngrediente.add((detalleCompraIngrediente));
+    }
 }

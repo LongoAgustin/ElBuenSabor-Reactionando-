@@ -23,14 +23,12 @@ public class ArticuloProducto extends Base {
     @Column(name = "costo", precision = 10, scale = 2)
     private BigDecimal costo;
 
-    @NotNull
+    @Column(nullable = false, name = "denominacion")
     private String denominacion;
 
-    @NotNull
     @Column(length = 1000)
     private String descripcion;
 
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
@@ -43,16 +41,14 @@ public class ArticuloProducto extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @NotNull
     @Column(name = "precio_venta", precision = 10, scale = 2)
     private BigDecimal precioVenta;
 
-    @NotNull
-    @Column(name = "tiempo_estimado_cocina")
+    @Column(name = "tiempo_estimado_cocina", nullable = false)
     private Integer tiempoEstimadoCocina;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_producto")
     private TipoProducto tipoProducto;
 
     @Column(length = 500, name = "url_imagen")
@@ -62,11 +58,9 @@ public class ArticuloProducto extends Base {
     @JoinColumn(name = "fk_detalleArticuloFacturado")
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturados = new ArrayList<>();
 
-
     public void addDetalleArticuloManufacturado(DetalleArticuloManufacturado detalleArticuloManufacturado){
         this.detalleArticuloManufacturados.add(detalleArticuloManufacturado);
     }
-
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroArticuloProducto")

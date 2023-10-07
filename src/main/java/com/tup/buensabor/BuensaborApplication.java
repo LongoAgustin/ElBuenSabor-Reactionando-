@@ -110,7 +110,7 @@ public class BuensaborApplication {
 			articulo1.setTipoProducto("Cocina");
 			articulo1.setUrlImagen("");
 			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
-			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
+			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado); //VER
 
 			//CompraIngredientes
 
