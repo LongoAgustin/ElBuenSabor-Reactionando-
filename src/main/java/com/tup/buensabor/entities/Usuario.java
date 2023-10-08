@@ -19,10 +19,8 @@ import java.util.Date;
 @Table(name = "usuario")
 public class Usuario extends Base {
 
-
     @Column(name = "auth0_id", nullable = false, unique = true)
     private String auth0Id;
-
 
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
@@ -43,7 +41,7 @@ public class Usuario extends Base {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "fk_persona")
     private Persona persona;
 

@@ -17,21 +17,30 @@ public class BuensaborApplication {
 
 	@Autowired
 	PersonaRepository personaRepository;
-
 	@Autowired
 	UsuarioRepository usuarioRepository;
-
 	@Autowired
 	DomicilioRepository domicilioRepository;
-
 	@Autowired
 	PedidoRepository pedidoRepository;
-
 	@Autowired
 	LocalidadRepository localidadRepository;
-
 	@Autowired
 	FacturaRepository facturaRepository;
+	@Autowired
+	ArticuloProductoRepository articuloProductoRepository;
+	@Autowired
+	ArticuloIngredienteRepository articuloIngredienteRepository;
+	@Autowired
+	RubroArticuloIngredienteRepository rubroArticuloIngredienteRepository;
+	@Autowired
+	RubroArticuloProductoRepository rubroArticuloProductoRepository;
+	@Autowired
+	UnidadMedidaRepository unidadMedidaRepository;
+	@Autowired
+	NotaCreditoRepository notaCreditoRepository;
+	@Autowired
+	CompraIngredienteRepository compraIngredienteRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BuensaborApplication.class, args);
@@ -79,49 +88,6 @@ public class BuensaborApplication {
 			domicilio.setFechaModificacion(new Date());
 			domicilio.setUsuario(usuario);
 			domicilio.setLocalidad(localidad);
-
-			//DetallePedido
-
-			DetallePedido detallePedido = new DetallePedido();
-
-			detallePedido.setCantidad(3);
-			detallePedido.setSubtotal(new BigDecimal(44894));
-			detallePedido.setSubtotalCosto(new BigDecimal(8445));
-
-			DetallePedido detallePedido1 = new DetallePedido();
-
-			detallePedido1.setCantidad(3);
-			detallePedido1.setSubtotal(new BigDecimal(44894));
-			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
-
-
-			//PedidoEstadoPedido
-
-			PedidoEstadoPedido pedidoEstadoPedido1 = new PedidoEstadoPedido();
-			pedidoEstadoPedido1.setEstadoPedido(EstadoPedido.COMPLETADO);
-			pedidoEstadoPedido1.setFechaHoraCambioEstado(new Date());
-
-			PedidoEstadoPedido pedidoEstadoPedido2 = new PedidoEstadoPedido();
-			pedidoEstadoPedido2.setEstadoPedido(EstadoPedido.COMPLETADO);
-			pedidoEstadoPedido2.setFechaHoraCambioEstado(new Date());
-
-			//Pedido
-
-			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.COMPLETADO);
-			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido1.setTotal(new BigDecimal(49844));
-			pedido1.setTotalCosto(new BigDecimal(498446));
-			pedido1.setFechaAlta(new Date());
-			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
-			pedido1.setHoraEstimadaFinalizacion(new Date());
-			pedido1.setFechaPedido(new Date());
-			pedido1.addDetallePedido(detallePedido);
-			pedido1.addDetallePedido(detallePedido1);
-			pedido1.setUsuario(usuario);
-			pedido1.setDomicilioEntrega(domicilio);
-			pedido1.addEstadoPedido(pedidoEstadoPedido1);
-			pedido1.addEstadoPedido(pedidoEstadoPedido2);
 
 			//RubroIngrediente
 
@@ -189,6 +155,51 @@ public class BuensaborApplication {
 			articulo1.setRubroarticuloproducto(rubroArticuloProducto1);
 			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
 
+			//DetallePedido
+
+			DetallePedido detallePedido = new DetallePedido();
+
+			detallePedido.setCantidad(3);
+			detallePedido.setSubtotal(new BigDecimal(44894));
+			detallePedido.setSubtotalCosto(new BigDecimal(8445));
+			detallePedido.setArticuloProducto(articulo1);
+
+			DetallePedido detallePedido1 = new DetallePedido();
+
+			detallePedido1.setCantidad(3);
+			detallePedido1.setSubtotal(new BigDecimal(44894));
+			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
+			detallePedido1.setArticuloProducto(articulo1);
+
+
+			//PedidoEstadoPedido
+
+			PedidoEstadoPedido pedidoEstadoPedido1 = new PedidoEstadoPedido();
+			pedidoEstadoPedido1.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido1.setFechaHoraCambioEstado(new Date());
+
+			PedidoEstadoPedido pedidoEstadoPedido2 = new PedidoEstadoPedido();
+			pedidoEstadoPedido2.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido2.setFechaHoraCambioEstado(new Date());
+
+			//Pedido
+
+			Pedido pedido1 = new Pedido();
+			pedido1.setEstado(EstadoPedido.COMPLETADO);
+			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
+			pedido1.setTotal(new BigDecimal(49844));
+			pedido1.setTotalCosto(new BigDecimal(498446));
+			pedido1.setFechaAlta(new Date());
+			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
+			pedido1.setHoraEstimadaFinalizacion(new Date());
+			pedido1.setFechaPedido(new Date());
+			pedido1.addDetallePedido(detallePedido);
+			pedido1.addDetallePedido(detallePedido1);
+			pedido1.setUsuario(usuario);
+			pedido1.setDomicilioEntrega(domicilio);
+			pedido1.addEstadoPedido(pedidoEstadoPedido1);
+			pedido1.addEstadoPedido(pedidoEstadoPedido2);
+
 			//DetalleFactura
 
 			DetalleFactura detalleFactura1 = new DetalleFactura();
@@ -249,17 +260,20 @@ public class BuensaborApplication {
 			notaCredito.addDetalleNotaCredito(detalleNotaCredito);
 
 			//GUARDAR
-
 			personaRepository.save(persona);
-
 			localidadRepository.save(localidad);
-
 			usuarioRepository.save(usuario);
-
 			domicilioRepository.save(domicilio);
-
+			unidadMedidaRepository.save(unidadMedida);
+			rubroArticuloIngredienteRepository.save(rubroArticuloIngrediente1);
+			rubroArticuloIngredienteRepository.save(rubroArticuloIngrediente2);
+			articuloIngredienteRepository.save(articuloIngrediente);
+			rubroArticuloProductoRepository.save(rubroArticuloProducto1);
+			articuloProductoRepository.save(articulo1);
 			pedidoRepository.save(pedido1);
-
+			facturaRepository.save(factura1);
+			notaCreditoRepository.save(notaCredito);
+			compraIngredienteRepository.save(compraIngredientes1);
 		};
 	}
 

@@ -18,7 +18,7 @@ import java.util.Date;
 @Setter
 public class Domicilio extends Base {
 
-    @Column(name = "usuario")
+    @Column(name = "usuario" ,length = 1000)
     private Usuario usuario;
 
     @Column(name = "calle" ,length = 500, nullable = false)

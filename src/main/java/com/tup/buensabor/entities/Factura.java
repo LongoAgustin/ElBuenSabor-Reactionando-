@@ -61,10 +61,10 @@ public class Factura extends Base {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalle_factura")
-    private List<DetalleFactura> detalleFactura;
+    private List<DetalleFactura> detallesFactura = new ArrayList<>();
 
     public void addDetalleFactura(DetalleFactura detalleFactura){
-        this.detalleFactura.add(detalleFactura);
+        this.detallesFactura.add(detalleFactura);
     }
 
 
