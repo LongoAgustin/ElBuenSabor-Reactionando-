@@ -138,13 +138,6 @@ public class BuensaborApplication {
 			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
 			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
 
-			//CompraIngredientes
-
-			CompraIngredientes compraIngredientes1 =new CompraIngredientes();
-			compraIngredientes1.setCostoTotalCompra(9600);
-			compraIngredientes1.setFechaHoraCompraIngredientes(LocalDate.of(2023,4,10));
-			compraIngredientes1.setDetalleCompraIngrediente(detalleCompraIngrediente1);
-
 			//DetalleCompraIngrediente
 
 			DetalleCompraIngrediente detalleCompraIngrediente1 =new DetalleCompraIngrediente();
@@ -153,30 +146,15 @@ public class BuensaborApplication {
 			detalleCompraIngrediente1.setSubTotalCompra(9630);
 			ArticuloIngrediente.setDetallecompraIngrediente(detalleCompraIngrediente1);
 
+			//CompraIngredientes
 
+			CompraIngredientes compraIngredientes1 =new CompraIngredientes();
+			compraIngredientes1.setCostoTotalCompra(9600);
+			compraIngredientes1.setFechaHoraCompraIngredientes(LocalDate.of(2023,4,10));
+			compraIngredientes1.setDetalleCompraIngrediente(detalleCompraIngrediente1);
 
-			//saves compra ingred y detallecompraingred
+			//GUARDAR
 
-			CompraIngredienteRepository.save(compraIngredientes1);
-			DetalleCompraIngredienteRepository.save(detalleCompraIngrediente1);
-
-			//Asociaciones
-
-			pedido1.setFactura(factura1);
-			pedido1.addDetallePedido(detallePedido);
-
-			detallePedido.setProducto(producto1);
-
-			cliente.addPedido(pedido1);
-			cliente.addDomicilio(domicilio);
-
-			DetalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado);
-
-			clienteRepository.save(cliente);
-			rubroRepository.save(rubro);
-
-			ArticuloProductoRepository.save(articulo1);
-			RubroArticuloProductoReposotory.save(rubroArticuloProducto1);
 		};
 	}
 
