@@ -2,7 +2,8 @@ package com.tup.buensabor;
 
 import com.tup.buensabor.entities.*;
 import com.tup.buensabor.enums.*;
-import com.tup.buensabor.repositories.DetalleArticuloManufacturadoRepository;
+import com.tup.buensabor.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,21 @@ import java.util.Date;
 
 @SpringBootApplication
 public class BuensaborApplication {
+
+	@Autowired
+	PersonaRepository personaRepository;
+
+	@Autowired
+	UsuarioRepository usuarioRepository;
+
+	@Autowired
+	DomicilioRepository domicilioRepository;
+
+	@Autowired
+	PedidoRepository pedidoRepository;
+
+	@Autowired
+	FacturaRepository facturaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BuensaborApplication.class, args);
@@ -75,6 +91,17 @@ public class BuensaborApplication {
 			detallePedido1.setSubtotal(new BigDecimal(44894));
 			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
 
+
+			//PedidoEstadoPedido
+
+			PedidoEstadoPedido pedidoEstadoPedido1 = new PedidoEstadoPedido();
+			pedidoEstadoPedido1.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido1.setFechaHoraCambioEstado(new Date());
+
+			PedidoEstadoPedido pedidoEstadoPedido2 = new PedidoEstadoPedido();
+			pedidoEstadoPedido2.setEstadoPedido(EstadoPedido.COMPLETADO);
+			pedidoEstadoPedido2.setFechaHoraCambioEstado(new Date());
+
 			//Pedido
 
 			Pedido pedido1=new Pedido();
@@ -90,18 +117,8 @@ public class BuensaborApplication {
 			pedido1.addDetallePedido(detallePedido1);
 			pedido1.setUsuario(user);
 			pedido1.setDomicilioEntrega(domicilio);
-
-			//PedidoEstadoPedido
-
-			PedidoEstadoPedido pedidoEstadoPedido1 = new PedidoEstadoPedido();
-			pedidoEstadoPedido1.setEstadoPedido(EstadoPedido.COMPLETADO);
-			pedidoEstadoPedido1.setFechaHoraCambioEstado(new Date());
-			pedidoEstadoPedido1.setPedido(pedido1);
-
-			PedidoEstadoPedido pedidoEstadoPedido2 = new PedidoEstadoPedido();
-			pedidoEstadoPedido2.setEstadoPedido(EstadoPedido.COMPLETADO);
-			pedidoEstadoPedido2.setFechaHoraCambioEstado(new Date());
-			pedidoEstadoPedido2.setPedido(pedido1);
+			pedido1.addEstadoPedido(pedidoEstadoPedido1);
+			pedido1.addEstadoPedido(pedidoEstadoPedido2);
 
 			//RubroIngrediente
 
@@ -229,6 +246,14 @@ public class BuensaborApplication {
 			notaCredito.addDetalleNotaCredito(detalleNotaCredito);
 
 			//GUARDAR
+
+			personaRepository.save(persona);
+
+			usuarioRepository.save(user);
+
+			domicilioRepository.save(domicilio);
+
+			pedidoRepository.save(pedido1);
 
 		};
 	}

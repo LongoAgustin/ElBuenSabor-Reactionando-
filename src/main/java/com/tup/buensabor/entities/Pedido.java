@@ -28,7 +28,6 @@ public class Pedido extends Base {
     @Column(name = "estado")
     private EstadoPedido estado;
 
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
@@ -71,12 +70,21 @@ public class Pedido extends Base {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalle_pedido")
     private List<DetallePedido> detallePedido = new ArrayList<>();
 
     public void addDetallePedido(DetallePedido detallePedido){
         this.detallePedido.add(detallePedido);
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_pedido_estado_pedido")
+    private List<PedidoEstadoPedido> pedidoEstadoPedidos = new ArrayList<>();
+
+    public void addEstadoPedido(PedidoEstadoPedido pedidoEstadoPedido){
+        this.pedidoEstadoPedidos.add(pedidoEstadoPedido);
+    }
+
 
 }

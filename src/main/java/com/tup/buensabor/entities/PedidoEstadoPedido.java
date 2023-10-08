@@ -26,7 +26,4 @@ public class PedidoEstadoPedido extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraCambioEstado;
 
-    @Column(name = "fk_pedido")
-    private Pedido pedido;
-
 }
