@@ -100,6 +100,20 @@ public class BuensaborApplication {
 			rubroArticuloProducto1.setDenominacion("Hamburguesas");
 			rubroArticuloProducto1.setFechaAlta(new Date());
 
+			//ArticuloIngrediente
+
+			ArticuloIngrediente articuloIngrediente = new ArticuloIngrediente();
+			articuloIngrediente.setDenominacion("Orégano");
+			articuloIngrediente.setFechaAlta(new Date());
+			articuloIngrediente.setFechaBaja(new Date());
+			articuloIngrediente.setFechaModificacion(new Date());
+			articuloIngrediente.setPrecioCompra(500);
+			articuloIngrediente.setStockMinimo(150);
+			articuloIngrediente.setStockActual(210);
+			articuloIngrediente.setUnidadMedida(100);
+			articuloIngrediente.setUrlImagen("");
+			articuloIngrediente.setRubroArticuloIngrediente(rubroArticuloIngrediente1);
+
 			//DetalleArticuloManufacturado
 
 			DetalleArticuloManufacturado detalleArticuloManufacturado = new DetalleArticuloManufacturado();
@@ -122,7 +136,7 @@ public class BuensaborApplication {
 			articulo1.setTipoProducto("Cocina");
 			articulo1.setUrlImagen("");
 			articulo1.setRubroArticuloProducto(rubroArticuloProducto1);
-			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado); //VER
+			articulo1.addDetalleArticuloManufacturado(detalleArticuloManufacturado);
 
 			//CompraIngredientes
 
@@ -138,20 +152,6 @@ public class BuensaborApplication {
 			detalleCompraIngrediente1.setPrecioCompra(107);
 			detalleCompraIngrediente1.setSubTotalCompra(9630);
 			ArticuloIngrediente.setDetallecompraIngrediente(detalleCompraIngrediente1);
-
-			//ArticuloIngrediente
-
-			ArticuloIngrediente articuloIngrediente = new ArticuloIngrediente();
-			articuloIngrediente.setDenominacion("Orégano");
-			articuloIngrediente.setFechaAlta(new Date());
-			articuloIngrediente.setFechaBaja(new Date());
-			articuloIngrediente.setFechaModificacion(new Date());
-			articuloIngrediente.setPrecioCompra(500);
-			articuloIngrediente.setStockMinimo(150);
-			articuloIngrediente.setStockActual(210);
-			articuloIngrediente.setUnidadMedida(100);
-			articuloIngrediente.setUrlImagen("");
-			articuloIngrediente.setRubroArticuloIngrediente(rubroArticuloIngrediente1);
 
 
 
