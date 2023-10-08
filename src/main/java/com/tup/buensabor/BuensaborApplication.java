@@ -28,6 +28,9 @@ public class BuensaborApplication {
 	PedidoRepository pedidoRepository;
 
 	@Autowired
+	LocalidadRepository localidadRepository;
+
+	@Autowired
 	FacturaRepository facturaRepository;
 
 	public static void main(String[] args) {
@@ -50,12 +53,12 @@ public class BuensaborApplication {
 
 			//User
 
-			Usuario user = new Usuario();
-			user.setUsername("AguSul12");
-			user.setAuth0Id("1f89JF81FSA2415G5UUES");
-			user.setRol(Rol.CLIENTE);
-			user.setFechaAlta(new Date());
-			user.setPersona(persona);
+			Usuario usuario = new Usuario();
+			usuario.setUsername("AguSul12");
+			usuario.setAuth0Id("1f89JF81FSA2415G5UUES");
+			usuario.setRol(Rol.CLIENTE);
+			usuario.setFechaAlta(new Date());
+			usuario.setPersona(persona);
 
 			//Localidad
 
@@ -74,7 +77,7 @@ public class BuensaborApplication {
 			domicilio.setFechaBaja(new Date());
 			domicilio.setFechaAlta(new Date());
 			domicilio.setFechaModificacion(new Date());
-			domicilio.setUser(user);
+			domicilio.setUser(usuario);
 			domicilio.setLocalidad(localidad);
 
 			//DetallePedido
@@ -104,7 +107,7 @@ public class BuensaborApplication {
 
 			//Pedido
 
-			Pedido pedido1=new Pedido();
+			Pedido pedido1 = new Pedido();
 			pedido1.setEstado(EstadoPedido.COMPLETADO);
 			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
 			pedido1.setTotal(new BigDecimal(49844));
@@ -115,7 +118,7 @@ public class BuensaborApplication {
 			pedido1.setFechaPedido(new Date());
 			pedido1.addDetallePedido(detallePedido);
 			pedido1.addDetallePedido(detallePedido1);
-			pedido1.setUsuario(user);
+			pedido1.setUsuario(usuario);
 			pedido1.setDomicilioEntrega(domicilio);
 			pedido1.addEstadoPedido(pedidoEstadoPedido1);
 			pedido1.addEstadoPedido(pedidoEstadoPedido2);
@@ -249,7 +252,9 @@ public class BuensaborApplication {
 
 			personaRepository.save(persona);
 
-			usuarioRepository.save(user);
+			localidadRepository.save(localidad);
+
+			usuarioRepository.save(usuario);
 
 			domicilioRepository.save(domicilio);
 
