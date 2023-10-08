@@ -77,7 +77,7 @@ public class BuensaborApplication {
 			domicilio.setFechaBaja(new Date());
 			domicilio.setFechaAlta(new Date());
 			domicilio.setFechaModificacion(new Date());
-			domicilio.setUser(usuario);
+			domicilio.setUsuario(usuario);
 			domicilio.setLocalidad(localidad);
 
 			//DetallePedido

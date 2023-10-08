@@ -18,8 +18,8 @@ import java.util.Date;
 @Setter
 public class Domicilio extends Base {
 
-    @Column(name = "user")
-    private Usuario user;
+    @Column(name = "usuario")
+    private Usuario usuario;
 
     @Column(name = "calle" ,length = 500, nullable = false)
     private String calle;
