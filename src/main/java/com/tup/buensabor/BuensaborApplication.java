@@ -27,10 +27,13 @@ public class BuensaborApplication {
 
 			Domicilio domicilio=new Domicilio();
 			domicilio.setCalle("Olascoaga");
-			domicilio.setNumero(232);
 			domicilio.setCodigoPostal(5504);
+			domicilio.setNumero(232);
 			domicilio.setNumeroDpto(23);
 			domicilio.setPisoDpto(2);
+			domicilio.setFechaBaja(new Date());
+			domicilio.setFechaAlta(new Date());
+			domicilio.setFechaModificacion(new Date());
 
 			//Persona
 
@@ -97,6 +100,15 @@ public class BuensaborApplication {
 			rubroArticuloProducto1.setDenominacion("Hamburguesas");
 			rubroArticuloProducto1.setFechaAlta(new Date());
 
+			//DetalleArticuloManufacturado
+
+			DetalleArticuloManufacturado detalleArticuloManufacturado = new DetalleArticuloManufacturado();
+			detalleArticuloManufacturado.setCantidad(150);
+			detalleArticuloManufacturado.setArticuloIngrediente(articuloIngrediente);
+
+			Localidad localidad = new Localidad();
+			localidad.setDenominacion("Guaymallén");
+
 			//ArticuloProducto
 
 			ArticuloProducto articulo1 = new ArticuloProducto ();
@@ -118,7 +130,6 @@ public class BuensaborApplication {
 			compraIngredientes1.setCostoTotalCompra(9600);
 			compraIngredientes1.setFechaHoraCompraIngredientes(LocalDate.of(2023,4,10));
 			compraIngredientes1.setDetalleCompraIngrediente(detalleCompraIngrediente1);
-
 
 			//DetalleCompraIngrediente
 
@@ -142,14 +153,6 @@ public class BuensaborApplication {
 			articuloIngrediente.setUrlImagen("");
 			articuloIngrediente.setRubroArticuloIngrediente(rubroArticuloIngrediente1);
 
-			//DetalleArticuloManufacturado
-
-			DetalleArticuloManufacturado detalleArticuloManufacturado = new DetalleArticuloManufacturado();
-			detalleArticuloManufacturado.setCantidad(150);
-			detalleArticuloManufacturado.setArticuloIngrediente(articuloIngrediente);
-
-			Localidad localidad = new Localidad();
-			localidad.setDenominacion("Guaymallén");
 
 
 			//saves compra ingred y detallecompraingred
