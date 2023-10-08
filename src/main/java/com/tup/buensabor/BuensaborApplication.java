@@ -2,6 +2,7 @@ package com.tup.buensabor;
 
 import com.tup.buensabor.entities.*;
 import com.tup.buensabor.enums.EstadoPedido;
+import com.tup.buensabor.enums.Rol;
 import com.tup.buensabor.repositories.DetalleArticuloManufacturadoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -45,9 +46,10 @@ public class BuensaborApplication {
 
 			//User
 
-			Usuario user=new Usuario();
+			Usuario user = new Usuario();
 			user.setUsername("AguSul12");
 			user.setAuth0Id("1f89JF81FSA2415G5UUES");
+			user.setRol(Rol.CLIENTE);
 
 			//Pedido
 
