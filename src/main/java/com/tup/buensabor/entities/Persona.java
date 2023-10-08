@@ -17,18 +17,16 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Table(name = "persona")
 public class Persona extends Base{
 
-    @NotNull
     @Column(name = "apellido")
     private String apellido;
-    @NotNull
+
     @Column(name = "nombre")
     private String nombre;
-    @NotNull
+
     @Column(name = "email")
     private String email;
-    @NotNull
+
     @Column(name = "telefono")
     private String telefono;
-
 
 }

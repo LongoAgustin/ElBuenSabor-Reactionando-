@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "Rubro_Articulo_Ingrediente")
+@Table(name = "rubro-ingrediente")
 public class RubroArticuloIngrediente extends Base{
 
     @Column(name = "denominacion")

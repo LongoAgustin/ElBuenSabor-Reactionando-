@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.Date;
 
@@ -18,16 +17,12 @@ import java.util.Date;
 @Setter
 public class UnidadMedida extends Base {
 
-
-    @NotNull
-    @Column(length = 25)
+    @Column(length = 25, nullable = false, name = "abreviatura")
     private String abreviatura;
 
-    @NotNull
-    @Column(length = 255)
+    @Column(length = 255, nullable = false, name = "denominacion")
     private String denominacion;
 
-    @NotNull
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;

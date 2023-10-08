@@ -36,10 +36,9 @@ public class Usuario extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-
+    @Column(name = "rol")
     @Enumerated(EnumType.STRING)
     private Rol rol;
-
 
     @Column(name = "username", nullable = false)
     private String username;

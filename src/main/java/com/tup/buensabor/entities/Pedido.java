@@ -24,8 +24,8 @@ import java.util.List;
 @Setter
 public class Pedido extends Base {
 
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(name = "estado")
     private EstadoPedido estado;
 
     @NotNull
@@ -41,31 +41,25 @@ public class Pedido extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @NotNull
     @Column(name = "fecha_pedido")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPedido;
 
-    @NotNull
     @Column(name = "forma_pago")
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
 
-    @NotNull
     @Column(name = "hora_estimada_finalizacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaEstimadaFinalizacion;
 
-    @NotNull
     @Column(name = "tipo_envio")
     @Enumerated(EnumType.STRING)
     private TipoEnvio tipoEnvio;
 
-    @NotNull
     @Column(name = "total", precision = 10, scale = 2)
     private BigDecimal total;
 
-    @NotNull
     @Column(name = "total_costo", precision = 10, scale = 2)
     private BigDecimal totalCosto;
 
@@ -80,5 +74,9 @@ public class Pedido extends Base {
     @OneToMany()
     @JoinColumn(name = "fk_detalle_pedido")
     private List<DetallePedido> detallePedido = new ArrayList<>();
+
+    public void addDetallePedido(DetallePedido detallePedido){
+        this.detallePedido.add(detallePedido);
+    }
 
 }

@@ -25,15 +25,17 @@ public class Factura extends Base {
 
     //NOTNULL
     @Enumerated(EnumType.STRING)
+    @Column(name = "estado_factura", nullable = false)
     private EstadoFactura estadoFactura;
 
     //NOTNULL
-    @Column(name = "fecha_facturacion")
+    @Column(name = "fecha_facturacion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaFacturacion;
 
     //NOTNULL
     @Enumerated(EnumType.STRING)
+    @Column(name = "forma_pago")
     private FormaPago formaPago;
 
     @Column(name = "mp_merchant_order_id")
@@ -49,17 +51,21 @@ public class Factura extends Base {
     private String mpPreferenceId;
 
     //NOTNULL
-    @Column(name = "total_venta", precision = 10, scale = 2)
+    @Column(name = "total_venta", precision = 10, scale = 2, nullable = false)
     private BigDecimal totalVenta;
 
     //NOTNULL
     @OneToOne
-    @JoinColumn(name = "fk_pedido")
+    @JoinColumn(name = "fk_pedido", nullable = false)
     private Pedido pedido;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalle_factura")
     private List<DetalleFactura> detalleFactura;
+
+    public void addDetalleFactura(DetalleFactura detalleFactura){
+        this.detalleFactura.add(detalleFactura);
+    }
 
 
 }

@@ -18,7 +18,6 @@ import java.util.Date;
 @Setter
 public class PedidoEstadoPedido extends Base {
 
-    @NotNull
     @Column(name = "estado_pedido")
     @Enumerated(EnumType.STRING)
     private EstadoPedido estadoPedido;

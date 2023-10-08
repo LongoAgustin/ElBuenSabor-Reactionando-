@@ -31,7 +31,6 @@ public class NotaCredito extends Base{
     @Temporal(TemporalType.TIME)
     private Date totalImporteCredito;
 
-    @Nullable
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_factura")
     private Factura factura;
@@ -39,6 +38,11 @@ public class NotaCredito extends Base{
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_DetalleNotaCredito")
     private List<DetalleNotaCredito> detalleNotaCredito = new ArrayList<>();
+
+    public void addDetalleNotaCredito (DetalleNotaCredito detalleNotaCredito){
+        this.detalleNotaCredito.add(detalleNotaCredito);
+    }
+
 
 
 }

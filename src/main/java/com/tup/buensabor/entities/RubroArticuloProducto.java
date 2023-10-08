@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "rubro-")
+@Table(name = "rubro-producto")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
