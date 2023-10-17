@@ -4,7 +4,9 @@ import com.tup.buensabor.entities.DetalleNotaCredito;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.DetalleNotaCreditoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DetalleNotaCreditoServiceImpl extends BaseServiceImpl<DetalleNotaCredito, Long> implements DetalleNotaCreditoService{
 
     @Autowired
