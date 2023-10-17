@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface DetalleArticuloManufacturadoService {
+import com.tup.buensabor.entities.DetalleArticuloManufacturado;
+
+public interface DetalleArticuloManufacturadoService extends BaseService<DetalleArticuloManufacturado, Long>{
 }

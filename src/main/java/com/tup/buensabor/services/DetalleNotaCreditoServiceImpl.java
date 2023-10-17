@@ -1,4 +1,17 @@
 package com.tup.buensabor.services;
 
-public class DetalleNotaCreditoServiceImpl {
+import com.tup.buensabor.entities.DetalleNotaCredito;
+import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.repositories.DetalleNotaCreditoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class DetalleNotaCreditoServiceImpl extends BaseServiceImpl<DetalleNotaCredito, Long> implements DetalleNotaCreditoService{
+
+    @Autowired
+    protected DetalleNotaCreditoRepository detalleNotaCreditoRepository;
+
+    public DetalleNotaCreditoServiceImpl(BaseRepository<DetalleNotaCredito,Long> baseRepository, DetalleNotaCreditoRepository detalleNotaCreditoRepository) {
+        super(baseRepository);
+        this.detalleNotaCreditoRepository = detalleNotaCreditoRepository;
+    }
 }

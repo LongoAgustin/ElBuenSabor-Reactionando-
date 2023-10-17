@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface DomicilioService {
+import com.tup.buensabor.entities.Domicilio;
+
+public interface DomicilioService extends BaseService<Domicilio, Long>{
 }

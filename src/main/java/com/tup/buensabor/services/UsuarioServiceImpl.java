@@ -1,4 +1,17 @@
 package com.tup.buensabor.services;
 
-public class UsuarioServiceImpl {
+import com.tup.buensabor.entities.Usuario;
+import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.repositories.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implements UsuarioService{
+
+    @Autowired
+    protected UsuarioRepository usuarioRepository;
+
+    public UsuarioServiceImpl(BaseRepository<Usuario,Long> baseRepository, UsuarioRepository usuarioRepository) {
+        super(baseRepository);
+        this.usuarioRepository = usuarioRepository;
+    }
 }

@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface PedidoEstadoPedidoService {
+import com.tup.buensabor.entities.PedidoEstadoPedido;
+
+public interface PedidoEstadoPedidoService extends BaseService<PedidoEstadoPedido, Long>{
 }

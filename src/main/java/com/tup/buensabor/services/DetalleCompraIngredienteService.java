@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface DetalleCompraIngredienteService {
+import com.tup.buensabor.entities.DetalleCompraIngrediente;
+
+public interface DetalleCompraIngredienteService extends BaseService<DetalleCompraIngrediente, Long>{
 }

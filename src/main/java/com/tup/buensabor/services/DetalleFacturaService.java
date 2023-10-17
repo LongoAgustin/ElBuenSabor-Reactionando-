@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface DetalleFacturaService {
+import com.tup.buensabor.entities.DetalleFactura;
+
+public interface DetalleFacturaService extends BaseService<DetalleFactura, Long>{
 }

@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface UsuarioService {
+import com.tup.buensabor.entities.Usuario;
+
+public interface UsuarioService extends BaseService<Usuario, Long>{
 }

@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface FacturaService {
+import com.tup.buensabor.entities.Factura;
+
+public interface FacturaService extends BaseService<Factura, Long>{
 }

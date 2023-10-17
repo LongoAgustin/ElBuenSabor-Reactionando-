@@ -1,4 +1,17 @@
 package com.tup.buensabor.services;
 
-public class DetalleFacturaServiceImpl {
+import com.tup.buensabor.entities.DetalleFactura;
+import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.repositories.DetalleFacturaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class DetalleFacturaServiceImpl extends BaseServiceImpl<DetalleFactura, Long> implements DetalleFacturaService{
+
+    @Autowired
+    protected DetalleFacturaRepository detalleFacturaRepository;
+
+    public DetalleFacturaServiceImpl(BaseRepository<DetalleFactura,Long> baseRepository, DetalleFacturaRepository detalleFacturaRepository) {
+        super(baseRepository);
+        this.detalleFacturaRepository = detalleFacturaRepository;
+    }
 }

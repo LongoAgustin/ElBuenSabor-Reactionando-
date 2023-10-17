@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface PersonaService {
+import com.tup.buensabor.entities.Persona;
+
+public interface PersonaService extends BaseService<Persona, Long>{
 }

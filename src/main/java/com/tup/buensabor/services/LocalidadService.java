@@ -1,4 +1,6 @@
 package com.tup.buensabor.services;
 
-public interface LocalidadService {
+import com.tup.buensabor.entities.Localidad;
+
+public interface LocalidadService extends BaseService<Localidad, Long>{
 }
