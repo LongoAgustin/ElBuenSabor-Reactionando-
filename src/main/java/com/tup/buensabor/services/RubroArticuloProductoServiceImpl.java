@@ -4,7 +4,9 @@ import com.tup.buensabor.entities.RubroArticuloProducto;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.RubroArticuloProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RubroArticuloProductoServiceImpl extends BaseServiceImpl<RubroArticuloProducto, Long> implements RubroArticuloProductoService{
 
     @Autowired
