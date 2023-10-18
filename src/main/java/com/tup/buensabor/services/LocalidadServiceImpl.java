@@ -4,7 +4,9 @@ import com.tup.buensabor.entities.Localidad;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.LocalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LocalidadServiceImpl extends BaseServiceImpl<Localidad, Long> implements LocalidadService{
 
     @Autowired
