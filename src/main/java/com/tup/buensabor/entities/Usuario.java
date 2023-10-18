@@ -8,9 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import java.util.Date;
-
+import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,30 +17,36 @@ import java.util.Date;
 @Table(name = "usuario")
 public class Usuario extends Base {
 
-    @Column(name = "auth0_id", nullable = false, unique = true)
-    private String auth0Id;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    @Column(name = "email", nullable = false)
+    private String email;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    @Column(name = "first_login")
+    private LocalDateTime first_login;
 
-    @OneToOne()
-    @JoinColumn(name = "fk_persona")
-    private Persona persona;
+    @Column(name = "auth0_id", nullable = true, unique = true)
+    private String auth0Id;
+
+    @Column(name = "fecha_alta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime fechaAlta;
+
+    @Column(name = "fecha_baja")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime fechaBaja;
+
+    @Column(name = "fecha_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime fechaModificacion;
+
 
 }
