@@ -5,6 +5,7 @@ import com.tup.buensabor.entities.ArticuloProducto;
 import com.tup.buensabor.entities.RubroArticuloIngrediente;
 import com.tup.buensabor.repositories.ArticuloProductoRepository;
 import com.tup.buensabor.repositories.BaseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,18 @@ public class ArticuloProductoServiceImpl extends BaseServiceImpl<ArticuloProduct
     }
 
 
-
+    @Override
+    public ArticuloProducto newProducto(ArticuloProducto articuloProducto) throws Exception {
+        try{
+            List<ArticuloProducto> productosEncontrados = articuloProductoRepository.verificarProducto(articuloProducto.getDenominacion());
+            if (productosEncontrados.isEmpty()){
+                articuloProductoRepository.save(articuloProducto);
+                return articuloProducto;
+            }else {
+                throw new Exception("Este producto ya existe");
+            }
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }
