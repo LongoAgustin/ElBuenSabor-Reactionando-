@@ -28,13 +28,13 @@ public class Usuario extends Base {
 
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Rol rol; //Asignar al registrar
 
     @Column(name = "first_login")
-    private LocalDateTime first_login;
+    private LocalDateTime first_login; //Asignar al registrar
 
-    @Column(name = "auth0_id", nullable = true, unique = true)
-    private String auth0Id;
+
+    //Saco AUTH0
 
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
