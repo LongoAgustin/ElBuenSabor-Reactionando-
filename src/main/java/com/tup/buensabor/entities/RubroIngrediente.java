@@ -1,7 +1,6 @@
 package com.tup.buensabor.entities;
 
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,17 +9,14 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "unidad_medida")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UnidadMedida extends Base {
+@Table(name = "rubro-ingrediente")
+public class RubroIngrediente extends Base{
 
-    @Column(length = 25, nullable = false, name = "abreviatura")
-    private String abreviatura;
-
-    @Column(length = 255, nullable = false, name = "denominacion")
+    @Column(name = "denominacion")
     private String denominacion;
 
     @Column(name = "fecha_hora_alta")
@@ -34,5 +30,6 @@ public class UnidadMedida extends Base {
     @Column(name = "fecha_hora_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraModificacion;
+
 
 }

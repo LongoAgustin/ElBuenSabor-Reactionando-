@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +19,6 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "usuario")
 public class Usuario extends Base {
-
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -28,25 +28,34 @@ public class Usuario extends Base {
 
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Rol rol; //Asignar al registrar
 
     @Column(name = "first_login")
-    private LocalDateTime first_login;
+    private LocalDateTime first_login; //Asignar al registrar
 
-    @Column(name = "auth0_id", nullable = true, unique = true)
-    private String auth0Id;
+    //Saco AUTH0
 
-    @Column(name = "fecha_alta")
+    @Column(name = "fecha_hora_alta")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime fechaAlta;
+    private LocalDateTime fechaHoraAlta;
 
-    @Column(name = "fecha_baja")
+    @Column(name = "fecha_hora_baja")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime fechaBaja;
+    private LocalDateTime fechaHoraBaja;
 
-    @Column(name = "fecha_modificacion")
+    @Column(name = "fecha_hora_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime fechaModificacion;
+    private LocalDateTime fechaHoraModificacion;
+
+    @OneToMany(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_pedido")
+    private List<Pedido> pedidoList=new ArrayList<>();
+
+    public void addPedidoList(Pedido pedido){ pedidoList.add(pedido); }
+
+    @OneToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_persona")
+    public Persona persona;
 
 
 }
