@@ -28,21 +28,21 @@ public class Pedido extends Base {
     @Column(name = "estado")
     private EstadoPedido estado;
 
-    @Column(name = "fecha_alta")
+    @Column(name = "fecha_hora_alta")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private Date fechaHoraAlta;
 
-    @Column(name = "fecha_baja")
+    @Column(name = "fecha_hora_baja")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+    private Date fechaHoraBaja;
 
-    @Column(name = "fecha_modificacion")
+    @Column(name = "fecha_hora_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
+    private Date fechaHoraModificacion;
 
-    @Column(name = "fecha_pedido")
+    @Column(name = "fecha_hora_pedido")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaPedido;
+    private Date fechaHoraPedido;
 
     @Column(name = "forma_pago")
     @Enumerated(EnumType.STRING)

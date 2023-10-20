@@ -22,7 +22,7 @@ public class Factura extends Comprobante {
 
     //NOTNULL
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_factura", nullable = false)
+    @Column(name = "estado_factura")
     private EstadoFactura estadoFactura;
 
     //NOTNULL

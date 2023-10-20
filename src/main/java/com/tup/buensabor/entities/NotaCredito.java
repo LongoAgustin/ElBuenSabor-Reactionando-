@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 public class NotaCredito extends Comprobante{
 
-    @Column(name = "fechaHoraVencimiento")
+    @Column(name = "fecha_hora_vencimiento")
     @Temporal(TemporalType.TIME)
     private Date fechaHoraVencimiento;
 

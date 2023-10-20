@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "detalle_factura")
+@Table(name = "detalle_comprobante")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -25,6 +25,6 @@ public class DetalleComprobante extends Base {
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articulo_producto")
-    private ArticuloProducto articuloProducto;
+    private Producto producto;
 
 }

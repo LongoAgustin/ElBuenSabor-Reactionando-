@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 
@@ -29,7 +28,7 @@ public class DetallePedido extends Base {
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_articulo_manufacturado")
-    private ArticuloProducto articuloProducto;
+    private Producto producto;
 
 
 }

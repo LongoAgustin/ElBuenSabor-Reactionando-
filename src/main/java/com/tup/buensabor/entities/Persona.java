@@ -1,38 +1,35 @@
 package com.tup.buensabor.entities;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-
 @Entity
-@Table(name = "unidad_medida")
+@Table(name = "persona")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UnidadMedida extends Base {
-
-    @Column(length = 25, nullable = false, name = "abreviatura")
-    private String abreviatura;
-
-    @Column(length = 255, nullable = false, name = "denominacion")
-    private String denominacion;
-
+public class Persona extends Base{
+    @Column(name = "nombre")
+    private String nombre;
+    @Column(name = "apellido")
+    private String apellido;
+    @Column(name = "telefono")
+    private Long telefono;
     @Column(name = "fecha_hora_alta")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraAlta;
-
     @Column(name = "fecha_hora_baja")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraBaja;
-
     @Column(name = "fecha_hora_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraModificacion;
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }
