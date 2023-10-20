@@ -10,13 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @SpringBootApplication
 public class BuensaborApplication {
-
-	@Autowired
-	PersonaRepository personaRepository;
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	@Autowired
@@ -52,22 +50,15 @@ public class BuensaborApplication {
 		return args -> {
 			System.out.println("------------------------Estoy Funcionando------------------------");
 
-			//Persona
-
-			Persona persona=new Persona();
-			persona.setNombre("Agustin");
-			persona.setApellido("Sulan");
-			persona.setEmail("agustinsula@gmail.com");
-			persona.setTelefono("2627867986");
-
 			//User
 
 			Usuario usuario = new Usuario();
-			usuario.setUsername("AguSul12");
+			usuario.setNombre("Agustin Sulan");
+			usuario.setEmail("agustinsula@gmail.com");
 			usuario.setAuth0Id("1f89JF81FSA2415G5UUES");
 			usuario.setRol(Rol.CLIENTE);
-			usuario.setFechaAlta(new Date());
-			usuario.setPersona(persona);
+			usuario.setFechaAlta(LocalDateTime.now());
+			usuario.setPassword("asdfasdf");
 
 			//Localidad
 
@@ -260,7 +251,6 @@ public class BuensaborApplication {
 			notaCredito.addDetalleNotaCredito(detalleNotaCredito);
 
 			//GUARDAR
-			personaRepository.save(persona);
 			localidadRepository.save(localidad);
 			usuarioRepository.save(usuario);
 			domicilioRepository.save(domicilio);
