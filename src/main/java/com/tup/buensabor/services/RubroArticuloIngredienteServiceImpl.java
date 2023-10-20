@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RubroArticuloIngredienteServiceImpl extends BaseServiceImpl<RubroArticuloIngrediente, Long> implements RubroArticuloIngredienteService{
@@ -29,6 +30,33 @@ public class RubroArticuloIngredienteServiceImpl extends BaseServiceImpl<RubroAr
                 return rubroArticuloIngrediente;
             }else {
                 throw new Exception("Este rubro ya existe");
+            }
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public RubroArticuloIngrediente updateRubroIngrediente(Long id, RubroArticuloIngrediente nuevosDatos) throws Exception {
+        try{
+            Optional<RubroArticuloIngrediente> rubroArticuloIngredienteOptional = rubroArticuloIngredienteRepository.findById(id);
+
+            if(rubroArticuloIngredienteOptional.isPresent()){
+                RubroArticuloIngrediente rubroArticuloIngrediente = rubroArticuloIngredienteOptional.get();
+
+                // Verifica y actualiza campos opcionales
+                if (nuevosDatos.getDenominacion() != null) {
+                    rubroArticuloIngrediente.setDenominacion(nuevosDatos.getDenominacion());
+                    rubroArticuloIngrediente.setFechaModificacion(new Date());
+                }
+
+
+                // Guarda los cambios en la base de datos
+                rubroArticuloIngredienteRepository.save(rubroArticuloIngrediente);
+
+                return rubroArticuloIngrediente;
+            }else {
+                return null;
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());

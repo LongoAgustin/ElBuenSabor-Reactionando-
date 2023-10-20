@@ -1,11 +1,13 @@
 package com.tup.buensabor.services;
 
 import com.tup.buensabor.entities.Base;
+import com.tup.buensabor.entities.RubroArticuloIngrediente;
 import com.tup.buensabor.repositories.BaseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 
 
 import java.io.Serializable;
@@ -91,5 +93,4 @@ public abstract class BaseServiceImpl<E extends Base,ID extends Serializable> im
             throw new Exception(e.getMessage());
         }
     }
-
 }

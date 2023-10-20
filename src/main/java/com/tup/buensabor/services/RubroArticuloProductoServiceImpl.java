@@ -34,4 +34,6 @@ public class RubroArticuloProductoServiceImpl extends BaseServiceImpl<RubroArtic
             throw new Exception(e.getMessage());
         }
     }
+
+
 }

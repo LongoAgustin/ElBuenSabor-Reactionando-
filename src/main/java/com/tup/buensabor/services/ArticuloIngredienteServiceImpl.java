@@ -1,9 +1,11 @@
 package com.tup.buensabor.services;
 
 import com.tup.buensabor.entities.ArticuloIngrediente;
+import com.tup.buensabor.entities.RubroArticuloIngrediente;
 import com.tup.buensabor.repositories.ArticuloIngredienteRepository;
 import com.tup.buensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,5 +61,6 @@ public class ArticuloIngredienteServiceImpl extends BaseServiceImpl<ArticuloIngr
             throw new Exception(e.getMessage());
         }
     }
+
 
 }

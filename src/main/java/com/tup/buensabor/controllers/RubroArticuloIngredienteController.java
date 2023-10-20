@@ -21,4 +21,14 @@ public class RubroArticuloIngredienteController extends BaseControllerImpl<Rubro
         }
     }
 
+
+    @PostMapping("/{id}")
+    public ResponseEntity<?> updateRubroIngrediente(@PathVariable Long id, @RequestBody RubroArticuloIngrediente rubroArticuloIngrediente) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.updateRubroIngrediente(id, rubroArticuloIngrediente));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }
