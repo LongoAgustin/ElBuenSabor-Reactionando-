@@ -66,25 +66,16 @@ public class Pedido extends Base {
     @JoinColumn(name = "fk_domicilio_entrega")
     private Domicilio domicilioEntrega;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_usuario")
-    private Usuario usuario;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_detalle_pedido")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detallePedido = new ArrayList<>();
 
     public void addDetallePedido(DetallePedido detallePedido){
         this.detallePedido.add(detallePedido);
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_pedido_estado_pedido")
-    private List<PedidoEstadoPedido> pedidoEstadoPedidos = new ArrayList<>();
 
-    public void addEstadoPedido(PedidoEstadoPedido pedidoEstadoPedido){
-        this.pedidoEstadoPedidos.add(pedidoEstadoPedido);
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comprobante> comprobantes = new ArrayList<>();
 
 
 }

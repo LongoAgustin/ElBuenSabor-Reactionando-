@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,6 +34,12 @@ public class Usuario extends Base {
 
     @Column(name = "first_login")
     private LocalDateTime first_login; //Asignar al registrar
+
+    @OneToMany(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_pedido")
+    private List<Pedido> pedidoList;
+
+    public void addPedidoList(Pedido pedido){ pedidoList.add(pedido); }
 
 
     //Saco AUTH0

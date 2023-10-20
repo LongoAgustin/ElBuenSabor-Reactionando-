@@ -59,6 +59,8 @@ public class BuensaborApplication {
 			usuario.setFechaAlta(LocalDateTime.now());
 			usuario.setPassword("asdfasdf");
 
+
+
 			//Localidad
 
 			Localidad localidad = new Localidad();
@@ -185,30 +187,32 @@ public class BuensaborApplication {
 			pedido1.setFechaPedido(new Date());
 			pedido1.addDetallePedido(detallePedido);
 			pedido1.addDetallePedido(detallePedido1);
-			pedido1.setUsuario(usuario);
 			pedido1.setDomicilioEntrega(domicilio);
 			pedido1.addEstadoPedido(pedidoEstadoPedido1);
 			pedido1.addEstadoPedido(pedidoEstadoPedido2);
 
+			//agregar pedido al Usuario
+			usuario.addPedidoList(pedido1);
+
+
 			//DetalleFactura
 
-			DetalleFactura detalleFactura1 = new DetalleFactura();
-			detalleFactura1.setSubtotal(new BigDecimal(564));
-			detalleFactura1.setCantidad(8);
-			detalleFactura1.setArticuloProducto(articulo1);
+			DetalleComprobante detalleComprobante1 = new DetalleComprobante();
+			detalleComprobante1.setSubtotal(new BigDecimal(564));
+			detalleComprobante1.setCantidad(8);
+			detalleComprobante1.setArticuloProducto(articulo1);
 
 			//Factura
 
 			Factura factura1 = new Factura();
-			factura1.setFechaFacturacion(new Date());
+			factura1.setFechaEmisionComprobante(new Date());
 			factura1.setMpPaymentId(4848948L);
 			factura1.setMpMerchantOrderId(498456L);
 			factura1.setMpPreferenceId("fasdfas");
 			factura1.setFormaPago(FormaPago.MERCADO_PAGO);
-			factura1.setTotalVenta(new BigDecimal(489421));
+			factura1.setMontoTotal(new BigDecimal(489421));
 			factura1.setEstadoFactura(EstadoFactura.EMITIDO);
-			factura1.addDetalleFactura(detalleFactura1);
-			factura1.setPedido(pedido1);
+			factura1.addDetalleComprobante(detalleComprobante1);
 
 			//DetalleCompraIngrediente
 
@@ -237,7 +241,7 @@ public class BuensaborApplication {
 
 			//NotaCreditoDetalle
 
-			DetalleNotaCredito detalleNotaCredito = new DetalleNotaCredito();
+			DetalleComprobante detalleNotaCredito = new DetalleComprobante();
 			detalleNotaCredito.setCantidad(8);
 			detalleNotaCredito.setArticuloProducto(articulo1);
 
@@ -245,9 +249,8 @@ public class BuensaborApplication {
 
 			NotaCredito notaCredito = new NotaCredito();
 			notaCredito.setFechaHoraEmision(new Date());
-			notaCredito.setFactura(factura1);
 			notaCredito.setTotalImporteCredito(new BigDecimal(54));
-			notaCredito.addDetalleNotaCredito(detalleNotaCredito);
+			notaCredito.addDetalleComprobante(detalleNotaCredito);
 
 			//GUARDAR
 			localidadRepository.save(localidad);

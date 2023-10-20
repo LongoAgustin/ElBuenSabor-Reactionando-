@@ -1,8 +1,6 @@
 package com.tup.buensabor.controllers;
 
-import com.tup.buensabor.entities.DetalleNotaCredito;
 import com.tup.buensabor.entities.DetallePedido;
-import com.tup.buensabor.services.DetalleNotaCreditoServiceImpl;
 import com.tup.buensabor.services.DetallePedidoServiceImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

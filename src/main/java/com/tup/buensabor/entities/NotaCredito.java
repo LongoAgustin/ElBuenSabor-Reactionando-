@@ -18,32 +18,23 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class NotaCredito extends Base{
-
-    @Column(name = "fechaHoraEmision")
-    @Temporal(TemporalType.TIME)
-    private Date fechaHoraEmision;
+public class NotaCredito extends Comprobante{
 
     @Column(name = "fechaHoraVencimiento")
     @Temporal(TemporalType.TIME)
     private Date fechaHoraVencimiento;
 
-    @Column(name = "total_Importe_Credito")
-    @Temporal(TemporalType.TIME)
-    private BigDecimal totalImporteCredito;
 
-    @OneToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_factura")
-    private Factura factura;
 
+    /*
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_DetalleNotaCredito")
-    private List<DetalleNotaCredito> detalleNotaCredito = new ArrayList<>();
+    private List<DetalleComprobante> detalleNotaCredito = new ArrayList<>();
 
-    public void addDetalleNotaCredito (DetalleNotaCredito detalleNotaCredito){
+    public void addDetalleNotaCredito (DetalleComprobante detalleNotaCredito){
         this.detalleNotaCredito.add(detalleNotaCredito);
     }
-
+    */
 
 
 }
