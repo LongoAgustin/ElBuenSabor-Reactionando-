@@ -28,21 +28,21 @@ public class Pedido extends Base {
     @Column(name = "estado")
     private EstadoPedido estado;
 
-    @Column(name = "fecha_alta")
+    @Column(name = "fecha_hora_alta")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private Date fechaHoraAlta;
 
-    @Column(name = "fecha_baja")
+    @Column(name = "fecha_hora_baja")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+    private Date fechaHoraBaja;
 
-    @Column(name = "fecha_modificacion")
+    @Column(name = "fecha_hora_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
+    private Date fechaHoraModificacion;
 
-    @Column(name = "fecha_pedido")
+    @Column(name = "fecha_hora_pedido")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaPedido;
+    private Date fechaHoraPedido;
 
     @Column(name = "forma_pago")
     @Enumerated(EnumType.STRING)
@@ -66,25 +66,16 @@ public class Pedido extends Base {
     @JoinColumn(name = "fk_domicilio_entrega")
     private Domicilio domicilioEntrega;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_usuario")
-    private Usuario usuario;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_detalle_pedido")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detallePedido = new ArrayList<>();
 
     public void addDetallePedido(DetallePedido detallePedido){
         this.detallePedido.add(detallePedido);
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_pedido_estado_pedido")
-    private List<PedidoEstadoPedido> pedidoEstadoPedidos = new ArrayList<>();
 
-    public void addEstadoPedido(PedidoEstadoPedido pedidoEstadoPedido){
-        this.pedidoEstadoPedidos.add(pedidoEstadoPedido);
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comprobante> comprobantes = new ArrayList<>();
 
 
 }

@@ -27,7 +27,7 @@ public class DetalleCompraIngrediente extends Base{
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_articulo_ingrediente")
-    private ArticuloIngrediente articuloIngrediente;
+    private Ingrediente ingrediente;
 
 
 }

@@ -10,25 +10,21 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "detalle_pedido")
+@Table(name = "detalle_comprobante")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class DetallePedido extends Base {
+public class DetalleComprobante extends Base {
 
     @Column(name = "cantidad")
     private Integer cantidad;
 
-    @Column(name = "subtotal", precision = 10, scale = 2, nullable = false)
+    @Column(name = "subtotal", precision = 10, scale = 2)
     private BigDecimal subtotal;
 
-    @Column(name = "subtotal_costo", precision = 10, scale = 2, nullable = false)
-    private BigDecimal subtotalCosto;
-
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "id_articulo_manufacturado")
+    @JoinColumn(name = "fk_articulo_producto")
     private Producto producto;
-
 
 }

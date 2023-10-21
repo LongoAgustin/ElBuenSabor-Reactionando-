@@ -1,26 +1,21 @@
 package com.tup.buensabor.entities;
 
-import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "unidad_medida")
+@Table(name = "rubro_producto")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UnidadMedida extends Base {
+@ToString
+public class RubroProducto extends Base{
 
-    @Column(length = 25, nullable = false, name = "abreviatura")
-    private String abreviatura;
-
-    @Column(length = 255, nullable = false, name = "denominacion")
+    @Column(name = "denominacion")
     private String denominacion;
 
     @Column(name = "fecha_hora_alta")
@@ -34,5 +29,6 @@ public class UnidadMedida extends Base {
     @Column(name = "fecha_hora_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraModificacion;
+
 
 }
