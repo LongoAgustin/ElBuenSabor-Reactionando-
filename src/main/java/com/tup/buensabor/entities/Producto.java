@@ -46,20 +46,8 @@ public class Producto extends Base {
     @Column(name = "precio_venta", precision = 10, scale = 2)
     private BigDecimal precioVenta;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_producto")
-    private TipoProducto tipoProducto;
-
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_detalleProductoCocina")
-    private List<DetalleProductoCocina> detalleProductoCocina = new ArrayList<>();
-
-    public void addDetalleProductoCocina(DetalleProductoCocina detalleProductoCocina){
-        this.detalleProductoCocina.add(detalleProductoCocina);
-    }
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroProducto")

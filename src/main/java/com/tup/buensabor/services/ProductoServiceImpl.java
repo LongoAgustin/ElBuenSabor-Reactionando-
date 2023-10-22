@@ -1,6 +1,5 @@
 package com.tup.buensabor.services;
 
-import com.tup.buensabor.DTOs.DTOProducto;
 import com.tup.buensabor.entities.Producto;
 import com.tup.buensabor.repositories.ProductoRepository;
 import com.tup.buensabor.repositories.BaseRepository;
@@ -21,18 +20,15 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     }
 
     @Override
-    public DTOProducto obtenerProductos() throws Exception {
+    public List<Producto> obtenerProductos() throws Exception {
         try {
-            List<Producto> listaProductos = productoRepository.buscarProductos();
+            List<Producto> listaProductos = productoRepository.findAll();
 
             if (listaProductos.isEmpty()){
                 throw new Exception("No hay productos");
             }
 
-            DTOProducto dtoProducto = new DTOProducto();
-            dtoProducto.setProductos(listaProductos);
-
-            return dtoProducto;
+            return listaProductos;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());
