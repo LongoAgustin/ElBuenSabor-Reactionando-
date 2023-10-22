@@ -8,12 +8,12 @@ import lombok.Setter;
 
 import java.util.List;
 @Entity
-@Table(name = "producto_cocina")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @DiscriminatorValue("Cocina")
+
 public class ProductoCocina extends Producto {
 
     @OneToMany(cascade = CascadeType.ALL)

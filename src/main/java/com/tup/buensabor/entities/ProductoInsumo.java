@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "producto_insumo")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @DiscriminatorValue("Insumo")
+
 public class ProductoInsumo extends Producto{
     @Column(name = "marca")
     public String marca;
