@@ -165,7 +165,7 @@ public class BuensaborApplication {
 			articulo1.setTipoProducto(TipoProducto.COCINA);
 			articulo1.setUrlImagen("");
 			articulo1.setRubroarticuloproducto(rubroProducto1);
-			articulo1.addDetalleArticuloManufacturado(detalleProductoCocina);
+			articulo1.addDetalleProductoCocina(detalleProductoCocina);
 
 			//DetallePedido
 
