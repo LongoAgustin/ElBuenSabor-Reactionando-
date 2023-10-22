@@ -56,7 +56,7 @@ public class RubroProductoServiceImpl extends BaseServiceImpl<RubroProducto, Lon
 
                 return rubroProducto;
             }else {
-                return null;
+                throw new Exception("Ese Rubro no esta disponible");
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());

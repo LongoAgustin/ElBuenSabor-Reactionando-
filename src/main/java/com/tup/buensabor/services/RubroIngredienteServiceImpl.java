@@ -58,7 +58,7 @@ public class RubroIngredienteServiceImpl extends BaseServiceImpl<RubroIngredient
 
                 return rubroIngrediente;
             }else {
-                throw new Exception("Ese ingrediente no esta disponible");
+                throw new Exception("Ese Rubro no esta disponible");
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());
