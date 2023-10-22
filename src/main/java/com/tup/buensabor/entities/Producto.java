@@ -17,6 +17,9 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+//Indicamos que es una herencia
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_producto")
 public class Producto extends Base {
 
     @Column(name = "costo", precision = 10, scale = 2)

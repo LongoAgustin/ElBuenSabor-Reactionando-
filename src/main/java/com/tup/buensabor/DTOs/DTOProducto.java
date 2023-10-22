@@ -9,7 +9,6 @@ public class DTOProducto {
     private BigDecimal precioVenta;
     private String descripcion;
     private RubroProducto rubroProducto;
-
-
+    private Float tiempoCocina;
 
 }

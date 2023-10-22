@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("Cocina")
 public class ProductoCocina extends Producto {
 
     @OneToMany(cascade = CascadeType.ALL)
