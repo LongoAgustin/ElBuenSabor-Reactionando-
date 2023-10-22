@@ -51,16 +51,9 @@ public class Producto extends Base {
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_detalleArticuloFacturado")
-    private List<DetalleProductoCocina> detalleProductoCocinas = new ArrayList<>();
-
-    public void addDetalleArticuloManufacturado(DetalleProductoCocina detalleProductoCocina){
-        this.detalleProductoCocinas.add(detalleProductoCocina);
-    }
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
-    @JoinColumn(name = "fk_rubroArticuloProducto")
-    private RubroProducto rubroarticuloproducto;
+    @JoinColumn(name = "fk_rubroProducto")
+    private RubroProducto rubroproducto;
 
 }
