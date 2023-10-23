@@ -99,10 +99,10 @@ public class BuensaborApplication {
 			rubroIngrediente1.setFechaHoraModificacion(new Date());
 
 			RubroIngrediente rubroIngrediente2 = new RubroIngrediente();
-			rubroIngrediente1.setDenominacion("condimento");
-			rubroIngrediente1.setFechaHoraAlta(new Date());
-			rubroIngrediente1.setFechaHoraBaja(new Date());
-			rubroIngrediente1.setFechaHoraModificacion(new Date());
+			rubroIngrediente2.setDenominacion("condimento");
+			rubroIngrediente2.setFechaHoraAlta(new Date());
+			rubroIngrediente2.setFechaHoraBaja(new Date());
+			rubroIngrediente2.setFechaHoraModificacion(new Date());
 
 			//RubroProducto
 
