@@ -17,9 +17,11 @@ import lombok.Setter;
 @DiscriminatorValue("Insumo")
 
 public class ProductoInsumo extends Producto{
+
     @Column(name = "marca")
     public String marca;
+
     @Column(name = "lote")
-    public int lote;
+    public Integer lote;
 
 }
