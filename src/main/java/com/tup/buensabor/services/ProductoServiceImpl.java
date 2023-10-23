@@ -20,17 +20,9 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     @Autowired
     protected ProductoRepository productoRepository;
 
-    @Autowired
-    protected ProductoCocinaRepository productoCocinaRepository;
-
-    @Autowired
-    protected ProductoInsumoRepository productoInsumoRepository;
-
-    public ProductoServiceImpl(BaseRepository<Producto, Long> baseRepository, ProductoRepository productoRepository, ProductoInsumoRepository productoInsumoRepository, ProductoCocinaRepository productoCocinaRepository) {
+    public ProductoServiceImpl(BaseRepository<Producto, Long> baseRepository, ProductoRepository productoRepository) {
         super(baseRepository);
         this.productoRepository = productoRepository;
-        this.productoInsumoRepository = productoInsumoRepository;
-        this.productoCocinaRepository = productoCocinaRepository;
     }
 
     @Override
@@ -59,29 +51,30 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
                 ProductoFactory productoFactory = new ProductoFactory();
                 Producto nuevoProducto = productoFactory.crearProducto(productRequest);
 
+                nuevoProducto.setDenominacion(productRequest.getDenominacion());
+                nuevoProducto.setDescripcion(productRequest.getDescripcion());
+                nuevoProducto.setPrecioVenta(productRequest.getPrecio());
+
                 if (nuevoProducto instanceof ProductoCocina) {
 
-                    nuevoProducto.setDenominacion(productRequest.getDenominacion());
-                    nuevoProducto.setDescripcion(productRequest.getDescripcion());
-                    nuevoProducto.setPrecioVenta(productRequest.getPrecio());
-                    ((ProductoCocina) nuevoProducto).setTiempoEstimadoCocina(productRequest.getTiempoEstimadoCocina());
+                    ProductoCocina productoCocina = (ProductoCocina) nuevoProducto;
+                    productoCocina.setTiempoEstimadoCocina(productRequest.getTiempoEstimadoCocina());
                     //setear rubro
 
-                    productoRepository.save(nuevoProducto);
+                    productoRepository.save(productoCocina);
 
-                    return nuevoProducto;
+                    return productoCocina;
 
                 } else if (nuevoProducto instanceof ProductoInsumo) {
 
-                    nuevoProducto.setDenominacion(productRequest.getDenominacion());
-                    nuevoProducto.setDescripcion(productRequest.getDescripcion());
-                    nuevoProducto.setPrecioVenta(productRequest.getPrecio());
-                    ((ProductoInsumo) nuevoProducto).setLote(productRequest.getLote());
-                    ((ProductoInsumo) nuevoProducto).setMarca(productRequest.getMarca());
+                    ProductoInsumo productoInsumo = (ProductoInsumo) nuevoProducto;
 
-                    productoRepository.save(nuevoProducto);
+                    productoInsumo.setLote(productRequest.getLote());
+                    productoInsumo.setMarca(productRequest.getMarca());
 
-                    return nuevoProducto;
+                    productoRepository.save(productoInsumo);
+
+                    return productoInsumo;
 
                 } else {
 
