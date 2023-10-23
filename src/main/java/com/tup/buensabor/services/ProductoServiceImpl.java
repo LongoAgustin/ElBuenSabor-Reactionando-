@@ -5,10 +5,8 @@ import com.tup.buensabor.entities.ProductoCocina;
 import com.tup.buensabor.entities.ProductoInsumo;
 import com.tup.buensabor.factory.ProductoFactory;
 import com.tup.buensabor.repositories.BaseRepository;
-import com.tup.buensabor.repositories.ProductoCocinaRepository;
-import com.tup.buensabor.repositories.ProductoInsumoRepository;
 import com.tup.buensabor.repositories.ProductoRepository;
-import com.tup.buensabor.request.ProductRequest;
+import com.tup.buensabor.request.ProductoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,23 +40,23 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     }
 
     @Override
-    public Producto agregarProducto(ProductRequest productRequest) throws Exception {
+    public Producto agregarProducto(ProductoRequest productoRequest) throws Exception {
         try {
-            List<Producto> productoExistente = productoRepository.buscarProducto(productRequest.getDenominacion());
+            List<Producto> productoExistente = productoRepository.buscarProducto(productoRequest.getDenominacion());
 
             if (productoExistente.isEmpty()) {
 
                 ProductoFactory productoFactory = new ProductoFactory();
-                Producto nuevoProducto = productoFactory.crearProducto(productRequest);
+                Producto nuevoProducto = productoFactory.crearProducto(productoRequest);
 
-                nuevoProducto.setDenominacion(productRequest.getDenominacion());
-                nuevoProducto.setDescripcion(productRequest.getDescripcion());
-                nuevoProducto.setPrecioVenta(productRequest.getPrecio());
+                nuevoProducto.setDenominacion(productoRequest.getDenominacion());
+                nuevoProducto.setDescripcion(productoRequest.getDescripcion());
+                nuevoProducto.setPrecioVenta(productoRequest.getPrecio());
 
                 if (nuevoProducto instanceof ProductoCocina) {
 
                     ProductoCocina productoCocina = (ProductoCocina) nuevoProducto;
-                    productoCocina.setTiempoEstimadoCocina(productRequest.getTiempoEstimadoCocina());
+                    productoCocina.setTiempoEstimadoCocina(productoRequest.getTiempoEstimadoCocina());
                     //setear rubro
 
                     productoRepository.save(productoCocina);
@@ -69,8 +67,8 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
 
                     ProductoInsumo productoInsumo = (ProductoInsumo) nuevoProducto;
 
-                    productoInsumo.setLote(productRequest.getLote());
-                    productoInsumo.setMarca(productRequest.getMarca());
+                    productoInsumo.setLote(productoRequest.getLote());
+                    productoInsumo.setMarca(productoRequest.getMarca());
 
                     productoRepository.save(productoInsumo);
 

@@ -1,7 +1,7 @@
 package com.tup.buensabor.controllers;
 
 import com.tup.buensabor.entities.Producto;
-import com.tup.buensabor.request.ProductRequest;
+import com.tup.buensabor.request.ProductoRequest;
 import com.tup.buensabor.services.ProductoServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,9 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> agregarProducto(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<?> agregarProducto(@RequestBody ProductoRequest productoRequest){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(productRequest));
+            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(productoRequest));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
