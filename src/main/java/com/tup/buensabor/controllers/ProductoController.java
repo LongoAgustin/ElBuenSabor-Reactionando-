@@ -28,4 +28,14 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() +"\"}"));
         }
     }
+
+    @GetMapping("/Receta/{id}")
+    public ResponseEntity<?> getReceta(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getReceta(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("{\"error\": \"" + e.getMessage() +"\"}"));
+        }
+    }
+
 }

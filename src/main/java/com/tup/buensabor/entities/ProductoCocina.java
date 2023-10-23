@@ -21,10 +21,10 @@ public class ProductoCocina extends Producto {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_detalleProductoCocina")
-    private List<DetalleProductoCocina> detalleProductoCocinas = new ArrayList<>();
+    private List<DetalleProductoCocina> detalleProductoCocina = new ArrayList<>();
 
     public void addDetalleProductoCocina(DetalleProductoCocina detalleProductoCocina){
-        this.detalleProductoCocinas.add(detalleProductoCocina);
+        this.detalleProductoCocina.add(detalleProductoCocina);
     }
     public void setTiempoEstimadoCocina(Integer time){
         tiempoEstimadoCocina=time;
