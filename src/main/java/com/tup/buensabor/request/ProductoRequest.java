@@ -1,5 +1,6 @@
 package com.tup.buensabor.request;
 
+import com.tup.buensabor.enums.EstadoProducto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,7 @@ public class ProductoRequest {
     private String marca;
 
     private Integer lote;
+
+    private EstadoProducto estadoProducto;
 
 }

@@ -1,5 +1,6 @@
 package com.tup.buensabor.entities;
 
+import com.tup.buensabor.enums.EstadoProducto;
 import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
 
@@ -22,14 +23,24 @@ import java.util.List;
 @DiscriminatorColumn(name = "discriminador_producto")
 public class Producto extends Base {
 
-    @Column(name = "costo", precision = 10, scale = 2)
-    private BigDecimal costo;
-
     @Column(nullable = false, name = "denominacion")
     private String denominacion;
 
     @Column(length = 1000)
     private String descripcion;
+
+    @Column(name = "costo", precision = 10, scale = 2)
+    private BigDecimal costo;
+
+    @Column(name = "precio_venta", precision = 10, scale = 2)
+    private BigDecimal precioVenta;
+
+    @Column(name = "estado_producto")
+    @Enumerated
+    private EstadoProducto estadoProducto;
+
+    @Column(length = 500, name = "url_imagen")
+    private String urlImagen;
 
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,12 +53,6 @@ public class Producto extends Base {
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
-
-    @Column(name = "precio_venta", precision = 10, scale = 2)
-    private BigDecimal precioVenta;
-
-    @Column(length = 500, name = "url_imagen")
-    private String urlImagen;
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroProducto")

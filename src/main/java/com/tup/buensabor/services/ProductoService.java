@@ -11,4 +11,6 @@ public interface ProductoService extends BaseService<Producto, Long>{
 
     Producto agregarProducto(ProductoRequest productoRequest) throws Exception;
 
+    Producto actualizarProducto(ProductoRequest productoRequest, Long id) throws Exception;
+
 }

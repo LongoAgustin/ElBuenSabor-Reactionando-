@@ -30,4 +30,13 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody ProductoRequest productoRequest){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(productoRequest, id));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }
