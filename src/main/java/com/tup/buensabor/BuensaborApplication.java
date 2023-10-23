@@ -132,12 +132,12 @@ public class BuensaborApplication {
 			ingrediente.setFechaHoraModificacion(new Date());
 			ingrediente.setPrecioCompra(new BigDecimal(13215));
 			ingrediente.setStockMinimo(new BigDecimal(2165));
-			ingrediente.setStockActual(new BigDecimal(584));
+			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
 			ingrediente.setRubroIngrediente(rubroIngrediente1);
 
-			//DetalleArticuloManufacturado
+			//DetalleProductoCocina
 
 			DetalleProductoCocina detalleProductoCocina = new DetalleProductoCocina();
 
@@ -182,6 +182,7 @@ public class BuensaborApplication {
 			articulo2.setPrecioVenta(new BigDecimal(132));
 			articulo2.setLote(5);
 			articulo2.setMarca("Coca Cola");
+			articulo2.setStock(2);
 			articulo2.setTipoProducto(TipoProducto.BEBIDA);
 			articulo2.setUrlImagen("");
 			articulo2.setRubroproducto(rubroProducto2);

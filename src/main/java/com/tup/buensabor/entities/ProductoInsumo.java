@@ -19,5 +19,7 @@ public class ProductoInsumo extends Producto{
     public String marca;
     @Column(name = "lote")
     public int lote;
+    @Column(name = "stock")
+    public int stock;
 
 }

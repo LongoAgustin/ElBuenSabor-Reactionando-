@@ -1,6 +1,7 @@
 package com.tup.buensabor.services;
 
 import com.tup.buensabor.DTO.DTOProductoCocina;
+import com.tup.buensabor.DTO.DTOProductoPagPrincipal;
 import com.tup.buensabor.DTO.DTOReceta;
 import com.tup.buensabor.entities.*;
 import com.tup.buensabor.enums.TipoProducto;
@@ -28,10 +29,9 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     public List<Producto> searchDenominacion(String filtro) throws Exception{
         try {
             List<Producto> productos=productoRepository.searchDenominacion(filtro);
-            return productos;
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
+            if(productos.isEmpty()){throw new Exception("No Se Encontro El Nombre...");
+            }else {return productos;}
+        }catch (Exception e){throw new Exception(e.getMessage());}
     }
 
     public List<Producto> searchCategoria(String cate) throws Exception{
@@ -88,4 +88,45 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
             throw new Exception(e.getMessage());
         }
     }
+
+    public List<DTOProductoPagPrincipal> getProdPagPrincipal() throws Exception{
+        try{
+            List<Producto> productos=productoRepository.findAll();
+            List<DTOProductoPagPrincipal> listdtoProductoPagPrincipal=new ArrayList<>();
+            for (Producto producto:productos){
+                DTOProductoPagPrincipal dtoProductoPagPrincipal=new DTOProductoPagPrincipal();
+                dtoProductoPagPrincipal.setDenominacion(producto.getDenominacion());
+                dtoProductoPagPrincipal.setPrecio(producto.getPrecioVenta());
+                dtoProductoPagPrincipal.setCategoria(producto.getRubroproducto().getDenominacion());
+                dtoProductoPagPrincipal.setUrl(producto.getUrlImagen());
+                if (producto.getTipoProducto().equals(TipoProducto.COCINA)){
+                    ProductoCocina productoCocina=(ProductoCocina) producto;
+                    List<DetalleProductoCocina> detalleProductoCocina=productoCocina.getDetalleProductoCocina();
+                    for(DetalleProductoCocina detalleProductoCocina1:detalleProductoCocina){
+                        int valor=detalleProductoCocina1.getCantidad().compareTo(detalleProductoCocina1.getIngrediente().getStockActual());
+                            if(valor>0){
+                                dtoProductoPagPrincipal.setDisponibilidad(false);
+                                break;
+                            }
+                        dtoProductoPagPrincipal.setDisponibilidad(true);
+                    }
+                } else {
+                    ProductoInsumo productoInsumo = (ProductoInsumo) producto;
+                    if (productoInsumo.getStock() > 0) {
+                        dtoProductoPagPrincipal.setDisponibilidad(true);
+                    } else {
+                        dtoProductoPagPrincipal.setDisponibilidad(false);
+                    }
+                }
+                listdtoProductoPagPrincipal.add(dtoProductoPagPrincipal);
+            }
+            return listdtoProductoPagPrincipal;
+
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+
 }

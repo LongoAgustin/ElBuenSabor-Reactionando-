@@ -1,5 +1,6 @@
 package com.tup.buensabor.repositories;
 
+import com.tup.buensabor.DTO.DTOProductoPagPrincipal;
 import com.tup.buensabor.entities.Producto;
 import com.tup.buensabor.entities.ProductoCocina;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,7 @@ public interface ProductoRepository extends BaseRepository<Producto, Long>{
     nativeQuery = true
     )
     List<Producto> searchDenominacion(@Param("filtro") String filtro);
+
+
 
 }
