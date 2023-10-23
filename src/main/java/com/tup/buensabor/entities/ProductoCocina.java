@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Table(name = "producto_cocina")
@@ -15,10 +16,18 @@ import java.util.List;
 @Setter
 public class ProductoCocina extends Producto {
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<DetalleProductoCocina> detalleProductoCocina;
-
     @Column(name = "tiempo_estimado_cocina")
     private Integer tiempoEstimadoCocina;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_detalleProductoCocina")
+    private List<DetalleProductoCocina> detalleProductoCocina = new ArrayList<>();
+
+    public void addDetalleProductoCocina(DetalleProductoCocina detalleProductoCocina){
+        this.detalleProductoCocina.add(detalleProductoCocina);
+    }
+    public void setTiempoEstimadoCocina(Integer time){
+        tiempoEstimadoCocina=time;
+    }
 
 }

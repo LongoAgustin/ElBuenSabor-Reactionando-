@@ -107,8 +107,12 @@ public class BuensaborApplication {
 			//RubroProducto
 
 			RubroProducto rubroProducto1 = new RubroProducto();
-			rubroProducto1.setDenominacion("Hamburguesas");
+			rubroProducto1.setDenominacion("Hamburguesa");
 			rubroProducto1.setFechaHoraAlta(new Date());
+
+			RubroProducto rubroProducto2 = new RubroProducto();
+			rubroProducto2.setDenominacion("Coca Cola");
+			rubroProducto2.setFechaHoraAlta(new Date());
 
 			//UnidadMedida
 
@@ -145,6 +149,7 @@ public class BuensaborApplication {
 
 			ProductoCocina productoCocina= new ProductoCocina();
 			productoCocina.setTiempoEstimadoCocina(30);
+			productoCocina.addDetalleProductoCocina(detalleProductoCocina);
 
 			//ProductoInsumo
 
@@ -154,18 +159,33 @@ public class BuensaborApplication {
 
 			//Producto
 
-			Producto articulo1 = new Producto();
+			ProductoCocina articulo1 = new ProductoCocina();
 
 			articulo1.setCosto(new BigDecimal(1245));
+			articulo1.setTiempoEstimadoCocina(30);
 			articulo1.setDenominacion("Hamburguesa con queso");
 			articulo1.setDescripcion("ta buena");
 			articulo1.setFechaAlta(new Date());
 			articulo1.setPrecioVenta(new BigDecimal(1321));
-
+			articulo1.addDetalleProductoCocina(detalleProductoCocina);
 			articulo1.setTipoProducto(TipoProducto.COCINA);
 			articulo1.setUrlImagen("");
-			articulo1.setRubroarticuloproducto(rubroProducto1);
-			articulo1.addDetalleArticuloManufacturado(detalleProductoCocina);
+			articulo1.setRubroproducto(rubroProducto1);
+
+
+			ProductoInsumo articulo2 = new ProductoInsumo();
+
+			articulo2.setCosto(new BigDecimal(124));
+			articulo2.setDenominacion("Coca Cola");
+			articulo2.setDescripcion("buena");
+			articulo2.setFechaAlta(new Date());
+			articulo2.setPrecioVenta(new BigDecimal(132));
+			articulo2.setLote(5);
+			articulo2.setMarca("Coca Cola");
+			articulo2.setTipoProducto(TipoProducto.BEBIDA);
+			articulo2.setUrlImagen("");
+			articulo2.setRubroproducto(rubroProducto2);
+
 
 			//DetallePedido
 
@@ -274,6 +294,9 @@ public class BuensaborApplication {
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
 			compraIngredienteRepository.save(compraIngredientes1);
+			rubroProductoRepository.save(rubroProducto2);
+			productoRepository.save(articulo2);
+
 		};
 	}
 
