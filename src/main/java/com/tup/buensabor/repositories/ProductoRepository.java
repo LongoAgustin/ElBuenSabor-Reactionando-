@@ -9,7 +9,13 @@ import java.util.List;
 
 @Repository
 public interface ProductoRepository extends BaseRepository<Producto, Long>{
+
     @Query(value = "SELECT p FROM Producto p WHERE p.denominacion = :denom_ingresada")
     List<Producto> buscarProducto(@Param("denom_ingresada") String denominacion);
+
+    @Query(value= "SELECT * FROM producto WHERE denominacion LIKE %:filtro%",
+    nativeQuery = true
+    )
+    List<Producto> searchDenominacion(@Param("filtro") String filtro);
 
 }

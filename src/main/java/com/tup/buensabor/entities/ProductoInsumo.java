@@ -24,4 +24,7 @@ public class ProductoInsumo extends Producto{
     @Column(name = "lote")
     public Integer lote;
 
+    @Column
+    public Integer stock;
+
 }

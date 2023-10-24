@@ -1,6 +1,7 @@
 package com.tup.buensabor.entities;
 
 import com.tup.buensabor.enums.EstadoProducto;
+import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -54,5 +55,9 @@ public class Producto extends Base {
     @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroProducto")
     private RubroProducto rubroProducto;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_producto")
+    private TipoProducto tipoProducto;
 
 }

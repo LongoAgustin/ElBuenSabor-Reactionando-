@@ -27,6 +27,4 @@ public class ProductoCocina extends Producto {
     public void addDetalleProductoCocina(DetalleProductoCocina detalleProductoCocina){
         this.detalleProductoCocina.add(detalleProductoCocina);
     }
-
-
 }
