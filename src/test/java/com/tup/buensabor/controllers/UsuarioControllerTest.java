@@ -27,9 +27,9 @@ public class UsuarioControllerTest {
         Usuario usuario1 = new Usuario();
         usuario1.setPassword("reactionando.utn@gmail.com");
         usuario1.setEmail("react_utn");
-        List<Usuario> listaEnviada = new ArrayList<>();
-        listaEnviada.add(usuario1);
-        when(usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn")).thenReturn(listaEnviada);
+        List<Usuario> listaUsuario = new ArrayList<>();
+        listaUsuario.add(usuario1);
+        when(usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn")).thenReturn(listaUsuario);
 
         mockMvc.perform(get("/api/v1/usuario/login")
                         .param("filtro", "reactionando.utn@gmail.com")
