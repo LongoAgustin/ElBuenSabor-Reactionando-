@@ -1,14 +1,13 @@
 package com.tup.buensabor.entities;
 
+import com.tup.buensabor.enums.EstadoProducto;
 import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
 
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "producto")
@@ -17,16 +16,29 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+//Indicamos que es una herencia
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "discriminador_producto")
 public class Producto extends Base {
-
-    @Column(name = "costo", precision = 10, scale = 2)
-    private BigDecimal costo;
 
     @Column(nullable = false, name = "denominacion")
     private String denominacion;
 
     @Column(length = 1000)
     private String descripcion;
+
+    @Column(name = "costo", precision = 10, scale = 2)
+    private BigDecimal costo;
+
+    @Column(name = "precio_venta", precision = 10, scale = 2)
+    private BigDecimal precioVenta;
+
+    @Column(name = "estado_producto")
+    @Enumerated
+    private EstadoProducto estadoProducto;
+
+    @Column(length = 500, name = "url_imagen")
+    private String urlImagen;
 
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
@@ -40,27 +52,12 @@ public class Producto extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @Column(name = "precio_venta", precision = 10, scale = 2)
-    private BigDecimal precioVenta;
-
+    @ManyToOne(cascade =  CascadeType.REFRESH)
+    @JoinColumn(name = "fk_rubroProducto")
+    private RubroProducto rubroProducto;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_producto")
     private TipoProducto tipoProducto;
-
-    @Column(length = 500, name = "url_imagen")
-    private String urlImagen;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_detalleArticuloFacturado")
-    private List<DetalleProductoCocina> detalleProductoCocinas = new ArrayList<>();
-
-    public void addDetalleArticuloManufacturado(DetalleProductoCocina detalleProductoCocina){
-        this.detalleProductoCocinas.add(detalleProductoCocina);
-    }
-
-    @ManyToOne(cascade =  CascadeType.REFRESH)
-    @JoinColumn(name = "fk_rubroArticuloProducto")
-    private RubroProducto rubroarticuloproducto;
 
 }

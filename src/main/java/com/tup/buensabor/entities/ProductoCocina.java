@@ -6,19 +6,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 @Entity
-@Table(name = "producto_cocina")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@DiscriminatorValue("Cocina")
+
 public class ProductoCocina extends Producto {
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<DetalleProductoCocina> detalleProductoCocina;
+    @JoinTable(name = "PRODUCTOCOCINA - INGREDIENTE")
+    private List<DetalleProductoCocina> detalleProductoCocina = new ArrayList<>();
 
     @Column(name = "tiempo_estimado_cocina")
     private Integer tiempoEstimadoCocina;
 
+    public void addDetalleProductoCocina(DetalleProductoCocina detalleProductoCocina){
+        this.detalleProductoCocina.add(detalleProductoCocina);
+    }
 }

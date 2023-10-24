@@ -58,9 +58,6 @@ public class BuensaborApplication {
 			persona.setTelefono(Long.valueOf(216346689));
 			persona.setFechaHoraAlta(new Date());
 
-
-
-
 			//User
 
 			Usuario usuario = new Usuario();
@@ -74,7 +71,6 @@ public class BuensaborApplication {
 			//Localidad
 
 			Localidad localidad = new Localidad();
-
 			localidad.setDenominacion("Guaymallén");
 
 			//Domicilio
@@ -107,8 +103,12 @@ public class BuensaborApplication {
 			//RubroProducto
 
 			RubroProducto rubroProducto1 = new RubroProducto();
-			rubroProducto1.setDenominacion("Hamburguesas");
+			rubroProducto1.setDenominacion("Hamburguesa");
 			rubroProducto1.setFechaHoraAlta(new Date());
+
+			RubroProducto rubroProducto2 = new RubroProducto();
+			rubroProducto2.setDenominacion("Gaseosa");
+			rubroProducto2.setFechaHoraAlta(new Date());
 
 			//UnidadMedida
 
@@ -128,44 +128,44 @@ public class BuensaborApplication {
 			ingrediente.setFechaHoraModificacion(new Date());
 			ingrediente.setPrecioCompra(new BigDecimal(13215));
 			ingrediente.setStockMinimo(new BigDecimal(2165));
-			ingrediente.setStockActual(new BigDecimal(584));
+			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
 			ingrediente.setRubroIngrediente(rubroIngrediente1);
 
-			//DetalleArticuloManufacturado
+			//DetalleProductoCocina
 
 			DetalleProductoCocina detalleProductoCocina = new DetalleProductoCocina();
 
 			detalleProductoCocina.setCantidad(new BigDecimal(4584));
 			detalleProductoCocina.setIngrediente(ingrediente);
 
-
 			//ProductoCocina
 
-			ProductoCocina productoCocina= new ProductoCocina();
-			productoCocina.setTiempoEstimadoCocina(30);
+			ProductoCocina cocina1 = new ProductoCocina();
+
+			cocina1.setCosto(new BigDecimal(1245));
+			cocina1.setDenominacion("Hamburguesa con queso");
+			cocina1.setDescripcion("ta buena MMM");
+			cocina1.setFechaAlta(new Date());
+			cocina1.setPrecioVenta(new BigDecimal(1321));
+			cocina1.setTiempoEstimadoCocina(85);
+			cocina1.setUrlImagen("");
+			cocina1.setRubroProducto(rubroProducto1);
+			cocina1.addDetalleProductoCocina(detalleProductoCocina);
 
 			//ProductoInsumo
 
-			ProductoInsumo productoInsumo = new ProductoInsumo();
-			productoInsumo.setLote(5);
-			productoInsumo.setMarca("Coca Cola");
-
-			//Producto
-
-			Producto articulo1 = new Producto();
-
-			articulo1.setCosto(new BigDecimal(1245));
-			articulo1.setDenominacion("Hamburguesa con queso");
-			articulo1.setDescripcion("ta buena");
-			articulo1.setFechaAlta(new Date());
-			articulo1.setPrecioVenta(new BigDecimal(1321));
-
-			articulo1.setTipoProducto(TipoProducto.COCINA);
-			articulo1.setUrlImagen("");
-			articulo1.setRubroarticuloproducto(rubroProducto1);
-			articulo1.addDetalleArticuloManufacturado(detalleProductoCocina);
+			ProductoInsumo insumo1 = new ProductoInsumo();
+			insumo1.setCosto(new BigDecimal(1245));
+			insumo1.setDenominacion("coca cola");
+			insumo1.setDescripcion("ta buena MMM que bien");
+			insumo1.setFechaAlta(new Date());
+			insumo1.setPrecioVenta(new BigDecimal(1321));
+			insumo1.setUrlImagen("");
+			insumo1.setRubroProducto(rubroProducto2);
+			insumo1.setLote(23);
+			insumo1.setMarca("cocacolastic");
 
 			//DetallePedido
 
@@ -174,15 +174,14 @@ public class BuensaborApplication {
 			detallePedido.setCantidad(3);
 			detallePedido.setSubtotal(new BigDecimal(44894));
 			detallePedido.setSubtotalCosto(new BigDecimal(8445));
-			detallePedido.setProducto(articulo1);
+			detallePedido.setProducto(cocina1);
 
 			DetallePedido detallePedido1 = new DetallePedido();
 
 			detallePedido1.setCantidad(3);
 			detallePedido1.setSubtotal(new BigDecimal(44894));
 			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
-			detallePedido1.setProducto(articulo1);
-
+			detallePedido1.setProducto(cocina1);
 
 			//Pedido
 
@@ -202,13 +201,12 @@ public class BuensaborApplication {
 			//agregar pedido al Usuario
 			usuario.addPedidoList(pedido1);
 
-
 			//DetalleFactura
 
 			DetalleComprobante detalleComprobante1 = new DetalleComprobante();
 			detalleComprobante1.setSubtotal(new BigDecimal(564));
 			detalleComprobante1.setCantidad(8);
-			detalleComprobante1.setProducto(articulo1);
+			detalleComprobante1.setProducto(cocina1);
 
 			//Factura
 
@@ -251,7 +249,7 @@ public class BuensaborApplication {
 
 			DetalleComprobante detalleNotaCredito = new DetalleComprobante();
 			detalleNotaCredito.setCantidad(8);
-			detalleNotaCredito.setProducto(articulo1);
+			detalleNotaCredito.setProducto(cocina1);
 
 			//NotaCredito
 
@@ -262,15 +260,17 @@ public class BuensaborApplication {
 
 			//GUARDAR
 			localidadRepository.save(localidad);
-			usuarioRepository.save(usuario);
 			domicilioRepository.save(domicilio);
 			unidadMedidaRepository.save(unidadMedida);
 			rubroIngredienteRepository.save(rubroIngrediente1);
 			rubroIngredienteRepository.save(rubroIngrediente2);
 			ingredienteRepository.save(ingrediente);
 			rubroProductoRepository.save(rubroProducto1);
-			productoRepository.save(articulo1);
+			rubroProductoRepository.save(rubroProducto2);
+			productoRepository.save(cocina1);
+			productoRepository.save(insumo1);
 			pedidoRepository.save(pedido1);
+			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
 			compraIngredienteRepository.save(compraIngredientes1);

@@ -23,7 +23,6 @@ public class Ingrediente extends Base {
     @Column(name = "denominacion")
     private String denominacion;
 
-    @NotNull
     @Column(name = "fecha_hora_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraAlta;
@@ -36,22 +35,18 @@ public class Ingrediente extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraModificacion;
 
-    @NotNull
     @Column(name = "precio_compra", precision = 10, scale = 2)
     private BigDecimal precioCompra;
 
-    @NotNull
     @Column(name = "stock_actual", precision = 10, scale = 2)
     private BigDecimal stockActual;
 
-    @NotNull
     @Column(name = "stock_minimo", precision = 10, scale = 2)
     private BigDecimal stockMinimo;
 
     @Column(name = "url_imagen")
     private String urlImagen;
 
-    @NotNull
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_unidad_medida")
     private UnidadMedida unidadMedida;
