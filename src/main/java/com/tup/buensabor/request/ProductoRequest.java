@@ -1,5 +1,7 @@
 package com.tup.buensabor.request;
 
+import com.tup.buensabor.entities.DetalleProductoCocina;
+import com.tup.buensabor.entities.RubroProducto;
 import com.tup.buensabor.enums.EstadoProducto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,5 +32,9 @@ public class ProductoRequest {
     private Integer lote;
 
     private EstadoProducto estadoProducto;
+
+    private List<DetalleProductoCocina> detalleProductoCocinaList;
+
+    private RubroProducto rubroProducto;
 
 }

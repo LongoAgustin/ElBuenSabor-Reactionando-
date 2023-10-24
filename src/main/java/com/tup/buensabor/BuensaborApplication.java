@@ -155,7 +155,7 @@ public class BuensaborApplication {
 			cocina1.setPrecioVenta(new BigDecimal(1321));
 			cocina1.setTiempoEstimadoCocina(85);
 			cocina1.setUrlImagen("");
-			cocina1.setRubroarticuloproducto(rubroProducto1);
+			cocina1.setRubroProducto(rubroProducto1);
 			cocina1.addDetalleProductoCocina(detalleProductoCocina);
 
 			//ProductoInsumo
@@ -167,7 +167,7 @@ public class BuensaborApplication {
 			insumo1.setFechaAlta(new Date());
 			insumo1.setPrecioVenta(new BigDecimal(1321));
 			insumo1.setUrlImagen("");
-			insumo1.setRubroarticuloproducto(rubroGaseosa);
+			insumo1.setRubroProducto(rubroGaseosa);
 			insumo1.setLote(23);
 			insumo1.setMarca("cocacolastic");
 

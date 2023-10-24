@@ -1,15 +1,12 @@
 package com.tup.buensabor.entities;
 
 import com.tup.buensabor.enums.EstadoProducto;
-import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
 
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "producto")
@@ -56,6 +53,6 @@ public class Producto extends Base {
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubroProducto")
-    private RubroProducto rubroarticuloproducto;
+    private RubroProducto rubroProducto;
 
 }
