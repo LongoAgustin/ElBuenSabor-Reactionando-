@@ -283,7 +283,6 @@ public class BuensaborApplication {
 
 			//GUARDAR
 			localidadRepository.save(localidad);
-			usuarioRepository.save(usuario);
 			domicilioRepository.save(domicilio);
 			unidadMedidaRepository.save(unidadMedida);
 			rubroIngredienteRepository.save(rubroIngrediente1);
@@ -292,6 +291,7 @@ public class BuensaborApplication {
 			rubroProductoRepository.save(rubroProducto1);
 			productoRepository.save(articulo1);
 			pedidoRepository.save(pedido1);
+			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
 			compraIngredienteRepository.save(compraIngredientes1);
