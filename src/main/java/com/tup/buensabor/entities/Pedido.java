@@ -69,10 +69,9 @@ public class Pedido extends Base {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detallePedido = new ArrayList<>();
 
-    public void addDetallePedido(DetallePedido detallePedido){
+    public void addDetallePedido(DetallePedido detallePedido) {
         this.detallePedido.add(detallePedido);
     }
-
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comprobante> comprobantes = new ArrayList<>();
