@@ -60,19 +60,24 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
     }
 
-
-    public List<DTOPedidos> listaXEstados(EstadoPedido estadoPedido) throws Exception {
+    public List<DTOPedidos> listaXEstados(String estadoPedido) throws Exception {
         try {
-            List<Pedido> pedidos = pedidoRepository.findByEstado(estadoPedido);
-            List<DTOPedidos> pedidosDTO = new ArrayList<>();
 
-            for (Pedido pedido : pedidos) {
-                if (pedido.getEstado() == estadoPedido) {
+            List<Pedido> pedidos = pedidoRepository.findByEstado(estadoPedido);
+
+            if(!pedidos.isEmpty()){
+
+                List<DTOPedidos> pedidosDTO = new ArrayList<>();
+
+                for (Pedido pedido : pedidos) {
                     DTOPedidos pedidoDTO = new DTOPedidos(pedido.getId(), pedido.getFechaHoraAlta(), pedido.getTipoEnvio(), pedido.getEstado());
                     pedidosDTO.add(pedidoDTO);
                 }
-            }
-            return pedidosDTO;
+
+                return pedidosDTO;
+
+            } else throw new Exception("No hay pedidos con este estado");
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
