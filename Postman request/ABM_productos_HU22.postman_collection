@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "a56f81fd-71f9-4059-ba91-ed46b4185ac7",
+		"name": "API EBS Sprint 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22369117"
+	},
+	"item": [
+		{
+			"name": "HU#23 - getProductList",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"denominacion\": \"Nuevo producto\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/productos/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"productos",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HU#23 - addProductoCocina",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"denominacion\": \"Nuevo producto cocina 1\",\r\n    \"tiempoEstimadoCocina\": 34,\r\n    \"descripcion\": \"Este es un producto nuevo y es de cocina\",\r\n    \"tipoProducto\": \"Cocina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/productos/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"productos",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HU#23 - modifyProducto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"denominacion\": \"Nuevo producto cocina 1\",\r\n    \"tiempoEstimadoCocina\": 34,\r\n    \"descripcion\": \"Este es un producto nuevo y es de cocina, pero ahora está modificado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/productos/update/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"productos",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HU#23 - darDeBajaProducto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"denominacion\": \"Nuevo producto cocina 1\",\r\n    \"tiempoEstimadoCocina\": 34,\r\n    \"descripcion\": \"Este ahora está dado de baja\",\r\n    \"estadoProducto\": \"BAJA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/productos/update/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"productos",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

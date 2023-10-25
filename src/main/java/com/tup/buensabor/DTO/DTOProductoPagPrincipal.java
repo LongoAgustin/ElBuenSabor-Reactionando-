@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class DTOProductoPagPrincipal {
+
     private String denominacion;
 
     private String categoria;

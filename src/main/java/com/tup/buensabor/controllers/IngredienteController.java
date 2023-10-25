@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/ingrediente")
+@RequestMapping(path = "api/v1/ingredientes")
 public class IngredienteController extends BaseControllerImpl<Ingrediente, IngredienteServiceImpl>{
 
     @PostMapping("/newIngrediente")
