@@ -6,6 +6,8 @@ import com.tup.buensabor.repositories.CompraIngredienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompraIngredientesServiceImpl extends BaseServiceImpl<CompraIngredientes, Long> implements CompraIngredientesService{
 
@@ -16,4 +18,5 @@ public class CompraIngredientesServiceImpl extends BaseServiceImpl<CompraIngredi
         super(baseRepository);
         this.compraIngredienteRepository = compraIngredienteRepository;
     }
+
 }
