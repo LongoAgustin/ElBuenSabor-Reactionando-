@@ -28,7 +28,7 @@ public class Usuario extends Base {
 
     @Column(name = "rol")
     @Enumerated(EnumType.STRING)
-    private Rol rol; //Asignar al registrar
+    private Rol rol;
 
     @Column(name = "first_login")
     private LocalDateTime first_login; //Asignar al registrar
