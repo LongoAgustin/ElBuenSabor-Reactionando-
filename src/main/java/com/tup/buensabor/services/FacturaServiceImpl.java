@@ -19,7 +19,7 @@ public class FacturaServiceImpl extends BaseServiceImpl<Factura, Long> implement
         this.facturaRepository = facturaRepository;
     }
 
-    public void emitirFacturasParaClienteAgustin() {
+    public void emitirFacturas() {
         List<Factura[]> pedidosParaFacturar = facturaRepository.obtenerPedidoParaFacturar();
         for (Object[] pedidoInfo : pedidosParaFacturar) {
             Long pedidoId = (Long) pedidoInfo[0];
