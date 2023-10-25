@@ -63,16 +63,15 @@ public class Pedido extends Base {
     private BigDecimal totalCosto;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_domicilio_entrega")
+    @JoinColumn(name = "domicilio", referencedColumnName = "id")
     private Domicilio domicilioEntrega;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detallePedido = new ArrayList<>();
 
-    public void addDetallePedido(DetallePedido detallePedido){
+    public void addDetallePedido(DetallePedido detallePedido) {
         this.detallePedido.add(detallePedido);
     }
-
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comprobante> comprobantes = new ArrayList<>();

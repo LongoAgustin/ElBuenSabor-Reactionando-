@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "c5a0e1ad-4316-4581-a215-d0d5d500bf23",
+		"name": "sprint4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30258900"
+	},
+	"item": [
+		{
+			"name": "rubroIngrediente",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroIngrediente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroIngrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newRubroIngrediente",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var now = new Date();\r",
+									"var timestamp = now.toISOString();\r",
+									"pm.environment.set(\"timestamp\", timestamp);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"denominacion\":\"Verduras\",\r\n    \"fechaHoraAlta\": \"{{timestamp}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroIngrediente/newRubroIngrediente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroIngrediente",
+								"newRubroIngrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRubroIngrediente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"denominacion\":\"Picantes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroIngrediente/updateRubroIngrediente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroIngrediente",
+								"updateRubroIngrediente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroIngrediente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroIngrediente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rubroProducto",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newRubroProducto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var now = new Date();\r",
+									"var timestamp = now.toISOString();\r",
+									"pm.environment.set(\"timestamp\", timestamp);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"denominacion\":\"Fritas\",\r\n    \"fechaHoraAlta\": \"{{timestamp}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroProducto/newRubroProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroProducto",
+								"newRubroProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRubroProducto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"denominacion\":\"Nuggets\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroProducto/updateRubroProducto/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroProducto",
+								"updateRubroProducto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rubroProducto/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rubroProducto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingrediente",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ingrediente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ingrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newIngrediente",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var now = new Date();\r",
+									"var timestamp = now.toISOString();\r",
+									"pm.environment.set(\"timestamp\", timestamp);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"denominacion\": \"Cebollas\",\r\n        \"fechaHoraAlta\": \"{{timestamp}}\",\r\n        \"fechaHoraBaja\": \"\",\r\n        \"fechaHoraModificacion\": \"\",\r\n        \"precioCompra\": 13215.00,\r\n        \"stockActual\": 5090,\r\n        \"stockMinimo\": 2165.00,\r\n        \"urlImagen\": \"\",\r\n        \"unidadMedida\": {\r\n            \"id\": 1,\r\n            \"abreviatura\": \"g\",\r\n            \"denominacion\": \"gramos\",\r\n            \"fechaHoraAlta\": \"2023-10-19T21:01:31.519+00:00\",\r\n            \"fechaHoraBaja\": null,\r\n            \"fechaHoraModificacion\": null\r\n        },\r\n        \"rubroIngrediente\": {\r\n            \"id\": 1,\r\n            \"denominacion\": \"verdura\",\r\n            \"fechaHoraAlta\": \"2023-10-19T21:01:31.519+00:00\",\r\n            \"fechaHoraBaja\": \"2023-10-19T21:01:31.519+00:00\",\r\n            \"fechaHoraModificacion\": \"2023-10-19T21:01:31.519+00:00\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ingrediente/newIngrediente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ingrediente",
+								"newIngrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateIngrediente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"denominacion\":\"Aji\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ingrediente/updateIngrediente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ingrediente",
+								"updateIngrediente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/articuloIngrediente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"articuloIngrediente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stockBajo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ingrediente/stockBajo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ingrediente",
+								"stockBajo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

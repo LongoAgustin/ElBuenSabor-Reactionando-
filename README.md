@@ -1,25 +1,13 @@
+# Sprint 4
+## Objetivos
 
-Realizar las siguientes actividades correspondientes al práctico de Ingeniería Inversa.
+El presente Sprint presenta la codificación en Java del modelo de entidades completo del sitio de ecommerce, estableciendo las capas de controladores, servicios y repositorios. Además se deben realizar los test unitarios a las entidades principales. Por otro lado para probar el comportamiento de la Api Rest se deberá crear todas las pruebas en postman para verificar el comportamiento correcto de la Api.
 
-Modelo de Diagrama de Clase:
-- Ver los videos de esta playlist
-  https://www.youtube.com/playlist?list=PLRFOqDrY-6nv7yXWNgFJe8ELDUfJGLI2J
+- Enlace al tablero de trabajo en Trello: https://trello.com/b/nN7OOrnT/desarrollo-de-software
 
-Link de descarga del Enterprice Arquitec
-https://drive.google.com/file/d/1sil27mwVW4Fq2_jl7kMg6oH4qR5oanpn/view
+- Link a render: //link
 
-Link del proyecto a Analizar en Git hub.
-- Estudiar las entidades y enumeraciones correspondientes y realizar la intepretación de las mismas.
-- Diseñar el diagrama de clases correspondiente con todos sus componentes.
-- Capturar la pantalla del diagrama y pegarla en un documento word. El nombre del archivo será apellidoLegajoDiag.doc
-- Entregar el archivo en formato.doc en el sitio correspondiente a tareas del aula virtual - PESTAÑA de Entrega de prácticos
+- Link postman collection: https://blue-station-589179.postman.co/workspace/El-buen-sabor~6cf90409-8b25-4263-be19-c7e13187bdc7/collection/22369117-a56f81fd-71f9-4059-ba91-ed46b4185ac7?action=share&creator=22369117
 
-Rúbrica de evaluación:
-- Todas las clases
- -Todas las enumeraciones
-- Propiedades y métodos en las clases
-- Todas las relaciones
-- Todas las cardinalidades
-
-Fecha de Entrega
-Martes 26 de septiembre - hora 23:00 hs
+## Diagrama de clases
+![DC](https://github.com/LongoAgustin/ElBuenSabor-Reactionando-/blob/main/diagrama%20de%20clases%20el%20buen%20sabor.jpg)
