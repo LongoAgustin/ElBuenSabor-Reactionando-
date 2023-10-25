@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
@@ -21,16 +22,17 @@ public class UsuarioServiceImplTest {
     UsuarioServiceImpl usuarioService;
     @Test
     void testSearchString() throws Exception {
-        Usuario usuario1 = new Usuario();
-        usuario1.setEmail("reactionando.utn@gmail.com");
-        usuario1.setPassword("react_utn");
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail("reactionando.utn@gmail.com");
+        usuario.setPassword("react_utn");
 
         List<Usuario> listaEnviada = new ArrayList<>();
-        listaEnviada.add(usuario1);
+        listaEnviada.add(usuario);
 
         when(usuarioRepository.iniciarSesion("reactionando.utn@gmail.com","react_utn")).thenReturn(listaEnviada);
-        assertEquals(listaEnviada, usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn"));
 
+        assertEquals(usuario, usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn"));
 
     }
 }

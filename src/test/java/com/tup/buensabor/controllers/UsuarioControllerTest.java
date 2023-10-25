@@ -13,30 +13,28 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebMvcTest(UsuarioController.class)
-public class UsuarioControllerTest {
+class UsuarioControllerTest {
     @MockBean
     private UsuarioServiceImpl usuarioService;
     @Autowired
     private MockMvc mockMvc;
     @Test
     void testSearchString() throws Exception {
-        Usuario usuario1 = new Usuario();
-        usuario1.setPassword("reactionando.utn@gmail.com");
-        usuario1.setEmail("react_utn");
-        List<Usuario> listaEnviada = new ArrayList<>();
-        listaEnviada.add(usuario1);
-        when(usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn")).thenReturn(listaEnviada);
+
+        Usuario usuario = new Usuario();
+        usuario.setPassword("reactionando.utn@gmail.com");
+        usuario.setEmail("react_utn");
+
+        when(usuarioService.iniciarSesion("reactionando.utn@gmail.com","react_utn")).thenReturn(usuario);
 
         mockMvc.perform(get("/api/v1/usuario/login")
-                        .param("filtro", "reactionando.utn@gmail.com")
+                        .param("email", "reactionando.utn@gmail.com")
+                        .param("password", "react_utn")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].email", is("reactionando.utn@gmail.com")))
                 .andExpect(jsonPath("$[0].password", is("react_utn")));
-
     }
 }
