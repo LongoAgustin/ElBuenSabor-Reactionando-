@@ -18,7 +18,6 @@ import static com.tup.buensabor.services.PedidoServiceImpl.*;
 @RequestMapping(path = "api/v1/pedido")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl> {
 
-
     @GetMapping("/searchXUsuario")
     public ResponseEntity<?> searchXUsuario(@RequestParam Long usuarioid) {
         try {
@@ -38,7 +37,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     }
 
     @GetMapping("/getAllStatues")
-    public ResponseEntity<?> getAllStatues(@RequestParam EstadoPedido estadoPedido) {
+    public ResponseEntity<?> getAllStatues(@RequestParam String estadoPedido) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.listaXEstados(estadoPedido));
         } catch (Exception e) {
