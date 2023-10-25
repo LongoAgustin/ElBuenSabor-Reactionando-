@@ -195,11 +195,23 @@ public class BuensaborApplication {
 			pedido1.setHoraEstimadaFinalizacion(new Date());
 			pedido1.setFechaHoraPedido(new Date());
 			pedido1.addDetallePedido(detallePedido);
-			pedido1.addDetallePedido(detallePedido1);
 			pedido1.setDomicilioEntrega(domicilio);
+
+			Pedido pedido2 = new Pedido();
+			pedido2.setEstado(EstadoPedido.PREPARACION);
+			pedido2.setTipoEnvio(TipoEnvio.DELIVERY);
+			pedido2.setTotal(new BigDecimal(45944));
+			pedido2.setTotalCosto(new BigDecimal(478446));
+			pedido2.setFechaHoraAlta(new Date());
+			pedido2.setFormaPago(FormaPago.EFECTIVO);
+			pedido2.setHoraEstimadaFinalizacion(new Date());
+			pedido2.setFechaHoraPedido(new Date());
+			pedido2.addDetallePedido(detallePedido1);
+			pedido2.setDomicilioEntrega(domicilio);
 
 			//agregar pedido al Usuario
 			usuario.addPedidoList(pedido1);
+			usuario.addPedidoList(pedido2);
 
 			//DetalleFactura
 
@@ -270,6 +282,7 @@ public class BuensaborApplication {
 			productoRepository.save(cocina1);
 			productoRepository.save(insumo1);
 			pedidoRepository.save(pedido1);
+			pedidoRepository.save(pedido2);
 			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
