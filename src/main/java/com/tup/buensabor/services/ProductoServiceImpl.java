@@ -1,5 +1,6 @@
 package com.tup.buensabor.services;
 
+import com.tup.buensabor.DTO.DTODetalleCarritoCompra;
 import com.tup.buensabor.DTO.DTOProductoCocina;
 import com.tup.buensabor.DTO.DTOProductoPagPrincipal;
 import com.tup.buensabor.DTO.DTOReceta;
@@ -26,11 +27,15 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
         this.productoRepository = productoRepository;
     }
 
+    //HISTORIA 9
     public List<Producto> searchDenominacion(String filtro) throws Exception{
         try {
             List<Producto> productos=productoRepository.searchDenominacion(filtro);
-            if(productos.isEmpty()){throw new Exception("No Se Encontro El Nombre...");
-            }else {return productos;}
+            if(productos.isEmpty()){
+                throw new Exception("No se encontro el Producto...");
+            }else {
+                return productos;
+            }
         }catch (Exception e){throw new Exception(e.getMessage());}
     }
 
@@ -83,11 +88,12 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
                 }
             }
 
-
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
+
+    //HISTORIA 10
 
     public List<DTOProductoPagPrincipal> getProdPagPrincipal() throws Exception{
         try{
@@ -126,7 +132,5 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
             throw new Exception(e.getMessage());
         }
     }
-
-
 
 }

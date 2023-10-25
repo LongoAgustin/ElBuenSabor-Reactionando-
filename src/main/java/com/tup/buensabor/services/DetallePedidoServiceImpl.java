@@ -16,4 +16,5 @@ public class DetallePedidoServiceImpl  extends BaseServiceImpl<DetallePedido, Lo
         super(baseRepository);
         this.detallePedidoRepository = detallePedidoRepository;
     }
+
 }

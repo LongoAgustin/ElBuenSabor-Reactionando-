@@ -193,7 +193,7 @@ public class BuensaborApplication {
 			DetallePedido detallePedido = new DetallePedido();
 
 			detallePedido.setCantidad(3);
-			detallePedido.setSubtotal(new BigDecimal(44894));
+			detallePedido.setSubtotal(new BigDecimal(3963));
 			detallePedido.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido.setProducto(articulo1);
 

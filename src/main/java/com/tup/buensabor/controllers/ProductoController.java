@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/producto")
 public class ProductoController extends BaseControllerImpl<Producto, ProductoServiceImpl>{
 
+    //HISTORIA 9
+
     @GetMapping("/searchDenominacion")
     public ResponseEntity<?> searchDenominacion(@RequestParam String filtro){
         try {
@@ -46,4 +48,5 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() +"\"}"));
         }
     }
+
 }

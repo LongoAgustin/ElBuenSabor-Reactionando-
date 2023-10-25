@@ -1,9 +1,7 @@
 package com.tup.buensabor.services;
 
-import com.tup.buensabor.entities.ProductoCocina;
 import com.tup.buensabor.entities.ProductoInsumo;
 import com.tup.buensabor.repositories.BaseRepository;
-import com.tup.buensabor.repositories.ProductoCocinaRepository;
 import com.tup.buensabor.repositories.ProductoInsumoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

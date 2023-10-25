@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends BaseRepository<Producto, Long>{
 
+    //HISTORIA 9
+
     @Query(value= "SELECT * FROM producto WHERE denominacion LIKE %:filtro%",
     nativeQuery = true
     )

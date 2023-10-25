@@ -27,7 +27,7 @@ public class DetallePedido extends Base {
     private BigDecimal subtotalCosto;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "id_articulo_manufacturado")
+    @JoinColumn(name = "id_producto")
     private Producto producto;
 
 
