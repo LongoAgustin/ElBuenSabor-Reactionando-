@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implements UsuarioService{
@@ -27,9 +28,12 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         try {
             List<Usuario> usuarioEncontrado = usuarioRepository.verificarEmail(usuario.getEmail());
             if (usuarioEncontrado.isEmpty()){
+
                 usuario.setFirst_login(LocalDateTime.now());
                 usuario.setRol(Rol.CLIENTE);
+
                 usuarioRepository.save(usuario);
+
                 return usuario;
             }
             else{
