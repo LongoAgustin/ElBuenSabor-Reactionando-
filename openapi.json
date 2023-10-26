@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Sitio de Ventas de Comida Online \"El Buen Sabor\".",
+    "description": "Esta API se encarga de manejar la información de la base de datos de la empresa El Buen Sabor.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http//localhost.8080/api/v1/usuario/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "usuario",
+      "description": "Este endpoint maneja toda la información relacionada con los usuarios."
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [
+          "registrar"
+        ],
+        "summary": "Inserta la información de un nuevo usuario a la BD.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyUsuarioPost"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "(OK) La información del usuario se guardó correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExitoUsuarioPost"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "401": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "404": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "(Unauthorized) no hay autorización para llamar al servicio"
+      },
+      "NotFound": {
+        "description": "(NotFound) no se encontró la información"
+      },
+      "BadRequest": {
+        "description": "(BadRequest) los datos enviados son incorrectos o hay datos obligatorios no enviados"
+      },
+      "ServerError": {
+        "description": "Error en el servidor"
+      }
+    },
+    "parameters": {
+      "token": {
+        "name": "token",
+        "in": "header",
+        "description": "Token de autenticación.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "BodyUsuarioPost": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "description": "contraseña del usuario"
+          },
+          "email": {
+            "type": "string",
+            "description": "email perteneciente al usuario"
+          }
+        }
+      },
+      "ExitoUsuarioPost": {
+        "type": "object",
+        "properties": {
+          "respuesta": {
+            "type": "integer",
+            "enum": [
+              1
+            ],
+            "description": "Bandera que nos indica si la llamada al servicio fue exitosa."
+          },
+          "idUsuario": {
+            "type": "integer",
+            "enum": [
+              222
+            ],
+            "description": "id que le corresponde al usuario ya creado."
+          }
+        }
+      }
+    }
+  }
+}
