@@ -6,6 +6,8 @@ import com.tup.buensabor.repositories.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FacturaServiceImpl extends BaseServiceImpl<Factura, Long> implements FacturaService{
 
@@ -15,5 +17,13 @@ public class FacturaServiceImpl extends BaseServiceImpl<Factura, Long> implement
     public FacturaServiceImpl(BaseRepository<Factura,Long> baseRepository, FacturaRepository facturaRepository) {
         super(baseRepository);
         this.facturaRepository = facturaRepository;
+    }
+
+    public void emitirFacturas() {
+        List<Factura[]> pedidosParaFacturar = facturaRepository.obtenerPedidoParaFacturar();
+        for (Object[] pedidoInfo : pedidosParaFacturar) {
+            Long pedidoId = (Long) pedidoInfo[0];
+            Long clienteId = (Long) pedidoInfo[1];
+        }
     }
 }

@@ -1,10 +1,15 @@
 package com.tup.buensabor.services;
 
 import com.tup.buensabor.DTO.DTOPedidos;
+import com.tup.buensabor.entities.Comprobante;
+import com.tup.buensabor.entities.Factura;
 import com.tup.buensabor.entities.Pedido;
 import com.tup.buensabor.entities.Usuario;
+import com.tup.buensabor.enums.EstadoFactura;
 import com.tup.buensabor.enums.EstadoPedido;
+import com.tup.buensabor.enums.FormaPago;
 import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.repositories.FacturaRepository;
 import com.tup.buensabor.repositories.PedidoRepository;
 import com.tup.buensabor.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,9 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
     @Autowired
     protected PedidoRepository pedidoRepository;
+
+    @Autowired
+    protected FacturaRepository facturaRepository;
 
     @Autowired
     protected UsuarioRepository usuarioRepository;
@@ -79,6 +87,34 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
             } else throw new Exception("No hay pedidos con este estado");
 
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public Factura pagarPedido(Long idPedido) throws Exception{
+        try {
+            Optional<Pedido> pedidoOptional = pedidoRepository.findById(idPedido);
+
+            if (pedidoOptional.isPresent()){
+                Pedido pedido = pedidoOptional.get();
+                pedido.setEstado(EstadoPedido.PAGADO);
+
+                Factura factura = new Factura();
+                factura.setEstadoFactura(EstadoFactura.EMITIDO);
+                factura.setFormaPago(FormaPago.EFECTIVO);
+
+                pedido.addComprobante(factura);
+
+                facturaRepository.save(factura);
+                pedidoRepository.save(pedido);
+
+                return factura;
+            }
+            else {
+                throw new Exception("No existe el pedido ingresado");
+            }
+
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }

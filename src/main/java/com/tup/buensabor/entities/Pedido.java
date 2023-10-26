@@ -76,5 +76,10 @@ public class Pedido extends Base {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comprobante> comprobantes = new ArrayList<>();
 
+    public void addComprobante(Comprobante comprobante) {
+        this.comprobantes.add(comprobante);
+    }
+
+
 
 }
