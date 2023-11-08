@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface PedidoRepository extends BaseRepository<Pedido, Long> {
 
-    @Query( value = "SELECT * FROM pedido WHERE pedido.estado LIKE %:filtro%", nativeQuery = true)
-
+    @Query(value = "SELECT * FROM pedido WHERE pedido.estado LIKE %:filtro%", nativeQuery = true)
     List<Pedido> findByEstado(@Param("filtro") String filtro);
+
 
 }

@@ -186,7 +186,7 @@ public class BuensaborApplication {
 			//Pedido
 
 			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.COMPLETADO);
+			pedido1.setEstado(EstadoPedido.A_CONFIRMAR);
 			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
 			pedido1.setTotal(new BigDecimal(49844));
 			pedido1.setTotalCosto(new BigDecimal(498446));
