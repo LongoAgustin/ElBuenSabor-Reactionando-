@@ -7,6 +7,7 @@ import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.EstadoFactura;
 import com.tup.buensabor.enums.EstadoPedido;
 import com.tup.buensabor.enums.FormaPago;
+import com.tup.buensabor.enums.TipoProducto;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
 import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
@@ -51,7 +52,6 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     }
 
 
-
     public List<DTOPedidos> getlistaPedidos() throws Exception {
         try {
             List<Pedido> pedidos = pedidoRepository.findAll();
@@ -73,7 +73,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
             List<Pedido> pedidos = pedidoRepository.findByEstado(estadoPedido);
 
-            if(!pedidos.isEmpty()){
+            if (!pedidos.isEmpty()) {
 
                 List<DTOPedidos> pedidosDTO = new ArrayList<>();
 
@@ -91,11 +91,11 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         }
     }
 
-    public Factura pagarPedido(Long idPedido) throws Exception{
+    public Factura pagarPedido(Long idPedido) throws Exception {
         try {
             Optional<Pedido> pedidoOptional = pedidoRepository.findById(idPedido);
 
-            if (pedidoOptional.isPresent()){
+            if (pedidoOptional.isPresent()) {
                 Pedido pedido = pedidoOptional.get();
                 pedido.setEstado(EstadoPedido.PAGADO);
 
@@ -109,13 +109,53 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                 pedidoRepository.save(pedido);
 
                 return factura;
-            }
-            else {
+            } else {
                 throw new Exception("No existe el pedido ingresado");
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
+
+    public Pedido searchxID(Long pedidoID) throws Exception {
+        try {
+            Optional<Pedido> pedidoid = pedidoRepository.findById(pedidoID);
+            if (pedidoid.isEmpty()) {
+                throw new Exception("No Existe el Usuario");
+            } else {
+                Pedido pedidos = pedidoid.get();
+                return pedidos;
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+    public Pedido aConfirmar(Long pedidoID) throws Exception {
+        try {
+
+            Optional<Pedido> pedidosaConf = pedidoRepository.findById(pedidoID);
+
+            if (pedidosaConf.get().getEstado() == EstadoPedido.A_CONFIRMAR) {
+                Pedido pedidoCamb = pedidosaConf.get();
+                pedidoCamb.setEstado(EstadoPedido.PREPARACION);
+                pedidoRepository.save(pedidoCamb);
+                return pedidoCamb;
+            } /*else if (pedidosaConf.get().getEstado() == EstadoPedido.A_CONFIRMAR &&
+                    pedidosaConf.get().getDetallePedido().get(0).getProducto().getRubroProducto(equals().)) {
+                Pedido pedidoCamb = pedidosaConf.get();
+                pedidoCamb.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                return pedidoCamb;
+            }*/ else {
+                throw new Exception("No hay pedidos con este estado");
+            }
+
+        } catch (
+                Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }
