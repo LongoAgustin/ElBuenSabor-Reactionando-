@@ -1,7 +1,8 @@
 package com.tup.buensabor.controllers;
 
-import com.tup.buensabor.entities.Producto;
-import com.tup.buensabor.services.ProductoServiceImpl;
+import com.tup.buensabor.controllers.UsuarioControllers.PersonaController;
+import com.tup.buensabor.entities.Producto.Producto;
+import com.tup.buensabor.services.ProductoServices.ProductoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

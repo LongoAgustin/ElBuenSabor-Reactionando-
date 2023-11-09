@@ -2,6 +2,7 @@ package com.tup.buensabor.services;
 
 import com.tup.buensabor.entities.Base;
 import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.services.BaseService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
 package com.tup.buensabor.request;
 
-import com.tup.buensabor.entities.DetalleProductoCocina;
-import com.tup.buensabor.entities.RubroProducto;
+import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
+import com.tup.buensabor.entities.Producto.RubroProducto;
 import com.tup.buensabor.enums.EstadoProducto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
