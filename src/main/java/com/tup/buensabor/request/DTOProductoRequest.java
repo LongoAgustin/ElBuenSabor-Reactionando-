@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductoRequest {
+public class DTOProductoRequest {
 
     private String tipoProducto;
 
@@ -36,5 +36,7 @@ public class ProductoRequest {
     private List<DetalleProductoCocina> detalleProductoCocinaList;
 
     private RubroProducto rubroProducto;
+
+    private String urlImagen;
 
 }

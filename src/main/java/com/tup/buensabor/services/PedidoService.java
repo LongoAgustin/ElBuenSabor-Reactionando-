@@ -9,4 +9,7 @@ public interface PedidoService extends BaseService<Pedido, Long>{
 
     public List<Pedido> searchXUsuario(Long usuarioid) throws Exception;
 
+
+
+
 }
