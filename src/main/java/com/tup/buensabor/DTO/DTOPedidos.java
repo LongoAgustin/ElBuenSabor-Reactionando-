@@ -19,4 +19,5 @@ public class DTOPedidos {
     private Date fechaHoraAlta;
     private TipoEnvio tipoEnvio;
     private EstadoPedido estadoPedido;
+
 }

@@ -1,8 +1,32 @@
 package com.tup.buensabor;
 
-import com.tup.buensabor.entities.*;
+import com.tup.buensabor.entities.Comprobante.DetalleComprobante;
+import com.tup.buensabor.entities.Comprobante.Factura;
+import com.tup.buensabor.entities.Comprobante.NotaCredito;
+import com.tup.buensabor.entities.Ingrediente.*;
+import com.tup.buensabor.entities.Pedido.DetallePedido;
+import com.tup.buensabor.entities.Pedido.Pedido;
+import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoInsumo;
+import com.tup.buensabor.entities.Producto.RubroProducto;
+import com.tup.buensabor.entities.Usuario.Domicilio;
+import com.tup.buensabor.entities.Usuario.Localidad;
+import com.tup.buensabor.entities.Usuario.Persona;
+import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.*;
-import com.tup.buensabor.repositories.*;
+import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
+import com.tup.buensabor.repositories.ComprobanteRepository.NotaCreditoRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.CompraIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.IngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.RubroIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.UnidadMedidaRepository;
+import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.RubroProductoRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.DomicilioRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.LocalidadRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -186,7 +210,7 @@ public class BuensaborApplication {
 			//Pedido
 
 			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.COMPLETADO);
+			pedido1.setEstado(EstadoPedido.A_CONFIRMAR);
 			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
 			pedido1.setTotal(new BigDecimal(49844));
 			pedido1.setTotalCosto(new BigDecimal(498446));
