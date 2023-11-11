@@ -1,9 +1,15 @@
 package com.tup.buensabor.controllers.ProductoControllers;
 
+<<<<<<< HEAD:src/main/java/com/tup/buensabor/controllers/ProductoController.java
+import com.tup.buensabor.entities.Producto;
+import com.tup.buensabor.request.DTOProductoRequest;
+import com.tup.buensabor.services.ProductoServiceImpl;
+=======
 import com.tup.buensabor.controllers.BaseControllerImpl;
 import com.tup.buensabor.entities.Producto.Producto;
 import com.tup.buensabor.request.ProductoRequest;
 import com.tup.buensabor.services.ProductoServices.ProductoServiceImpl;
+>>>>>>> main:src/main/java/com/tup/buensabor/controllers/ProductoControllers/ProductoController.java
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,18 +29,18 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> agregarProducto(@RequestBody ProductoRequest productoRequest){
+    public ResponseEntity<?> agregarProducto(@RequestBody DTOProductoRequest dtoProductoRequest){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(productoRequest));
+            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(dtoProductoRequest));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody ProductoRequest productoRequest){
+    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody DTOProductoRequest DTOProductoRequest){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(productoRequest, id));
+            return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(DTOProductoRequest, id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
