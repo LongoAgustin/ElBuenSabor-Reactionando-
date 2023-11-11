@@ -7,7 +7,6 @@ import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.EstadoFactura;
 import com.tup.buensabor.enums.EstadoPedido;
 import com.tup.buensabor.enums.FormaPago;
-import com.tup.buensabor.enums.TipoProducto;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
 import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
