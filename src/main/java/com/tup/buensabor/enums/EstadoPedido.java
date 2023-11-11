@@ -2,19 +2,21 @@ package com.tup.buensabor.enums;
 
 public enum EstadoPedido {
     PENDIENTE_PAGO,
-    PAGADO ,
+    PAGADO,
 
-    PREPARACION ,
+    A_CONFIRMAR,
 
-    PENDIENTE_ENTREGA ,
+    PREPARACION,
 
-    EN_CAMINO ,
+    PENDIENTE_ENTREGA,
 
-    CANCELADO ,
+    EN_CAMINO,
 
-    NOTA_CREDITO ,
+    CANCELADO,
 
-    COMPLETADO ;
+    NOTA_CREDITO,
+
+    COMPLETADO;
 
 
 }

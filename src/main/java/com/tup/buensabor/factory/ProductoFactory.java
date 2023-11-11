@@ -1,9 +1,9 @@
 package com.tup.buensabor.factory;
 
-import com.tup.buensabor.entities.Producto;
-import com.tup.buensabor.entities.ProductoCocina;
-import com.tup.buensabor.entities.ProductoInsumo;
 import com.tup.buensabor.request.DTOProductoRequest;
+import com.tup.buensabor.entities.Producto.Producto;
+import com.tup.buensabor.entities.Producto.ProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoInsumo;
 
 public class ProductoFactory {
 
