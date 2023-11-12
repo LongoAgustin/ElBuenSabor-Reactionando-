@@ -1,13 +1,15 @@
 package com.tup.buensabor.controllers.ProductoControllers;
 
-
-import com.tup.buensabor.entities.Producto.Producto;
+<<<<<<< HEAD:src/main/java/com/tup/buensabor/controllers/ProductoController.java
+import com.tup.buensabor.entities.Producto;
 import com.tup.buensabor.request.DTOProductoRequest;
-import com.tup.buensabor.services.ProductoServices.ProductoService;
+import com.tup.buensabor.services.ProductoServiceImpl;
+=======
 import com.tup.buensabor.controllers.BaseControllerImpl;
 import com.tup.buensabor.entities.Producto.Producto;
-import com.tup.buensabor.request.DTOProductoRequest;
+import com.tup.buensabor.request.ProductoRequest;
 import com.tup.buensabor.services.ProductoServices.ProductoServiceImpl;
+>>>>>>> main:src/main/java/com/tup/buensabor/controllers/ProductoControllers/ProductoController.java
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
