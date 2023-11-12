@@ -18,10 +18,6 @@ import java.util.List;
 @Getter
 @Setter
 public class DTOPedidoABM {
-
-    private long id;
-    private EstadoPedido estadoPedido;
-    private Date fechaHoraAlta;
     private FormaPago formaPago;
     private Date horaEstimadaFinalizacion;
     private TipoEnvio tipoEnvio;

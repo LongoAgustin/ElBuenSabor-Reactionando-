@@ -168,8 +168,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     @Override
     public Pedido newPedido(DTOPedidoABM dtoPedidoABM) throws Exception {
         try {
-            Optional<Pedido> pedidosEncontrados = pedidoRepository.findById(dtoPedidoABM.getId());
-            if (pedidosEncontrados.isEmpty()) {
+
                 Pedido nuevoPedido = newPedido(dtoPedidoABM);
                 nuevoPedido.setEstado(EstadoPedido.A_CONFIRMAR);
                 nuevoPedido.setFechaHoraAlta(new Date());
@@ -192,9 +191,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                 });
                 pedidoRepository.save(nuevoPedido);
                 return nuevoPedido;
-            } else {
-                throw new Exception("id no valido");
-            }
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
