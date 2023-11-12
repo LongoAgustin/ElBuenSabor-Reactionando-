@@ -169,7 +169,8 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     public Pedido newPedido(DTOPedidoABM dtoPedidoABM) throws Exception {
         try {
 
-                Pedido nuevoPedido = newPedido(dtoPedidoABM);
+                Pedido nuevoPedido = new Pedido();
+
                 nuevoPedido.setEstado(EstadoPedido.A_CONFIRMAR);
                 nuevoPedido.setFechaHoraAlta(new Date());
                 nuevoPedido.setFormaPago(dtoPedidoABM.getFormaPago());
@@ -183,8 +184,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                     if (producto.isPresent()) {
                         DetallePedido nuevoDetallePedido = new DetallePedido();
                         nuevoDetallePedido.setCantidad(detallePedido.getCantidad());
-                        //nuevoDetallePedido.setSubtotal(detallePedido.getSubtotal);
-                        //nuevoDetallePedido.setSubtotalCosto(detallePedido.getSubtotalCosto);
+                        nuevoDetallePedido.setSubtotal(detallePedido.getSubtotal());
                         nuevoDetallePedido.setProducto(producto.get());
                         nuevoPedido.addDetallePedido(nuevoDetallePedido);
                     }
