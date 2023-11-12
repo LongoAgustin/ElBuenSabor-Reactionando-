@@ -5,6 +5,7 @@ import com.tup.buensabor.entities.Comprobante.Factura;
 import com.tup.buensabor.entities.Comprobante.NotaCredito;
 import com.tup.buensabor.entities.Ingrediente.*;
 import com.tup.buensabor.entities.Pedido.DetallePedido;
+import com.tup.buensabor.entities.Pedido.Pedido;
 import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
 import com.tup.buensabor.entities.Producto.ProductoCocina;
 import com.tup.buensabor.entities.Producto.ProductoInsumo;
@@ -210,6 +211,36 @@ public class BuensaborApplication {
 			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido1.setProducto(cocina1);
 
+			//Pedido
+
+			Pedido pedido1 = new Pedido();
+			pedido1.setEstado(EstadoPedido.A_CONFIRMAR);
+			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
+			pedido1.setTotal(new BigDecimal(49844));
+			pedido1.setTotalCosto(new BigDecimal(498446));
+			pedido1.setFechaHoraAlta(new Date());
+			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
+			pedido1.setHoraEstimadaFinalizacion(new Date());
+			pedido1.setFechaHoraPedido(new Date());
+			pedido1.addDetallePedido(detallePedido);
+			pedido1.setDomicilioEntrega(domicilio);
+
+			Pedido pedido2 = new Pedido();
+			pedido2.setEstado(EstadoPedido.PREPARACION);
+			pedido2.setTipoEnvio(TipoEnvio.DELIVERY);
+			pedido2.setTotal(new BigDecimal(45944));
+			pedido2.setTotalCosto(new BigDecimal(478446));
+			pedido2.setFechaHoraAlta(new Date());
+			pedido2.setFormaPago(FormaPago.EFECTIVO);
+			pedido2.setHoraEstimadaFinalizacion(new Date());
+			pedido2.setFechaHoraPedido(new Date());
+			pedido2.addDetallePedido(detallePedido1);
+			pedido2.setDomicilioEntrega(domicilio);
+
+			//agregar pedido al Usuario
+			usuario.addPedidoList(pedido1);
+			usuario.addPedidoList(pedido2);
+
 			//DetalleFactura
 
 			DetalleComprobante detalleComprobante1 = new DetalleComprobante();
@@ -278,6 +309,8 @@ public class BuensaborApplication {
 			rubroProductoRepository.save(rubroProducto2);
 			productoRepository.save(cocina1);
 			productoRepository.save(insumo1);
+			pedidoRepository.save(pedido1);
+			pedidoRepository.save(pedido2);
 			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
