@@ -122,6 +122,12 @@ public class BuensaborApplication {
 			unidadMedida.setAbreviatura("g");
 			unidadMedida.setFechaHoraAlta(new Date());
 
+			UnidadMedida unidadMedida2 = new UnidadMedida();
+
+			unidadMedida.setDenominacion("unidad");
+			unidadMedida.setAbreviatura("unid");
+			unidadMedida.setFechaHoraAlta(new Date());
+
 			//Ingrediente
 
 			Ingrediente ingrediente = new Ingrediente();
@@ -136,6 +142,32 @@ public class BuensaborApplication {
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
 			ingrediente.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente1 = new Ingrediente();
+
+			ingrediente1.setDenominacion("Perejil");
+			ingrediente1.setFechaHoraAlta(new Date());
+			ingrediente1.setFechaHoraBaja(new Date());
+			ingrediente1.setFechaHoraModificacion(new Date());
+			ingrediente1.setPrecioCompra(new BigDecimal(1321));
+			ingrediente1.setStockMinimo(new BigDecimal(2195));
+			ingrediente1.setStockActual(new BigDecimal(590));
+			ingrediente1.setUnidadMedida(unidadMedida);
+			ingrediente1.setUrlImagen("");
+			ingrediente1.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente2 = new Ingrediente();
+
+			ingrediente2.setDenominacion("Cebolla");
+			ingrediente2.setFechaHoraAlta(new Date());
+			ingrediente2.setFechaHoraBaja(new Date());
+			ingrediente2.setFechaHoraModificacion(new Date());
+			ingrediente2.setPrecioCompra(new BigDecimal(13215));
+			ingrediente2.setStockMinimo(new BigDecimal(2165));
+			ingrediente2.setStockActual(new BigDecimal(5900));
+			ingrediente2.setUnidadMedida(unidadMedida2);
+			ingrediente2.setUrlImagen("");
+			ingrediente2.setRubroIngrediente(rubroIngrediente1);
 
 			//DetalleProductoCocina
 
