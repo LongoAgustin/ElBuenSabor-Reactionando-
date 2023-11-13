@@ -1,6 +1,5 @@
 package com.tup.buensabor.services;
 
-import com.tup.buensabor.DTO.DTODetalleCarritoCompra;
 import com.tup.buensabor.DTO.DTOProductoCocina;
 import com.tup.buensabor.DTO.DTOProductoPagPrincipal;
 import com.tup.buensabor.entities.Producto;

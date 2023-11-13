@@ -135,7 +135,7 @@ public class BuensaborApplication {
 			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
-			ingrediente.setRubroIngrediente(rubroIngrediente1);
+			ingrediente.setRubroIngrediente(rubroIngrediente2);
 
 			//DetalleProductoCocina
 

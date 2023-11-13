@@ -1,6 +1,5 @@
 package com.tup.buensabor.services;
 
-import com.tup.buensabor.DTO.DTODetalleCarritoCompra;
 import com.tup.buensabor.DTO.DTOProductoCocina;
 import com.tup.buensabor.DTO.DTOProductoPagPrincipal;
 import com.tup.buensabor.DTO.DTOReceta;
@@ -62,8 +61,8 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
                 throw new Exception("No Existe El Producto Buscado");
             } else {
 
-                if (productoOptional.get().getTipoProducto().equals(TipoProducto.COCINA)){   //PUEDE HABER UN ERROR
-                    ProductoCocina producto= (ProductoCocina) productoOptional.get();  //OJO
+                if (productoOptional.get().getTipoProducto().equals(TipoProducto.COCINA)){
+                    ProductoCocina producto= (ProductoCocina) productoOptional.get();
                     DTOProductoCocina dtoProductoCocina = new DTOProductoCocina();
                     dtoProductoCocina.setDenominacion(producto.getDenominacion());
                     dtoProductoCocina.setUrl(producto.getUrlImagen());
