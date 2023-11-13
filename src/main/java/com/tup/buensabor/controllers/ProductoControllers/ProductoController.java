@@ -1,7 +1,7 @@
 package com.tup.buensabor.controllers.ProductoControllers;
 
 
-import com.tup.buensabor.request.DTOProductoRequest;
+import com.tup.buensabor.DTO.DTOProducto;
 import com.tup.buensabor.controllers.BaseControllerImpl;
 import com.tup.buensabor.entities.Producto.Producto;
 import com.tup.buensabor.services.ProductoServices.ProductoServiceImpl;
@@ -24,18 +24,27 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> agregarProducto(@RequestBody DTOProductoRequest dtoProductoRequest){
+    public ResponseEntity<?> agregarProducto(@RequestBody DTOProducto dtoProducto){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(dtoProductoRequest));
+            return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(dtoProducto));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody DTOProductoRequest DTOProductoRequest){
+    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody DTOProducto DTOProducto){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(DTOProductoRequest, id));
+            return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(DTOProducto, id));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> bajaProducto(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.bajaProducto(id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
