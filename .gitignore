@@ -31,3 +31,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### DB ###
+.beto.mv.db
+.beto.trace.db
