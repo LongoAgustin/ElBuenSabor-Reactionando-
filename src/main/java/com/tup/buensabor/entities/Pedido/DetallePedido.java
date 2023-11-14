@@ -25,8 +25,6 @@ public class DetallePedido extends Base {
     @Column(name = "subtotal", precision = 10, scale = 2, nullable = false)
     private BigDecimal subtotal;
 
-    @Column(name = "subtotal_costo", precision = 10, scale = 2, nullable = false)
-    private BigDecimal subtotalCosto;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_articulo_manufacturado")
