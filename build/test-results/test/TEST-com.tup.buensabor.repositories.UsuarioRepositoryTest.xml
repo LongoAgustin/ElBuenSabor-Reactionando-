@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tup.buensabor.repositories.UsuarioRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-14T11:19:22" hostname="DESKTOP-F900H8J" time="0.01">
+  <properties/>
+  <testcase name="testSearchString()" classname="com.tup.buensabor.repositories.UsuarioRepositoryTest" time="0.01"/>
+  <system-out><![CDATA[2023-11-14T08:19:22.937-03:00  INFO 5092 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tup.buensabor.repositories.UsuarioRepositoryTest]: UsuarioRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-11-14T08:19:22.942-03:00  INFO 5092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tup.buensabor.BuensaborApplication for test class com.tup.buensabor.repositories.UsuarioRepositoryTest
+Hibernate: insert into usuario (email,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,first_login,password,fk_persona,rol,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: SELECT * FROM usuario WHERE usuario.email = ? AND usuario.password = ?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
