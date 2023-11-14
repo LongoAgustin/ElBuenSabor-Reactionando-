@@ -154,7 +154,33 @@ public class BuensaborApplication {
 			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
-			ingrediente.setRubroIngrediente(rubroIngrediente1);
+			ingrediente.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente1 = new Ingrediente();
+
+			ingrediente1.setDenominacion("Perejil");
+			ingrediente1.setFechaHoraAlta(new Date());
+			ingrediente1.setFechaHoraBaja(new Date());
+			ingrediente1.setFechaHoraModificacion(new Date());
+			ingrediente1.setPrecioCompra(new BigDecimal(1321));
+			ingrediente1.setStockMinimo(new BigDecimal(2195));
+			ingrediente1.setStockActual(new BigDecimal(590));
+			ingrediente1.setUnidadMedida(unidadMedida);
+			ingrediente1.setUrlImagen("");
+			ingrediente1.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente2 = new Ingrediente();
+
+			ingrediente2.setDenominacion("Cebolla");
+			ingrediente2.setFechaHoraAlta(new Date());
+			ingrediente2.setFechaHoraBaja(new Date());
+			ingrediente2.setFechaHoraModificacion(new Date());
+			ingrediente2.setPrecioCompra(new BigDecimal(13215));
+			ingrediente2.setStockMinimo(new BigDecimal(2165));
+			ingrediente2.setStockActual(new BigDecimal(5900));
+			ingrediente2.setUnidadMedida(unidadMedida);
+			ingrediente2.setUrlImagen("");
+			ingrediente2.setRubroIngrediente(rubroIngrediente1);
 
 			//DetalleProductoCocina
 
@@ -202,14 +228,12 @@ public class BuensaborApplication {
 
 			detallePedido.setCantidad(3);
 			detallePedido.setSubtotal(new BigDecimal(44894));
-			detallePedido.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido.setProducto(cocina1);
 
 			DetallePedido detallePedido1 = new DetallePedido();
 
 			detallePedido1.setCantidad(3);
 			detallePedido1.setSubtotal(new BigDecimal(44894));
-			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido1.setProducto(cocina1);
 
 			//DetalleFactura
