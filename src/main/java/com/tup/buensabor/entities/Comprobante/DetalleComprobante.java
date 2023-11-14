@@ -25,8 +25,10 @@ public class DetalleComprobante extends Base {
     @Column(name = "subtotal", precision = 10, scale = 2)
     private BigDecimal subtotal;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne()
     @JoinColumn(name = "fk_articulo_producto")
     private Producto producto;
+
+
 
 }

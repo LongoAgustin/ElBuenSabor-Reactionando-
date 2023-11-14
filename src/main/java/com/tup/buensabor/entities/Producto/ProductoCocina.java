@@ -17,8 +17,10 @@ import java.util.List;
 
 public class ProductoCocina extends Producto {
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "PRODUCTOCOCINA - INGREDIENTE")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "PRODUCTOCOCINA_INGREDIENTE",
+            joinColumns = @JoinColumn(name = "PRODUCTOCOCINA_ID"),
+            inverseJoinColumns = @JoinColumn(name = "INGREDIENTE_ID"))
     private List<DetalleProductoCocina> detalleProductoCocina = new ArrayList<>();
 
     @Column(name = "tiempo_estimado_cocina")

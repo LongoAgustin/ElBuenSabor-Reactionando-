@@ -204,6 +204,7 @@ public class BuensaborApplication {
 			cocina1.addDetalleProductoCocina(detalleProductoCocina);
 			cocina1.setTipoProducto(TipoProducto.COCINA);
 			cocina1.setUrlImagen("https://th.bing.com/th/id/OIP.WlpuQvutgIf6oo8uY0_4JgHaE7?pid=ImgDet&rs=1");
+			cocina1.setEstadoProducto(EstadoProducto.ALTA);
 
 			//ProductoInsumo
 
@@ -219,6 +220,7 @@ public class BuensaborApplication {
 			insumo1.setMarca("cocacolastic");
 			insumo1.setTipoProducto(TipoProducto.BEBIDA);
 			insumo1.setUrlImagen("https://i.ytimg.com/vi/CWJoEXswRP4/maxresdefault.jpg");
+			insumo1.setEstadoProducto(EstadoProducto.ALTA);
 
 			//DetallePedido
 

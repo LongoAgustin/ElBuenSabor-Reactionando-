@@ -10,12 +10,14 @@ import com.tup.buensabor.DTO.DTOReceta;
 import com.tup.buensabor.enums.TipoProducto;
 import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
 import com.tup.buensabor.repositories.BaseRepository;
-import com.tup.buensabor.request.DTOProductoRequest;
+import com.tup.buensabor.DTO.DTOProducto;
 import com.tup.buensabor.repositories.IngredienteRepository.IngredienteRepository;
 import com.tup.buensabor.repositories.ProductoRepository.RubroProductoRepository;
 import com.tup.buensabor.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.Option;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -43,15 +45,42 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     }
 
     @Override
-    public List<Producto> obtenerProductos() throws Exception {
+    public List<DTOProducto> obtenerProductos() throws Exception {
         try {
             List<Producto> listaProductos = productoRepository.findAll();
 
             if (listaProductos.isEmpty()) {
                 throw new Exception("No hay productos");
             }
+            else {
+                List<DTOProducto> listaDTOProducto = new ArrayList<>();
 
-            return listaProductos;
+                listaProductos.forEach(producto -> {
+
+                    if (producto.getEstadoProducto().equals(EstadoProducto.ALTA)) {
+                        DTOProducto dtoProducto = new DTOProducto();
+                        dtoProducto.setId(producto.getId());
+                        dtoProducto.setEstadoProducto(producto.getEstadoProducto());
+                        dtoProducto.setTipoProducto(producto.getTipoProducto().toString());
+                        dtoProducto.setRubroProducto(producto.getRubroProducto());
+                        dtoProducto.setPrecio(producto.getPrecioVenta());
+                        dtoProducto.setDenominacion(producto.getDenominacion());
+                        dtoProducto.setDescripcion(producto.getDescripcion());
+                        dtoProducto.setUrlImagen(producto.getUrlImagen());
+                        if (producto instanceof ProductoCocina) {
+                            dtoProducto.setTiempoEstimadoCocina(((ProductoCocina) producto).getTiempoEstimadoCocina());
+                            dtoProducto.setDetalleProductoCocinaList(((ProductoCocina) producto).getDetalleProductoCocina());
+                        } else if (producto instanceof ProductoInsumo) {
+                            dtoProducto.setLote(((ProductoInsumo) producto).getLote());
+                            dtoProducto.setMarca(((ProductoInsumo) producto).getMarca());
+                        }
+
+                        listaDTOProducto.add(dtoProducto);
+                    }
+                });
+
+                return listaDTOProducto;
+            }
 
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -92,29 +121,29 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     }
 
     @Override
-    public Producto agregarProducto(DTOProductoRequest DTOProductoRequest) throws Exception {
+    public Producto agregarProducto(DTOProducto DTOProducto) throws Exception {
         try {
 
             //Verifico existencia de producto
-            List<Producto> productoExistente = productoRepository.buscarProducto(DTOProductoRequest.getDenominacion());
+            List<Producto> productoExistente = productoRepository.buscarProducto(DTOProducto.getDenominacion());
 
             if (productoExistente.isEmpty()) {
 
                 //Patrón Factoría para crear un producto del tipo Cocina o Insumo
                 ProductoFactory productoFactory = new ProductoFactory();
-                Producto nuevoProducto = productoFactory.crearProducto(DTOProductoRequest);
+                Producto nuevoProducto = productoFactory.crearProducto(DTOProducto);
 
                 //Seteo de cosas en común entre ambos tipos
-                nuevoProducto.setDenominacion(DTOProductoRequest.getDenominacion());
-                nuevoProducto.setDescripcion(DTOProductoRequest.getDescripcion());
-                nuevoProducto.setPrecioVenta(DTOProductoRequest.getPrecio());
-                nuevoProducto.setUrlImagen(DTOProductoRequest.getUrlImagen());
+                nuevoProducto.setDenominacion(DTOProducto.getDenominacion());
+                nuevoProducto.setDescripcion(DTOProducto.getDescripcion());
+                nuevoProducto.setPrecioVenta(DTOProducto.getPrecio());
+                nuevoProducto.setUrlImagen(DTOProducto.getUrlImagen());
 
                 nuevoProducto.setFechaAlta(new Date());
                 nuevoProducto.setEstadoProducto(EstadoProducto.ALTA);
 
                 //Seteo de rubro
-                Optional<RubroProducto> rubroProducto = rubroProductoRepository.findById(DTOProductoRequest.getRubroProducto().getId());
+                Optional<RubroProducto> rubroProducto = rubroProductoRepository.findById(DTOProducto.getRubroProducto().getId());
 
                 if (rubroProducto.isPresent()) {
                     nuevoProducto.setRubroProducto(rubroProducto.get());
@@ -126,10 +155,11 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
                 if (nuevoProducto instanceof ProductoCocina) {
 
                     ProductoCocina productoCocina = (ProductoCocina) nuevoProducto;
-                    productoCocina.setTiempoEstimadoCocina(DTOProductoRequest.getTiempoEstimadoCocina());
+                    productoCocina.setTiempoEstimadoCocina(DTOProducto.getTiempoEstimadoCocina());
+                    productoCocina.setTipoProducto(TipoProducto.COCINA);
 
                     //Añadir detalle producto cocina con ingredientes existentes
-                    List<DetalleProductoCocina> detalleProductoList = DTOProductoRequest.getDetalleProductoCocinaList();
+                    List<DetalleProductoCocina> detalleProductoList = DTOProducto.getDetalleProductoCocinaList();
                     detalleProductoList.forEach(detalleProducto -> {
                         Optional<Ingrediente> ingrediente = ingredienteRepository.findById(detalleProducto.getIngrediente().getId());
 
@@ -152,8 +182,9 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
 
                     ProductoInsumo productoInsumo = (ProductoInsumo) nuevoProducto;
 
-                    productoInsumo.setLote(DTOProductoRequest.getLote());
-                    productoInsumo.setMarca(DTOProductoRequest.getMarca());
+                    productoInsumo.setTipoProducto(TipoProducto.BEBIDA);
+                    productoInsumo.setLote(DTOProducto.getLote());
+                    productoInsumo.setMarca(DTOProducto.getMarca());
 
                     productoRepository.save(productoInsumo);
 
@@ -211,7 +242,28 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     }
 
     @Override
-    public Producto actualizarProducto(DTOProductoRequest DTOProductoRequest, Long id) throws Exception {
+    public String bajaProducto(Long id) throws Exception {
+        Optional<Producto> optionalProducto = productoRepository.findById(id);
+
+        try {
+            if (optionalProducto.isPresent()){
+                Producto producto = optionalProducto.get();
+                producto.setEstadoProducto(EstadoProducto.BAJA);
+
+                productoRepository.save(producto);
+
+                return "El producto ha sido dado de baja";
+
+            } else {
+                throw new Exception("No existe este producto");
+            }
+        } catch ( Exception e ){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Producto actualizarProducto(DTOProducto DTOProducto, Long id) throws Exception {
 
         //Verificación de existencia antes de modificar
         Optional<Producto> optionalProducto = productoRepository.findById(id);
@@ -221,35 +273,35 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
 
                 Producto productoAModificar = optionalProducto.get();
 
-                if (DTOProductoRequest.getDenominacion() != null) {
-                    productoAModificar.setDenominacion(DTOProductoRequest.getDenominacion());
+                if (DTOProducto.getDenominacion() != null) {
+                    productoAModificar.setDenominacion(DTOProducto.getDenominacion());
                 }
-                if (DTOProductoRequest.getPrecio() != null) {
-                    productoAModificar.setPrecioVenta(DTOProductoRequest.getPrecio());
+                if (DTOProducto.getPrecio() != null) {
+                    productoAModificar.setPrecioVenta(DTOProducto.getPrecio());
                 }
-                if (DTOProductoRequest.getDescripcion() != null) {
-                    productoAModificar.setDescripcion(DTOProductoRequest.getDescripcion());
+                if (DTOProducto.getDescripcion() != null) {
+                    productoAModificar.setDescripcion(DTOProducto.getDescripcion());
                 }
-                if (DTOProductoRequest.getEstadoProducto() != null) {
-                    if (DTOProductoRequest.getEstadoProducto().equals(EstadoProducto.BAJA)) {
+                if (DTOProducto.getEstadoProducto() != null) {
+                    if (DTOProducto.getEstadoProducto().equals(EstadoProducto.BAJA)) {
                         productoAModificar.setFechaBaja(new Date());
                         productoAModificar.setEstadoProducto(EstadoProducto.BAJA);
-                    } else if (DTOProductoRequest.getEstadoProducto().equals(EstadoProducto.ALTA)) {
+                    } else if (DTOProducto.getEstadoProducto().equals(EstadoProducto.ALTA)) {
                         productoAModificar.setFechaAlta(new Date());
                         productoAModificar.setEstadoProducto(EstadoProducto.ALTA);
                     }
                 }
-                if (DTOProductoRequest.getRubroProducto() != null) {
-                    Optional<RubroProducto> rubroProducto = rubroProductoRepository.findById(DTOProductoRequest.getRubroProducto().getId());
+                if (DTOProducto.getRubroProducto() != null) {
+                    Optional<RubroProducto> rubroProducto = rubroProductoRepository.findById(DTOProducto.getRubroProducto().getId());
                     productoAModificar.setRubroProducto(rubroProducto.get());
                 }
                 if (productoAModificar instanceof ProductoCocina) {
-                    if (DTOProductoRequest.getTiempoEstimadoCocina() != null) {
-                        ((ProductoCocina) productoAModificar).setTiempoEstimadoCocina(DTOProductoRequest.getTiempoEstimadoCocina());
+                    if (DTOProducto.getTiempoEstimadoCocina() != null) {
+                        ((ProductoCocina) productoAModificar).setTiempoEstimadoCocina(DTOProducto.getTiempoEstimadoCocina());
                     }
-                    if (!DTOProductoRequest.getDetalleProductoCocinaList().isEmpty()) {
+                    if (!DTOProducto.getDetalleProductoCocinaList().isEmpty()) {
 
-                        List<DetalleProductoCocina> detalleProductoCocinaList = DTOProductoRequest.getDetalleProductoCocinaList();
+                        List<DetalleProductoCocina> detalleProductoCocinaList = DTOProducto.getDetalleProductoCocinaList();
 
                         detalleProductoCocinaList.forEach(detalleProducto -> {
                             Optional<Ingrediente> optIngrediente = ingredienteRepository.findById(detalleProducto.getIngrediente().getId());
@@ -269,11 +321,11 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
 
                     }
                 } else if (productoAModificar instanceof ProductoInsumo) {
-                    if (DTOProductoRequest.getMarca() != null) {
-                        ((ProductoInsumo) productoAModificar).setMarca(DTOProductoRequest.getMarca());
+                    if (DTOProducto.getMarca() != null) {
+                        ((ProductoInsumo) productoAModificar).setMarca(DTOProducto.getMarca());
                     }
-                    if (DTOProductoRequest.getLote() != null) {
-                        ((ProductoInsumo) productoAModificar).setLote(DTOProductoRequest.getLote());
+                    if (DTOProducto.getLote() != null) {
+                        ((ProductoInsumo) productoAModificar).setLote(DTOProducto.getLote());
                     }
                 }
 
@@ -327,4 +379,5 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
             throw new Exception(e.getMessage());
         }
     }
+
 }
