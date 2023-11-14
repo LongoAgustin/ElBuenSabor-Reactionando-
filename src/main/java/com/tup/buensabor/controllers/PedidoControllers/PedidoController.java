@@ -62,7 +62,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     @PutMapping("/updatePedido")
     public ResponseEntity<?> updatePedido(@RequestParam Long pedidoID) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.aConfirmar(pedidoID));
+            return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(pedidoID));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
@@ -77,5 +77,5 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
     }
 
-
 }
+

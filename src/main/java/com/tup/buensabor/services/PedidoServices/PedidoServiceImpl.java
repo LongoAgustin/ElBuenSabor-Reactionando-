@@ -7,17 +7,18 @@ import com.tup.buensabor.entities.Pedido.DetallePedido;
 import com.tup.buensabor.entities.Pedido.Pedido;
 import com.tup.buensabor.entities.Producto.Producto;
 import com.tup.buensabor.entities.Usuario.Usuario;
-import com.tup.buensabor.enums.EstadoFactura;
-import com.tup.buensabor.enums.EstadoPedido;
-import com.tup.buensabor.enums.FormaPago;
+import com.tup.buensabor.enums.*;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
+import com.tup.buensabor.repositories.PedidoRepository.DetallePedidoRepository;
 import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
 import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
 import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import com.tup.buensabor.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +39,9 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
     @Autowired
     protected ProductoRepository productoRepository;
+
+    @Autowired
+    protected DetallePedidoRepository detallePedidoRepository;
 
     public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoRepository) {
         super(baseRepository);
@@ -129,7 +133,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         try {
             Optional<Pedido> pedidoid = pedidoRepository.findById(pedidoID);
             if (pedidoid.isEmpty()) {
-                throw new Exception("No Existe el Usuario");
+                throw new Exception("No Existe el Pedido");
             } else {
                 Pedido pedidos = pedidoid.get();
                 return pedidos;
@@ -139,7 +143,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         }
     }
 
-
+/*
     public Pedido aConfirmar(Long pedidoID) throws Exception {
         try {
 
@@ -150,17 +154,81 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                 pedidoCamb.setEstado(EstadoPedido.PREPARACION);
                 pedidoRepository.save(pedidoCamb);
                 return pedidoCamb;
-            } /*else if (pedidosaConf.get().getEstado() == EstadoPedido.A_CONFIRMAR &&
-                    pedidosaConf.get().getDetallePedido().get(0).getProducto().getRubroProducto(equals().)) {
+            }else if(pedidosaConf.get().getEstado() == EstadoPedido.PREPARACION) {
                 Pedido pedidoCamb = pedidosaConf.get();
-                pedidoCamb.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                pedidoCamb.setEstado(EstadoPedido.PREPARACION);
+                pedidoRepository.save(pedidoCamb);
                 return pedidoCamb;
-            }*/ else {
+            }else if(pedidosaConf.get().getEstado() == EstadoPedido.) {
+                Pedido pedidoCamb = pedidosaConf.get();
+                pedidoCamb.setEstado(EstadoPedido.PREPARACION);
+                pedidoRepository.save(pedidoCamb);
+                return pedidoCamb;
+            }else{
                 throw new Exception("No hay pedidos con este estado");
             }
 
         } catch (
                 Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+*/
+
+    @Transactional
+    public Pedido cambioEstado (Long pedidoID) throws Exception{
+        try{
+
+            Optional<Pedido> pedido = pedidoRepository.findById(pedidoID);
+            List<DetallePedido> detallePedido = pedido.get().getDetallePedido();
+
+            if (pedido.isEmpty()) {
+                throw new Exception("No Existe el Pedido");
+            } else {
+                Pedido cambioestadoPedido = pedido.get();
+                switch(pedido.get().getEstado()){
+                    case A_CONFIRMAR:
+                        for (DetallePedido detalle : detallePedido) {
+                            if (detalle.getProducto().getTipoProducto().equals(TipoProducto.BEBIDA)) {
+                                cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                            } else {
+                                cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
+                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                            }
+                        }
+                    break;
+                    case PREPARACION:
+                        if (pedido.get().getTipoEnvio().equals(TipoEnvio.DELIVERY)){
+                            cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_ENTREGA);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        } else {
+                            cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        }
+                    break;
+                    case PENDIENTE_ENTREGA:
+                        cambioestadoPedido.setEstado(EstadoPedido.EN_CAMINO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case EN_CAMINO, PAGADO:
+                        cambioestadoPedido.setEstado(EstadoPedido.COMPLETADO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case PENDIENTE_PAGO:
+                        cambioestadoPedido.setEstado(EstadoPedido.PAGADO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case CANCELADO:
+                        cambioestadoPedido.setEstado(EstadoPedido.NOTA_CREDITO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                }
+                pedidoRepository.save(cambioestadoPedido);
+                return cambioestadoPedido;
+                }
+
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
