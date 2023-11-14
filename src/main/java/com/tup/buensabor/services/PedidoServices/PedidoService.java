@@ -14,8 +14,6 @@ public interface PedidoService extends BaseService<Pedido, Long> {
     public List<DTOPedidos> listaXEstados(String estado) throws Exception;
     public Factura pagarPedido(Long idPedido) throws Exception;
     public Pedido searchxID(Long pedidoID) throws Exception;
-
     public Pedido cambioEstado(Long pedidoID) throws Exception;
-
     Pedido newPedido(DTOPedidoABM dtoPedidoABM)throws Exception;
 }

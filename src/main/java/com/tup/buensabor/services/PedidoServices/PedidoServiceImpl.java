@@ -10,15 +10,12 @@ import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.*;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
-import com.tup.buensabor.repositories.PedidoRepository.DetallePedidoRepository;
 import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
 import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
 import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import com.tup.buensabor.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,8 +37,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     @Autowired
     protected ProductoRepository productoRepository;
 
-    @Autowired
-    protected DetallePedidoRepository detallePedidoRepository;
+
 
     public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoRepository) {
         super(baseRepository);
@@ -175,7 +171,6 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     }
 */
 
-    @Transactional
     public Pedido cambioEstado (Long pedidoID) throws Exception{
         try{
 
