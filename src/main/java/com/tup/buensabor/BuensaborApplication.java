@@ -5,7 +5,6 @@ import com.tup.buensabor.entities.Comprobante.Factura;
 import com.tup.buensabor.entities.Comprobante.NotaCredito;
 import com.tup.buensabor.entities.Ingrediente.*;
 import com.tup.buensabor.entities.Pedido.DetallePedido;
-import com.tup.buensabor.entities.Pedido.Pedido;
 import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
 import com.tup.buensabor.entities.Producto.ProductoCocina;
 import com.tup.buensabor.entities.Producto.ProductoInsumo;
@@ -155,7 +154,33 @@ public class BuensaborApplication {
 			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
 			ingrediente.setUrlImagen("");
-			ingrediente.setRubroIngrediente(rubroIngrediente1);
+			ingrediente.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente1 = new Ingrediente();
+
+			ingrediente1.setDenominacion("Perejil");
+			ingrediente1.setFechaHoraAlta(new Date());
+			ingrediente1.setFechaHoraBaja(new Date());
+			ingrediente1.setFechaHoraModificacion(new Date());
+			ingrediente1.setPrecioCompra(new BigDecimal(1321));
+			ingrediente1.setStockMinimo(new BigDecimal(2195));
+			ingrediente1.setStockActual(new BigDecimal(590));
+			ingrediente1.setUnidadMedida(unidadMedida);
+			ingrediente1.setUrlImagen("");
+			ingrediente1.setRubroIngrediente(rubroIngrediente2);
+
+			Ingrediente ingrediente2 = new Ingrediente();
+
+			ingrediente2.setDenominacion("Cebolla");
+			ingrediente2.setFechaHoraAlta(new Date());
+			ingrediente2.setFechaHoraBaja(new Date());
+			ingrediente2.setFechaHoraModificacion(new Date());
+			ingrediente2.setPrecioCompra(new BigDecimal(13215));
+			ingrediente2.setStockMinimo(new BigDecimal(2165));
+			ingrediente2.setStockActual(new BigDecimal(5900));
+			ingrediente2.setUnidadMedida(unidadMedida);
+			ingrediente2.setUrlImagen("");
+			ingrediente2.setRubroIngrediente(rubroIngrediente1);
 
 			//DetalleProductoCocina
 
@@ -201,45 +226,13 @@ public class BuensaborApplication {
 
 			detallePedido.setCantidad(3);
 			detallePedido.setSubtotal(new BigDecimal(44894));
-			detallePedido.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido.setProducto(cocina1);
 
 			DetallePedido detallePedido1 = new DetallePedido();
 
 			detallePedido1.setCantidad(3);
 			detallePedido1.setSubtotal(new BigDecimal(44894));
-			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido1.setProducto(cocina1);
-
-			//Pedido
-
-			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.A_CONFIRMAR);
-			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido1.setTotal(new BigDecimal(49844));
-			pedido1.setTotalCosto(new BigDecimal(498446));
-			pedido1.setFechaHoraAlta(new Date());
-			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
-			pedido1.setHoraEstimadaFinalizacion(new Date());
-			pedido1.setFechaHoraPedido(new Date());
-			pedido1.addDetallePedido(detallePedido);
-			pedido1.setDomicilioEntrega(domicilio);
-
-			Pedido pedido2 = new Pedido();
-			pedido2.setEstado(EstadoPedido.PREPARACION);
-			pedido2.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido2.setTotal(new BigDecimal(45944));
-			pedido2.setTotalCosto(new BigDecimal(478446));
-			pedido2.setFechaHoraAlta(new Date());
-			pedido2.setFormaPago(FormaPago.EFECTIVO);
-			pedido2.setHoraEstimadaFinalizacion(new Date());
-			pedido2.setFechaHoraPedido(new Date());
-			pedido2.addDetallePedido(detallePedido1);
-			pedido2.setDomicilioEntrega(domicilio);
-
-			//agregar pedido al Usuario
-			usuario.addPedidoList(pedido1);
-			usuario.addPedidoList(pedido2);
 
 			//DetalleFactura
 
@@ -309,8 +302,6 @@ public class BuensaborApplication {
 			rubroProductoRepository.save(rubroProducto2);
 			productoRepository.save(cocina1);
 			productoRepository.save(insumo1);
-			pedidoRepository.save(pedido1);
-			pedidoRepository.save(pedido2);
 			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
