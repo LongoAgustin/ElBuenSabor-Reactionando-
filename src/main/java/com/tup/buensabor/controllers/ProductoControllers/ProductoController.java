@@ -1,6 +1,5 @@
 package com.tup.buensabor.controllers.ProductoControllers;
 
-
 import com.tup.buensabor.DTO.DTOProducto;
 import com.tup.buensabor.controllers.BaseControllerImpl;
 import com.tup.buensabor.entities.Producto.Producto;
@@ -86,7 +85,7 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
-    @GetMapping("/list")
+    @GetMapping("/principalList")
     public ResponseEntity<?> obtenerIngredientes(){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.getProdPagPrincipal());
