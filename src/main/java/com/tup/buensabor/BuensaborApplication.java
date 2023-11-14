@@ -1,8 +1,31 @@
 package com.tup.buensabor;
 
-import com.tup.buensabor.entities.*;
+import com.tup.buensabor.entities.Comprobante.DetalleComprobante;
+import com.tup.buensabor.entities.Comprobante.Factura;
+import com.tup.buensabor.entities.Comprobante.NotaCredito;
+import com.tup.buensabor.entities.Ingrediente.*;
+import com.tup.buensabor.entities.Pedido.DetallePedido;
+import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoInsumo;
+import com.tup.buensabor.entities.Producto.RubroProducto;
+import com.tup.buensabor.entities.Usuario.Domicilio;
+import com.tup.buensabor.entities.Usuario.Localidad;
+import com.tup.buensabor.entities.Usuario.Persona;
+import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.*;
-import com.tup.buensabor.repositories.*;
+import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
+import com.tup.buensabor.repositories.ComprobanteRepository.NotaCreditoRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.CompraIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.IngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.RubroIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.UnidadMedidaRepository;
+import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.RubroProductoRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.DomicilioRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.LocalidadRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -55,11 +78,8 @@ public class BuensaborApplication {
 			Persona persona = new Persona();
 			persona.setNombre("Agustin");
 			persona.setApellido("Sula");
-			persona.setTelefono(Long.valueOf(216346689));
+			persona.setTelefono("123456");
 			persona.setFechaHoraAlta(new Date());
-
-
-
 
 			//User
 
@@ -74,7 +94,6 @@ public class BuensaborApplication {
 			//Localidad
 
 			Localidad localidad = new Localidad();
-
 			localidad.setDenominacion("Guaymallén");
 
 			//Domicilio
@@ -93,13 +112,13 @@ public class BuensaborApplication {
 			//RubroIngrediente
 
 			RubroIngrediente rubroIngrediente1 = new RubroIngrediente();
-			rubroIngrediente1.setDenominacion("Verdura");
+			rubroIngrediente1.setDenominacion("verdura");
 			rubroIngrediente1.setFechaHoraAlta(new Date());
 			rubroIngrediente1.setFechaHoraBaja(new Date());
 			rubroIngrediente1.setFechaHoraModificacion(new Date());
 
 			RubroIngrediente rubroIngrediente2 = new RubroIngrediente();
-			rubroIngrediente2.setDenominacion("Condimento");
+			rubroIngrediente2.setDenominacion("condimento");
 			rubroIngrediente2.setFechaHoraAlta(new Date());
 			rubroIngrediente2.setFechaHoraBaja(new Date());
 			rubroIngrediente2.setFechaHoraModificacion(new Date());
@@ -111,7 +130,7 @@ public class BuensaborApplication {
 			rubroProducto1.setFechaHoraAlta(new Date());
 
 			RubroProducto rubroProducto2 = new RubroProducto();
-			rubroProducto2.setDenominacion("Coca Cola");
+			rubroProducto2.setDenominacion("Gaseosa");
 			rubroProducto2.setFechaHoraAlta(new Date());
 
 			//UnidadMedida
@@ -122,51 +141,45 @@ public class BuensaborApplication {
 			unidadMedida.setAbreviatura("g");
 			unidadMedida.setFechaHoraAlta(new Date());
 
-			UnidadMedida unidadMedida2 = new UnidadMedida();
-
-			unidadMedida2.setDenominacion("unidad");
-			unidadMedida2.setAbreviatura("uni");
-			unidadMedida2.setFechaHoraAlta(new Date());
-
 			//Ingrediente
 
 			Ingrediente ingrediente = new Ingrediente();
 
 			ingrediente.setDenominacion("Orégano");
 			ingrediente.setFechaHoraAlta(new Date());
-			ingrediente.setFechaHoraBaja(null);
-			ingrediente.setFechaHoraModificacion(null);
+			ingrediente.setFechaHoraBaja(new Date());
+			ingrediente.setFechaHoraModificacion(new Date());
 			ingrediente.setPrecioCompra(new BigDecimal(13215));
 			ingrediente.setStockMinimo(new BigDecimal(2165));
 			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
-			ingrediente.setUrlImagen("https://plazavea.vteximg.com.br/arquivos/ids/419765-1000-1000/20146602.jpg?v=637375895601400000");
+			ingrediente.setUrlImagen("");
 			ingrediente.setRubroIngrediente(rubroIngrediente2);
 
 			Ingrediente ingrediente1 = new Ingrediente();
 
 			ingrediente1.setDenominacion("Perejil");
 			ingrediente1.setFechaHoraAlta(new Date());
-			ingrediente1.setFechaHoraBaja(null);
-			ingrediente1.setFechaHoraModificacion(null);
+			ingrediente1.setFechaHoraBaja(new Date());
+			ingrediente1.setFechaHoraModificacion(new Date());
 			ingrediente1.setPrecioCompra(new BigDecimal(1321));
 			ingrediente1.setStockMinimo(new BigDecimal(2195));
 			ingrediente1.setStockActual(new BigDecimal(590));
 			ingrediente1.setUnidadMedida(unidadMedida);
-			ingrediente1.setUrlImagen("https://a1.soysuper.com/ecd11b05499d59551b6cfd055513fc54.1500.0.0.0.wmark.eacfaba2.jpg");
+			ingrediente1.setUrlImagen("");
 			ingrediente1.setRubroIngrediente(rubroIngrediente2);
 
 			Ingrediente ingrediente2 = new Ingrediente();
 
 			ingrediente2.setDenominacion("Cebolla");
 			ingrediente2.setFechaHoraAlta(new Date());
-			ingrediente2.setFechaHoraBaja(null);
-			ingrediente2.setFechaHoraModificacion(null);
+			ingrediente2.setFechaHoraBaja(new Date());
+			ingrediente2.setFechaHoraModificacion(new Date());
 			ingrediente2.setPrecioCompra(new BigDecimal(13215));
 			ingrediente2.setStockMinimo(new BigDecimal(2165));
 			ingrediente2.setStockActual(new BigDecimal(5900));
-			ingrediente2.setUnidadMedida(unidadMedida2);
-			ingrediente2.setUrlImagen("https://frutasyverduras.info/wp-content/uploads/2019/06/cebolla-morada-1024x711.jpg");
+			ingrediente2.setUnidadMedida(unidadMedida);
+			ingrediente2.setUrlImagen("");
 			ingrediente2.setRubroIngrediente(rubroIngrediente1);
 
 			//DetalleProductoCocina
@@ -176,92 +189,59 @@ public class BuensaborApplication {
 			detalleProductoCocina.setCantidad(new BigDecimal(4584));
 			detalleProductoCocina.setIngrediente(ingrediente);
 
-
 			//ProductoCocina
 
-			ProductoCocina productoCocina= new ProductoCocina();
-			productoCocina.setTiempoEstimadoCocina(30);
-			productoCocina.addDetalleProductoCocina(detalleProductoCocina);
+			ProductoCocina cocina1 = new ProductoCocina();
+
+			cocina1.setCosto(new BigDecimal(1245));
+			cocina1.setDenominacion("Hamburguesa con queso");
+			cocina1.setDescripcion("ta buena MMM");
+			cocina1.setFechaAlta(new Date());
+			cocina1.setPrecioVenta(new BigDecimal(1321));
+			cocina1.setTiempoEstimadoCocina(85);
+			cocina1.setUrlImagen("");
+			cocina1.setRubroProducto(rubroProducto1);
+			cocina1.addDetalleProductoCocina(detalleProductoCocina);
+			cocina1.setTipoProducto(TipoProducto.COCINA);
+			cocina1.setUrlImagen("https://th.bing.com/th/id/OIP.WlpuQvutgIf6oo8uY0_4JgHaE7?pid=ImgDet&rs=1");
+			cocina1.setEstadoProducto(EstadoProducto.ALTA);
 
 			//ProductoInsumo
 
-			ProductoInsumo productoInsumo = new ProductoInsumo();
-			productoInsumo.setLote(5);
-			productoInsumo.setMarca("Coca Cola");
-
-			//Producto
-
-			ProductoCocina articulo1 = new ProductoCocina();
-
-			articulo1.setCosto(new BigDecimal(1245));
-			articulo1.setTiempoEstimadoCocina(30);
-			articulo1.setDenominacion("Hamburguesa con queso");
-			articulo1.setDescripcion("ta buena");
-			articulo1.setFechaAlta(new Date());
-			articulo1.setPrecioVenta(new BigDecimal(1321));
-			articulo1.addDetalleProductoCocina(detalleProductoCocina);
-			articulo1.setTipoProducto(TipoProducto.COCINA);
-			articulo1.setUrlImagen("");
-			articulo1.setRubroproducto(rubroProducto1);
-
-
-			ProductoInsumo articulo2 = new ProductoInsumo();
-
-			articulo2.setCosto(new BigDecimal(124));
-			articulo2.setDenominacion("Coca Cola");
-			articulo2.setDescripcion("buena");
-			articulo2.setFechaAlta(new Date());
-			articulo2.setPrecioVenta(new BigDecimal(132));
-			articulo2.setLote(5);
-			articulo2.setMarca("Coca Cola");
-			articulo2.setStock(2);
-			articulo2.setTipoProducto(TipoProducto.BEBIDA);
-			articulo2.setUrlImagen("");
-			articulo2.setRubroproducto(rubroProducto2);
-
+			ProductoInsumo insumo1 = new ProductoInsumo();
+			insumo1.setCosto(new BigDecimal(1245));
+			insumo1.setDenominacion("coca cola");
+			insumo1.setDescripcion("ta buena MMM que bien");
+			insumo1.setFechaAlta(new Date());
+			insumo1.setPrecioVenta(new BigDecimal(1321));
+			insumo1.setUrlImagen("");
+			insumo1.setRubroProducto(rubroProducto2);
+			insumo1.setLote(23);
+			insumo1.setMarca("cocacolastic");
+			insumo1.setTipoProducto(TipoProducto.BEBIDA);
+			insumo1.setUrlImagen("https://i.ytimg.com/vi/CWJoEXswRP4/maxresdefault.jpg");
+			insumo1.setEstadoProducto(EstadoProducto.ALTA);
 
 			//DetallePedido
 
 			DetallePedido detallePedido = new DetallePedido();
 
 			detallePedido.setCantidad(3);
-			detallePedido.setSubtotal(new BigDecimal(3963));
-			detallePedido.setSubtotalCosto(new BigDecimal(8445));
-			detallePedido.setProducto(articulo1);
+			detallePedido.setSubtotal(new BigDecimal(44894));
+			detallePedido.setProducto(cocina1);
 
 			DetallePedido detallePedido1 = new DetallePedido();
 
 			detallePedido1.setCantidad(3);
 			detallePedido1.setSubtotal(new BigDecimal(44894));
-			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
-			detallePedido1.setProducto(articulo1);
-
-
-			//Pedido
-
-			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.COMPLETADO);
-			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido1.setTotal(new BigDecimal(49844));
-			pedido1.setTotalCosto(new BigDecimal(498446));
-			pedido1.setFechaHoraAlta(new Date());
-			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
-			pedido1.setHoraEstimadaFinalizacion(new Date());
-			pedido1.setFechaHoraPedido(new Date());
-			pedido1.addDetallePedido(detallePedido);
-			pedido1.addDetallePedido(detallePedido1);
-			pedido1.setDomicilioEntrega(domicilio);
-
-			//agregar pedido al Usuario
-			usuario.addPedidoList(pedido1);
-
+			detallePedido1.setProducto(cocina1);
 
 			//DetalleFactura
 
 			DetalleComprobante detalleComprobante1 = new DetalleComprobante();
 			detalleComprobante1.setSubtotal(new BigDecimal(564));
 			detalleComprobante1.setCantidad(8);
-			detalleComprobante1.setProducto(articulo1);
+			detalleComprobante1.setProducto(cocina1);
 
 			//Factura
 
@@ -304,7 +284,7 @@ public class BuensaborApplication {
 
 			DetalleComprobante detalleNotaCredito = new DetalleComprobante();
 			detalleNotaCredito.setCantidad(8);
-			detalleNotaCredito.setProducto(articulo1);
+			detalleNotaCredito.setProducto(cocina1);
 
 			//NotaCredito
 
@@ -315,24 +295,19 @@ public class BuensaborApplication {
 
 			//GUARDAR
 			localidadRepository.save(localidad);
-			usuarioRepository.save(usuario);
 			domicilioRepository.save(domicilio);
 			unidadMedidaRepository.save(unidadMedida);
-			unidadMedidaRepository.save(unidadMedida2);
 			rubroIngredienteRepository.save(rubroIngrediente1);
 			rubroIngredienteRepository.save(rubroIngrediente2);
 			ingredienteRepository.save(ingrediente);
-			ingredienteRepository.save(ingrediente1);
-			ingredienteRepository.save(ingrediente2);
 			rubroProductoRepository.save(rubroProducto1);
-			productoRepository.save(articulo1);
-			pedidoRepository.save(pedido1);
+			rubroProductoRepository.save(rubroProducto2);
+			productoRepository.save(cocina1);
+			productoRepository.save(insumo1);
+			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
 			compraIngredienteRepository.save(compraIngredientes1);
-			rubroProductoRepository.save(rubroProducto2);
-			productoRepository.save(articulo2);
-
 		};
 	}
 
