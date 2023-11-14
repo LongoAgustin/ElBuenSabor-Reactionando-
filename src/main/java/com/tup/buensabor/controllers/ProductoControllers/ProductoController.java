@@ -86,4 +86,13 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<?> obtenerIngredientes(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getProdPagPrincipal());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() +"\"}"));
+        }
+    }
+
 }

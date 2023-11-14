@@ -20,7 +20,6 @@ import java.util.Date;
 @Setter
 public class Ingrediente extends Base {
 
-    @NotNull
     @Column(name = "denominacion")
     private String denominacion;
 
