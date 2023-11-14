@@ -78,7 +78,7 @@ public class BuensaborApplication {
 			Persona persona = new Persona();
 			persona.setNombre("Agustin");
 			persona.setApellido("Sula");
-			persona.setTelefono(Long.valueOf(216346689));
+			persona.setTelefono("123456");
 			persona.setFechaHoraAlta(new Date());
 
 			//User

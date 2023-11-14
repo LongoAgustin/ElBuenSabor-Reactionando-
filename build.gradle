@@ -32,6 +32,10 @@ dependencies {
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.1.0'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.5'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.3'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.3'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.3'
 }
 
 tasks.named('test') {
