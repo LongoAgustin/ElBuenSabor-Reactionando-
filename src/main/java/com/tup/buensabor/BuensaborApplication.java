@@ -1,8 +1,31 @@
 package com.tup.buensabor;
 
-import com.tup.buensabor.entities.*;
+import com.tup.buensabor.entities.Comprobante.DetalleComprobante;
+import com.tup.buensabor.entities.Comprobante.Factura;
+import com.tup.buensabor.entities.Comprobante.NotaCredito;
+import com.tup.buensabor.entities.Ingrediente.*;
+import com.tup.buensabor.entities.Pedido.DetallePedido;
+import com.tup.buensabor.entities.Producto.DetalleProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoCocina;
+import com.tup.buensabor.entities.Producto.ProductoInsumo;
+import com.tup.buensabor.entities.Producto.RubroProducto;
+import com.tup.buensabor.entities.Usuario.Domicilio;
+import com.tup.buensabor.entities.Usuario.Localidad;
+import com.tup.buensabor.entities.Usuario.Persona;
+import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.*;
-import com.tup.buensabor.repositories.*;
+import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
+import com.tup.buensabor.repositories.ComprobanteRepository.NotaCreditoRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.CompraIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.IngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.RubroIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.UnidadMedidaRepository;
+import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
+import com.tup.buensabor.repositories.ProductoRepository.RubroProductoRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.DomicilioRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.LocalidadRepository;
+import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -153,6 +176,8 @@ public class BuensaborApplication {
 			cocina1.setUrlImagen("");
 			cocina1.setRubroProducto(rubroProducto1);
 			cocina1.addDetalleProductoCocina(detalleProductoCocina);
+			cocina1.setTipoProducto(TipoProducto.COCINA);
+			cocina1.setUrlImagen("https://th.bing.com/th/id/OIP.WlpuQvutgIf6oo8uY0_4JgHaE7?pid=ImgDet&rs=1");
 
 			//ProductoInsumo
 
@@ -166,6 +191,8 @@ public class BuensaborApplication {
 			insumo1.setRubroProducto(rubroProducto2);
 			insumo1.setLote(23);
 			insumo1.setMarca("cocacolastic");
+			insumo1.setTipoProducto(TipoProducto.BEBIDA);
+			insumo1.setUrlImagen("https://i.ytimg.com/vi/CWJoEXswRP4/maxresdefault.jpg");
 
 			//DetallePedido
 
@@ -182,36 +209,6 @@ public class BuensaborApplication {
 			detallePedido1.setSubtotal(new BigDecimal(44894));
 			detallePedido1.setSubtotalCosto(new BigDecimal(8445));
 			detallePedido1.setProducto(cocina1);
-
-			//Pedido
-
-			Pedido pedido1 = new Pedido();
-			pedido1.setEstado(EstadoPedido.COMPLETADO);
-			pedido1.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido1.setTotal(new BigDecimal(49844));
-			pedido1.setTotalCosto(new BigDecimal(498446));
-			pedido1.setFechaHoraAlta(new Date());
-			pedido1.setFormaPago(FormaPago.MERCADO_PAGO);
-			pedido1.setHoraEstimadaFinalizacion(new Date());
-			pedido1.setFechaHoraPedido(new Date());
-			pedido1.addDetallePedido(detallePedido);
-			pedido1.setDomicilioEntrega(domicilio);
-
-			Pedido pedido2 = new Pedido();
-			pedido2.setEstado(EstadoPedido.PREPARACION);
-			pedido2.setTipoEnvio(TipoEnvio.DELIVERY);
-			pedido2.setTotal(new BigDecimal(45944));
-			pedido2.setTotalCosto(new BigDecimal(478446));
-			pedido2.setFechaHoraAlta(new Date());
-			pedido2.setFormaPago(FormaPago.EFECTIVO);
-			pedido2.setHoraEstimadaFinalizacion(new Date());
-			pedido2.setFechaHoraPedido(new Date());
-			pedido2.addDetallePedido(detallePedido1);
-			pedido2.setDomicilioEntrega(domicilio);
-
-			//agregar pedido al Usuario
-			usuario.addPedidoList(pedido1);
-			usuario.addPedidoList(pedido2);
 
 			//DetalleFactura
 
@@ -281,8 +278,6 @@ public class BuensaborApplication {
 			rubroProductoRepository.save(rubroProducto2);
 			productoRepository.save(cocina1);
 			productoRepository.save(insumo1);
-			pedidoRepository.save(pedido1);
-			pedidoRepository.save(pedido2);
 			usuarioRepository.save(usuario);
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);

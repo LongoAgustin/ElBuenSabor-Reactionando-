@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tup.buensabor.services.ProductoServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-10-25T20:50:54" hostname="DESKTOP-F900H8J" time="0.038">
+  <properties/>
+  <testcase name="searchDenominacion()" classname="com.tup.buensabor.services.ProductoServiceImplTest" time="0.038"/>
+  <system-out><![CDATA[17:50:47.687 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.tup.buensabor.services.ProductoServiceImplTest]: ProductoServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:50:47.822 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.tup.buensabor.BuensaborApplication for test class com.tup.buensabor.services.ProductoServiceImplTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.3)
+
+2023-10-25T17:50:48.208-03:00  INFO 9304 --- [    Test worker] c.t.b.services.ProductoServiceImplTest   : Starting ProductoServiceImplTest using Java 17.0.8 with PID 9304 (started by franc in D:\Documentos\Tercer año ingeniería\Desarrollo SW\BACKEND\ElBuenSabor-Reactionando-)
+2023-10-25T17:50:48.210-03:00  INFO 9304 --- [    Test worker] c.t.b.services.ProductoServiceImplTest   : No active profile set, falling back to 1 default profile: "default"
+2023-10-25T17:50:48.908-03:00  INFO 9304 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-25T17:50:49.060-03:00  INFO 9304 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 143 ms. Found 20 JPA repository interfaces.
+2023-10-25T17:50:50.736-03:00  INFO 9304 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-25T17:50:50.818-03:00  INFO 9304 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-10-25T17:50:50.822-03:00  INFO 9304 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-10-25T17:50:51.027-03:00  INFO 9304 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-10-25T17:50:51.040-03:00  INFO 9304 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-10-25T17:50:51.067-03:00  INFO 9304 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-25T17:50:51.242-03:00  INFO 9304 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:./betodb user=SA
+2023-10-25T17:50:51.244-03:00  INFO 9304 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-10-25T17:50:51.586-03:00  WARN 9304 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.Factura
+2023-10-25T17:50:51.604-03:00  WARN 9304 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.NotaCredito
+2023-10-25T17:50:51.624-03:00  WARN 9304 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.ProductoCocina
+2023-10-25T17:50:51.627-03:00  WARN 9304 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.ProductoInsumo
+2023-10-25T17:50:51.730-03:00  INFO 9304 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-10-25T17:50:52.551-03:00  INFO 9304 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-25T17:50:52.633-03:00  INFO 9304 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-25T17:50:52.990-03:00  INFO 9304 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-10-25T17:50:53.679-03:00  WARN 9304 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-25T17:50:54.042-03:00  INFO 9304 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:./betodb'
+2023-10-25T17:50:54.096-03:00  INFO 9304 --- [    Test worker] c.t.b.services.ProductoServiceImplTest   : Started ProductoServiceImplTest in 6.098 seconds (process running for 7.379)
+------------------------Estoy Funcionando------------------------
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

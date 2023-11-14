@@ -1,6 +1,7 @@
 package com.tup.buensabor.repositories;
 
-import com.tup.buensabor.entities.Usuario;
+import com.tup.buensabor.entities.Usuario.Usuario;
+import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,8 @@
 package com.tup.buensabor.services;
 
-import com.tup.buensabor.entities.Producto;
-import com.tup.buensabor.repositories.ProductoRepository;
+import com.tup.buensabor.entities.Producto.Producto;
+import com.tup.buensabor.repositories.ProductoRepository.ProductoRepository;
+import com.tup.buensabor.services.ProductoServices.ProductoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
