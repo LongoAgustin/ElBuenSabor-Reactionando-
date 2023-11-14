@@ -14,9 +14,6 @@ import java.util.List;
 
 @Service
 public class DetallePedidoServiceImpl  extends BaseServiceImpl<DetallePedido, Long> implements DetallePedidoService {
-
-    @Autowired
-    protected Producto producto;
     @Autowired
     protected DetallePedidoRepository detallePedidoRepository;
 
