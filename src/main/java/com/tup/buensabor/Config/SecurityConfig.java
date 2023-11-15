@@ -31,6 +31,7 @@ public class SecurityConfig { //Security filter chain
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authRequest -> 
             authRequest
+                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()

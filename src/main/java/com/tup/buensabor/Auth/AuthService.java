@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.tup.buensabor.JWT.JwtService;
@@ -20,6 +23,9 @@ public class AuthService {
 
     @Autowired
     JwtService jwt;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) throws Exception {
         try {
@@ -55,7 +61,11 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest request){
-        return null;
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
+        UserDetails usuario = usuarioRepository.findByEmail(request.getEmail()).orElseThrow();
+        String token = jwt.getToken(usuario);
+        return new AuthResponse(token);
     }
 
 }
