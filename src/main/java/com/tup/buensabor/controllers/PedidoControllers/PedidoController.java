@@ -1,6 +1,7 @@
 package com.tup.buensabor.controllers.PedidoControllers;
 
 import com.tup.buensabor.DTO.DTOPedidoABM;
+import com.tup.buensabor.DTO.DTOPedidoRequest;
 import com.tup.buensabor.controllers.BaseControllerImpl;
 import com.tup.buensabor.entities.Pedido.Pedido;
 import com.tup.buensabor.services.PedidoServices.PedidoServiceImpl;
@@ -60,9 +61,9 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     }
 
     @PutMapping("/updatePedido")
-    public ResponseEntity<?> updatePedido(@RequestParam Long pedidoID) {
+    public ResponseEntity<?> updatePedido(@RequestBody DTOPedidoRequest dtoPedidoRequest) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(pedidoID));
+            return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(dtoPedidoRequest));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
