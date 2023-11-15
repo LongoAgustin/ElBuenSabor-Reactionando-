@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/productos")
 public class ProductoController extends BaseControllerImpl<Producto, ProductoServiceImpl> {
 

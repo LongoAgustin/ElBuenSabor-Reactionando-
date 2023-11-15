@@ -20,10 +20,10 @@ public class JwtService {
     private String getToken(Map<String, Object> extraClaims, UserDetails usuario){
         return Jwts
             .builder()
-            .claims(extraClaims)
-            .subject(usuario.getUsername())
-            .issuedAt(new Date(System.currentTimeMillis()))
-            .expiration(new Date(System.currentTimeMillis()+1000*60*24))
+            .setClaims(extraClaims)
+            .setSubject(usuario.getUsername())
+            .setIssuedAt(new Date(System.currentTimeMillis()))
+            .setExpiration(new Date(System.currentTimeMillis()+1000*60*24))
             .signWith(getKey())
             .compact();
     }
