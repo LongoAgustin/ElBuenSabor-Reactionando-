@@ -15,11 +15,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private static String SECRET_KEY = "AAAAAAAAAAJAJAJAJAJAJAJAJA";
-
-    public String getToken(UserDetails usuario) {
-        return getToken(new HashMap<>(), usuario);
-    }
+    private static String SECRET_KEY = "AAAAAAAAAAJAJAJAJAJAJAJAJASSSSSSSSSSSSSSSSSSSSSSSSSSSGGGGGGGGGGGGGGGGGGGGGGERT435345";
 
     private String getToken(Map<String, Object> extraClaims, UserDetails usuario){
         return Jwts
@@ -30,6 +26,10 @@ public class JwtService {
             .expiration(new Date(System.currentTimeMillis()+1000*60*24))
             .signWith(getKey())
             .compact();
+    }
+
+    public String getToken(UserDetails usuario) {
+        return getToken(new HashMap<>(), usuario);
     }
 
     private Key getKey() {

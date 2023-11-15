@@ -18,6 +18,7 @@ public class AuthService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    @Autowired
     JwtService jwt;
 
     public AuthResponse register(RegisterRequest request) throws Exception {
