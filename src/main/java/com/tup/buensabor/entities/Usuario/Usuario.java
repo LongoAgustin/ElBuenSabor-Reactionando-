@@ -12,7 +12,12 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @NoArgsConstructor
@@ -20,7 +25,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "usuario")
-public class Usuario extends Base {
+public class Usuario extends Base implements UserDetails{
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -49,15 +54,45 @@ public class Usuario extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaHoraModificacion;
 
-    @OneToMany(cascade = CascadeType.REFRESH)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_pedido")
     private List<Pedido> pedidoList=new ArrayList<>();
 
     public void addPedidoList(Pedido pedido){ pedidoList.add(pedido); }
 
-    @OneToOne(cascade = CascadeType.REFRESH)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_persona")
     public Persona persona;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(rol.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 
 }

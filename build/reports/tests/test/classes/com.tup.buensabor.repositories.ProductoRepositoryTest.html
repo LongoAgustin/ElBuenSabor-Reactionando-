@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ProductoRepositoryTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ProductoRepositoryTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.tup.buensabor.repositories.html">com.tup.buensabor.repositories</a> &gt; ProductoRepositoryTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.109s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testSearchString()</td>
+<td class="success">0.109s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2023-11-14T08:19:22.205-03:00  INFO 5092 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tup.buensabor.repositories.ProductoRepositoryTest]: ProductoRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-11-14T08:19:22.217-03:00  INFO 5092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tup.buensabor.BuensaborApplication for test class com.tup.buensabor.repositories.ProductoRepositoryTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.3)
+
+2023-11-14T08:19:22.235-03:00  INFO 5092 --- [    Test worker] c.t.b.r.ProductoRepositoryTest           : Starting ProductoRepositoryTest using Java 17.0.8 with PID 5092 (started by franc in D:\Documentos\Tercer año ingeniería\Desarrollo SW\BACKEND\ElBuenSabor-Reactionando-)
+2023-11-14T08:19:22.235-03:00  INFO 5092 --- [    Test worker] c.t.b.r.ProductoRepositoryTest           : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-11-14T08:19:22.302-03:00  INFO 5092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-14T08:19:22.339-03:00  INFO 5092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 20 JPA repository interfaces.
+2023-11-14T08:19:22.350-03:00  INFO 5092 --- [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2023-11-14T08:19:22.368-03:00  INFO 5092 --- [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:7609d328-9d39-438f-9c6b-c40d98dd306d;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2023-11-14T08:19:22.386-03:00  INFO 5092 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-14T08:19:22.391-03:00  INFO 5092 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-11-14T08:19:22.391-03:00  INFO 5092 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-11-14T08:19:22.397-03:00  WARN 5092 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.Comprobante.Factura
+2023-11-14T08:19:22.399-03:00  WARN 5092 --- [    Test worker] o.h.boot.model.internal.EntityBinder     : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.tup.buensabor.entities.Comprobante.NotaCredito
+2023-11-14T08:19:22.440-03:00  INFO 5092 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-11-14T08:19:22.573-03:00  INFO 5092 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: drop table if exists compra_ingredientes cascade 
+Hibernate: drop table if exists comprobante cascade 
+Hibernate: drop table if exists comprobante_detalle_comprobantes cascade 
+Hibernate: drop table if exists detalle_compra_ingredientes cascade 
+Hibernate: drop table if exists detalle_comprobante cascade 
+Hibernate: drop table if exists detalle_pedido cascade 
+Hibernate: drop table if exists detalle_producto_cocina cascade 
+Hibernate: drop table if exists domicilio cascade 
+Hibernate: drop table if exists ingrediente cascade 
+Hibernate: drop table if exists localidad cascade 
+Hibernate: drop table if exists pedido cascade 
+Hibernate: drop table if exists pedido_comprobantes cascade 
+Hibernate: drop table if exists pedido_detalle_pedido cascade 
+Hibernate: drop table if exists persona cascade 
+Hibernate: drop table if exists producto cascade 
+Hibernate: drop table if exists productococina_ingrediente cascade 
+Hibernate: drop table if exists rubro_ingrediente cascade 
+Hibernate: drop table if exists rubro_producto cascade 
+Hibernate: drop table if exists unidad_medida cascade 
+Hibernate: drop table if exists usuario cascade 
+Hibernate: create table compra_ingredientes (&quot;costo-total-compra&quot; numeric(38,2), &quot;fecha-hora-compra-ingredientes&quot; timestamp(6), id bigint generated by default as identity, primary key (id))
+Hibernate: create table comprobante (fecha_hora_vencimiento time(6), monto_total float(24) not null, fecha_emision_comprobante timestamp(6) not null, id bigint generated by default as identity, mp_merchant_order_id bigint, mp_payment_id bigint, dtype varchar(31) not null, estado_factura varchar(255) check (estado_factura in ('CANCELADO','EMITIDO','COBRADO')), forma_pago varchar(255) check (forma_pago in ('EFECTIVO','MERCADO_PAGO')), mp_payment_type varchar(255), mp_preference_id varchar(255), primary key (id))
+Hibernate: create table comprobante_detalle_comprobantes (comprobante_id bigint not null, detalle_comprobantes_id bigint not null unique)
+Hibernate: create table detalle_compra_ingredientes (cantidad_comprada integer, precio_compra numeric(38,2), subtotal_compra numeric(38,2), fk_articulo_ingrediente bigint, fk_detalle_compra_ingredientes bigint, id bigint generated by default as identity, primary key (id))
+Hibernate: create table detalle_comprobante (cantidad integer, subtotal numeric(10,2), fk_articulo_producto bigint, id bigint generated by default as identity, primary key (id))
+Hibernate: create table detalle_pedido (cantidad integer, subtotal numeric(10,2) not null, subtotal_costo numeric(10,2) not null, id bigint generated by default as identity, id_articulo_manufacturado bigint, primary key (id))
+Hibernate: create table detalle_producto_cocina (cantidad numeric(10,2), fk_articulo_insumo bigint not null, id bigint generated by default as identity, primary key (id))
+Hibernate: create table domicilio (codigo_postal integer not null, numero integer, numero_dpto integer, piso_dpto integer, fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), fk_localidad bigint, fk_persona bigint, id bigint generated by default as identity, calle varchar(500) not null, primary key (id))
+Hibernate: create table ingrediente (precio_compra numeric(10,2), stock_actual numeric(10,2), stock_minimo numeric(10,2), fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), fk_rubro_articulo_ingrediente bigint, fk_unidad_medida bigint, id bigint generated by default as identity, denominacion varchar(255), url_imagen varchar(255), primary key (id))
+Hibernate: create table localidad (id bigint generated by default as identity, denominacion varchar(255), primary key (id))
+Hibernate: create table pedido (total numeric(10,2), total_costo numeric(10,2), domicilio bigint, fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), fecha_hora_pedido timestamp(6), fk_pedido bigint, hora_estimada_finalizacion timestamp(6), id bigint generated by default as identity, estado varchar(255) check (estado in ('PENDIENTE_PAGO','PAGADO','A_CONFIRMAR','PREPARACION','PENDIENTE_ENTREGA','EN_CAMINO','CANCELADO','NOTA_CREDITO','COMPLETADO')), forma_pago varchar(255) check (forma_pago in ('EFECTIVO','MERCADO_PAGO')), tipo_envio varchar(255) check (tipo_envio in ('DELIVERY','TAKE_AWAY')), primary key (id))
+Hibernate: create table pedido_comprobantes (comprobantes_id bigint not null unique, pedido_id bigint not null)
+Hibernate: create table pedido_detalle_pedido (detalle_pedido_id bigint not null unique, pedido_id bigint not null)
+Hibernate: create table persona (fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), id bigint generated by default as identity, telefono bigint, apellido varchar(255), nombre varchar(255), primary key (id))
+Hibernate: create table producto (costo numeric(10,2), estado_producto tinyint check (estado_producto between 0 and 1), lote integer, precio_venta numeric(10,2), stock integer, tiempo_estimado_cocina integer, fecha_alta timestamp(6), fecha_baja timestamp(6), fecha_modificacion timestamp(6), fk_rubro_producto bigint, id bigint generated by default as identity, discriminador_producto varchar(31) not null, url_imagen varchar(500), descripcion varchar(1000), denominacion varchar(255) not null, marca varchar(255), tipo_producto varchar(255) check (tipo_producto in ('BEBIDA','COCINA')), primary key (id))
+Hibernate: create table productococina_ingrediente (ingrediente_id bigint not null unique, productococina_id bigint not null)
+Hibernate: create table rubro_ingrediente (fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), id bigint generated by default as identity, denominacion varchar(255), primary key (id))
+Hibernate: create table rubro_producto (fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), id bigint generated by default as identity, denominacion varchar(255), primary key (id))
+Hibernate: create table unidad_medida (fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), id bigint generated by default as identity, abreviatura varchar(25) not null, denominacion varchar(255) not null, primary key (id))
+Hibernate: create table usuario (fecha_hora_alta timestamp(6), fecha_hora_baja timestamp(6), fecha_hora_modificacion timestamp(6), first_login timestamp(6), fk_persona bigint unique, id bigint generated by default as identity, email varchar(255) not null, password varchar(255) not null, rol varchar(255) check (rol in ('ADMINISTRADOR','CLIENTE','EMPLEADO')), primary key (id))
+Hibernate: alter table if exists comprobante_detalle_comprobantes add constraint FKbxcfgx51voiyra5nghjfvqtg4 foreign key (detalle_comprobantes_id) references detalle_comprobante
+Hibernate: alter table if exists comprobante_detalle_comprobantes add constraint FKrsf2rbhxw169yyvu1c7pm4ao5 foreign key (comprobante_id) references comprobante
+Hibernate: alter table if exists detalle_compra_ingredientes add constraint FKltnauljs3ojxnds2svjssg77n foreign key (fk_articulo_ingrediente) references ingrediente
+Hibernate: alter table if exists detalle_compra_ingredientes add constraint FK3f9rr9wloih03mf0rbcixor5x foreign key (fk_detalle_compra_ingredientes) references compra_ingredientes
+Hibernate: alter table if exists detalle_comprobante add constraint FKgrxwsokxx6rl4oj6749wct69c foreign key (fk_articulo_producto) references producto
+Hibernate: alter table if exists detalle_pedido add constraint FKn5yik9skjhon0f8t7fjquy9uy foreign key (id_articulo_manufacturado) references producto
+Hibernate: alter table if exists detalle_producto_cocina add constraint FK82ppjne308m5ykj39fy4376tk foreign key (fk_articulo_insumo) references ingrediente
+Hibernate: alter table if exists domicilio add constraint FKsq48s35e5o185ajo3mloiqxjk foreign key (fk_localidad) references localidad
+Hibernate: alter table if exists domicilio add constraint FKqhokeenk1etnn54kq8xv3jij2 foreign key (fk_persona) references persona
+Hibernate: alter table if exists ingrediente add constraint FKt7olomh6atw21jtxj8bgddtr2 foreign key (fk_rubro_articulo_ingrediente) references rubro_ingrediente
+Hibernate: alter table if exists ingrediente add constraint FKlc3atc1c17cc67chya717gmlm foreign key (fk_unidad_medida) references unidad_medida
+Hibernate: alter table if exists pedido add constraint FK9n3avteq3xig15lm3lyit7ro6 foreign key (domicilio) references domicilio
+Hibernate: alter table if exists pedido add constraint FKr50278mxfwnu7o59lvx6t7aom foreign key (fk_pedido) references usuario
+Hibernate: alter table if exists pedido_comprobantes add constraint FKdt1afiuep4nxx9cjro1810uqd foreign key (comprobantes_id) references comprobante
+Hibernate: alter table if exists pedido_comprobantes add constraint FK1i4jgtx2fdo6fcrak71a8wd1k foreign key (pedido_id) references pedido
+Hibernate: alter table if exists pedido_detalle_pedido add constraint FK13j6f3pvs96qb0ktaqghwggv9 foreign key (detalle_pedido_id) references detalle_pedido
+Hibernate: alter table if exists pedido_detalle_pedido add constraint FKg59un36aw7hoywcutwa5pn2q7 foreign key (pedido_id) references pedido
+Hibernate: alter table if exists producto add constraint FKrf2b1pqq5j5w2al1rniit9d0i foreign key (fk_rubro_producto) references rubro_producto
+Hibernate: alter table if exists productococina_ingrediente add constraint FKqoi235wkbanrido5lw2kjhaix foreign key (ingrediente_id) references detalle_producto_cocina
+Hibernate: alter table if exists productococina_ingrediente add constraint FKew44xjswxprhxo8va7dejn4qr foreign key (productococina_id) references producto
+Hibernate: alter table if exists usuario add constraint FKkntkxc3dnwbcd75j6klfpq0s2 foreign key (fk_persona) references persona
+2023-11-14T08:19:22.606-03:00  INFO 5092 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-14T08:19:22.779-03:00  INFO 5092 --- [    Test worker] c.t.b.r.ProductoRepositoryTest           : Started ProductoRepositoryTest in 0.559 seconds (process running for 11.59)
+------------------------Estoy Funcionando------------------------
+Hibernate: insert into localidad (denominacion,id) values (?,default)
+Hibernate: insert into domicilio (calle,codigo_postal,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,fk_localidad,numero,numero_dpto,fk_persona,piso_dpto,id) values (?,?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into unidad_medida (abreviatura,denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,id) values (?,?,?,?,?,default)
+Hibernate: insert into rubro_ingrediente (denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,id) values (?,?,?,?,default)
+Hibernate: insert into rubro_ingrediente (denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,id) values (?,?,?,?,default)
+Hibernate: insert into ingrediente (denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,precio_compra,fk_rubro_articulo_ingrediente,stock_actual,stock_minimo,fk_unidad_medida,url_imagen,id) values (?,?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into rubro_producto (denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,id) values (?,?,?,?,default)
+Hibernate: insert into rubro_producto (denominacion,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,id) values (?,?,?,?,default)
+Hibernate: insert into producto (costo,denominacion,descripcion,estado_producto,fecha_alta,fecha_baja,fecha_modificacion,precio_venta,fk_rubro_producto,tipo_producto,url_imagen,tiempo_estimado_cocina,discriminador_producto,id) values (?,?,?,?,?,?,?,?,?,?,?,?,'Cocina',default)
+Hibernate: insert into detalle_producto_cocina (cantidad,fk_articulo_insumo,id) values (?,?,default)
+Hibernate: insert into productococina_ingrediente (productococina_id,ingrediente_id) values (?,?)
+Hibernate: insert into producto (costo,denominacion,descripcion,estado_producto,fecha_alta,fecha_baja,fecha_modificacion,precio_venta,fk_rubro_producto,tipo_producto,url_imagen,lote,marca,stock,discriminador_producto,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Insumo',default)
+Hibernate: insert into usuario (email,fecha_hora_alta,fecha_hora_baja,fecha_hora_modificacion,first_login,password,fk_persona,rol,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: insert into comprobante (fecha_emision_comprobante,monto_total,estado_factura,forma_pago,mp_merchant_order_id,mp_payment_id,mp_payment_type,mp_preference_id,dtype,id) values (?,?,?,?,?,?,?,?,'Factura',default)
+Hibernate: insert into detalle_comprobante (cantidad,fk_articulo_producto,subtotal,id) values (?,?,?,default)
+Hibernate: insert into comprobante_detalle_comprobantes (comprobante_id,detalle_comprobantes_id) values (?,?)
+Hibernate: insert into comprobante (fecha_emision_comprobante,monto_total,fecha_hora_vencimiento,dtype,id) values (?,?,?,'NotaCredito',default)
+Hibernate: insert into detalle_comprobante (cantidad,fk_articulo_producto,subtotal,id) values (?,?,?,default)
+Hibernate: insert into comprobante_detalle_comprobantes (comprobante_id,detalle_comprobantes_id) values (?,?)
+Hibernate: insert into compra_ingredientes (&quot;costo-total-compra&quot;,&quot;fecha-hora-compra-ingredientes&quot;,id) values (?,?,default)
+Hibernate: insert into detalle_compra_ingredientes (cantidad_comprada,fk_articulo_ingrediente,precio_compra,subtotal_compra,id) values (?,?,?,?,default)
+Hibernate: insert into detalle_compra_ingredientes (cantidad_comprada,fk_articulo_ingrediente,precio_compra,subtotal_compra,id) values (?,?,?,?,default)
+Hibernate: update detalle_compra_ingredientes set fk_detalle_compra_ingredientes=? where id=?
+Hibernate: update detalle_compra_ingredientes set fk_detalle_compra_ingredientes=? where id=?
+Hibernate: insert into producto (costo,denominacion,descripcion,estado_producto,fecha_alta,fecha_baja,fecha_modificacion,precio_venta,fk_rubro_producto,tipo_producto,url_imagen,discriminador_producto,id) values (?,?,?,?,?,?,?,?,?,?,?,'Producto',default)
+Hibernate: SELECT * FROM producto WHERE denominacion LIKE ?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.3</a> at 14 Nov 2023, 08:19:24</p>
+</div>
+</div>
+</body>
+</html>

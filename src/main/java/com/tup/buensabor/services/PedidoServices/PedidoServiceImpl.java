@@ -1,15 +1,14 @@
 package com.tup.buensabor.services.PedidoServices;
 
 import com.tup.buensabor.DTO.DTOPedidoABM;
+import com.tup.buensabor.DTO.DTOPedidoRequest;
 import com.tup.buensabor.DTO.DTOPedidos;
 import com.tup.buensabor.entities.Comprobante.Factura;
 import com.tup.buensabor.entities.Pedido.DetallePedido;
 import com.tup.buensabor.entities.Pedido.Pedido;
 import com.tup.buensabor.entities.Producto.Producto;
 import com.tup.buensabor.entities.Usuario.Usuario;
-import com.tup.buensabor.enums.EstadoFactura;
-import com.tup.buensabor.enums.EstadoPedido;
-import com.tup.buensabor.enums.FormaPago;
+import com.tup.buensabor.enums.*;
 import com.tup.buensabor.repositories.BaseRepository;
 import com.tup.buensabor.repositories.ComprobanteRepository.FacturaRepository;
 import com.tup.buensabor.repositories.PedidoRepository.PedidoRepository;
@@ -38,6 +37,8 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
     @Autowired
     protected ProductoRepository productoRepository;
+
+
 
     public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoRepository) {
         super(baseRepository);
@@ -129,7 +130,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         try {
             Optional<Pedido> pedidoid = pedidoRepository.findById(pedidoID);
             if (pedidoid.isEmpty()) {
-                throw new Exception("No Existe el Usuario");
+                throw new Exception("No Existe el Pedido");
             } else {
                 Pedido pedidos = pedidoid.get();
                 return pedidos;
@@ -140,22 +141,45 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     }
 
 
-    public Pedido aConfirmar(Long pedidoID) throws Exception {
+    public String cambioEstado(DTOPedidoRequest pedidoRequest) throws Exception {
         try {
 
-            Optional<Pedido> pedidosaConf = pedidoRepository.findById(pedidoID);
-
-            if (pedidosaConf.get().getEstado() == EstadoPedido.A_CONFIRMAR) {
-                Pedido pedidoCamb = pedidosaConf.get();
-                pedidoCamb.setEstado(EstadoPedido.PREPARACION);
-                pedidoRepository.save(pedidoCamb);
-                return pedidoCamb;
-            } /*else if (pedidosaConf.get().getEstado() == EstadoPedido.A_CONFIRMAR &&
-                    pedidosaConf.get().getDetallePedido().get(0).getProducto().getRubroProducto(equals().)) {
-                Pedido pedidoCamb = pedidosaConf.get();
-                pedidoCamb.setEstado(EstadoPedido.PENDIENTE_PAGO);
-                return pedidoCamb;
-            }*/ else {
+            Optional<Pedido> estPedido = pedidoRepository.findById(pedidoRequest.getId());
+            Pedido pedido = estPedido.get();
+            if (estPedido.isPresent()) {
+                switch(pedido.getEstado()){
+                    case A_CONFIRMAR:
+                        pedido.setEstado(EstadoPedido.A_CONFIRMAR);
+                        break;
+                    case CANCELADO:
+                        pedido.setEstado(EstadoPedido.CANCELADO);
+                        break;
+                    case PENDIENTE_PAGO:
+                        pedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                        break;
+                    case PAGADO:
+                        pedido.setEstado(EstadoPedido.PAGADO);
+                        break;
+                    case PENDIENTE_ENTREGA:
+                        pedido.setEstado(EstadoPedido.PENDIENTE_ENTREGA);
+                        break;
+                    case COMPLETADO:
+                        pedido.setEstado(EstadoPedido.COMPLETADO);
+                        break;
+                    case PREPARACION:
+                        pedido.setEstado(EstadoPedido.PREPARACION);
+                        break;
+                    case EN_CAMINO:
+                        pedido.setEstado(EstadoPedido.EN_CAMINO);
+                        break;
+                    case NOTA_CREDITO:
+                        pedido.setEstado(EstadoPedido.NOTA_CREDITO);
+                        break;
+                }
+                pedido.setFechaHoraModificacion(new Date());
+                pedidoRepository.save(pedido);
+                return("Pedido Cambio de Estado: "+pedido.getEstado());
+            }else{
                 throw new Exception("No hay pedidos con este estado");
             }
 
@@ -165,6 +189,64 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
         }
     }
 
+/*
+    public Pedido cambioEstado (Long pedidoID) throws Exception{
+        try{
+
+            Optional<Pedido> pedido = pedidoRepository.findById(pedidoID);
+            List<DetallePedido> detallePedido = pedido.get().getDetallePedido();
+
+            if (pedido.isEmpty()) {
+                throw new Exception("No Existe el Pedido");
+            } else {
+                Pedido cambioestadoPedido = pedido.get();
+                switch(pedido.get().getEstado()){
+                    case A_CONFIRMAR:
+                        for (DetallePedido detalle : detallePedido) {
+                            if (detalle.getProducto().getTipoProducto().equals(TipoProducto.BEBIDA)) {
+                                cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                            } else {
+                                cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
+                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                            }
+                        }
+                    break;
+                    case PREPARACION:
+                        if (pedido.get().getTipoEnvio().equals(TipoEnvio.DELIVERY)){
+                            cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_ENTREGA);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        } else {
+                            cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        }
+                    break;
+                    case PENDIENTE_ENTREGA:
+                        cambioestadoPedido.setEstado(EstadoPedido.EN_CAMINO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case EN_CAMINO, PAGADO:
+                        cambioestadoPedido.setEstado(EstadoPedido.COMPLETADO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case PENDIENTE_PAGO:
+                        cambioestadoPedido.setEstado(EstadoPedido.PAGADO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                    case CANCELADO:
+                        cambioestadoPedido.setEstado(EstadoPedido.NOTA_CREDITO);
+                        cambioestadoPedido.setFechaHoraModificacion(new Date());
+                        break;
+                }
+                pedidoRepository.save(cambioestadoPedido);
+                return cambioestadoPedido;
+                }
+
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+*/
     @Override
     public Pedido newPedido(DTOPedidoABM dtoPedidoABM) throws Exception {
         try {

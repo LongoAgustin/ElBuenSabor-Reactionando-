@@ -4,7 +4,6 @@ import com.tup.buensabor.entities.Base;
 import com.tup.buensabor.enums.EstadoProducto;
 import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
-
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -54,11 +53,10 @@ public class Producto extends Base {
     private Date fechaModificacion;
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
-    @JoinColumn(name = "fk_rubroProducto")
+    @JoinColumn(name = "fk_rubroProducto", nullable = true)
     private RubroProducto rubroProducto;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_producto")
     private TipoProducto tipoProducto;
-
 }

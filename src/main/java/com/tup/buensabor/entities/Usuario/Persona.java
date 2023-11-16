@@ -22,7 +22,7 @@ public class Persona extends Base {
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "telefono")
-    private Long telefono;
+    private String telefono;
     @Column(name = "fecha_hora_alta")
     private Date fechaHoraAlta;
     @Column(name = "fecha_hora_baja")
