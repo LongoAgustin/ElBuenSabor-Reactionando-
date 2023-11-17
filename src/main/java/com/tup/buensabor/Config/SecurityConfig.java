@@ -9,17 +9,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.tup.buensabor.JWT.JWTAuthenticationFilter;
 
-import java.util.Arrays;
-
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 
-import lombok.RequiredArgsConstructor;
+import lombok.RequiredArgsConstructor; 
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +31,9 @@ public class SecurityConfig { //Security filter chain
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authRequest -> 
             authRequest
-                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 )
             .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider)
