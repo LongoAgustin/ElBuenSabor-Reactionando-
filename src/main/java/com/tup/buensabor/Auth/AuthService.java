@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tup.buensabor.JWT.JwtService;
@@ -14,17 +15,20 @@ import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.Rol;
 import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AuthService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
-
     @Autowired
     JwtService jwt;
-
     @Autowired
     AuthenticationManager authenticationManager;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public AuthResponse register(RegisterRequest request) throws Exception {
         try {
@@ -35,7 +39,7 @@ public class AuthService {
                 Usuario usuario = new Usuario();
 
                 usuario.setEmail(request.getEmail());
-                usuario.setPassword(request.getPassword());
+                usuario.setPassword(passwordEncoder.encode(request.getPassword()));
 
                 Persona persona = new Persona();
 
