@@ -3,6 +3,7 @@ package com.tup.buensabor.Auth;
 import java.util.List;
 import java.util.Optional;
 
+import com.tup.buensabor.repositories.UsuarioRepository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ public class AuthService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    PersonaRepository personaRepository;
 
     JwtService jwt;
 
@@ -41,6 +45,7 @@ public class AuthService {
                 usuario.setRol(Rol.CLIENTE);
 
                 usuarioRepository.save(usuario);
+                personaRepository.save(persona);
 
                 return new AuthResponse(jwt.getToken(usuario));
             }

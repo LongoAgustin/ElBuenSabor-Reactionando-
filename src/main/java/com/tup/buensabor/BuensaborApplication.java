@@ -85,7 +85,7 @@ public class BuensaborApplication {
 
 			Usuario usuario = new Usuario();
 			usuario.setEmail("agustinsula@gmail.com");
-			usuario.setRol(Rol.CLIENTE);
+			usuario.setRol(Rol.ADMINISTRADOR);
 			usuario.setFechaHoraAlta(LocalDateTime.now());
 			usuario.setPassword("asdfasdf");
 			usuario.setFirst_login(LocalDateTime.now());

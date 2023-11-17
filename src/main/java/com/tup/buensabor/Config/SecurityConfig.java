@@ -3,6 +3,7 @@ package com.tup.buensabor.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-
 public class SecurityConfig { //Security filter chain
 
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
@@ -27,7 +27,7 @@ public class SecurityConfig { //Security filter chain
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.headers().frameOptions().disable();
+        http.headers(headers-> headers.frameOptions().disable());
 
         return http
         .csrf(csrf -> csrf.disable())
@@ -37,6 +37,7 @@ public class SecurityConfig { //Security filter chain
             .requestMatchers(PathRequest.toH2Console()).permitAll()
             .anyRequest().authenticated()
         )
+        .formLogin(Customizer.withDefaults()) //esto lo pone en el video pero nose para q es, no cambia nada
         .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
