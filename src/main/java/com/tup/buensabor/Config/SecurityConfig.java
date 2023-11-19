@@ -41,7 +41,9 @@ public class SecurityConfig { //Security filter chain
             authRequest
                 .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/admin/**")).hasAuthority("ADMINISTRADOR")
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/ingredientes/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/pedido/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
                 .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/list")).permitAll()
                 .anyRequest().authenticated()
                 )

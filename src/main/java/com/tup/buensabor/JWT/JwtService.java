@@ -9,9 +9,10 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.tup.buensabor.entities.Usuario.Usuario;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
@@ -22,7 +23,13 @@ public class JwtService {
     private static String SECRET_KEY = "AAAAAAAAAAJAJAJAJAJAJAJAJASSSSSSSSSSSSSSSSSSSSSSSSSSSGGGGGGGGGGGGGGGGGGGGGGERT435345";
 
     public String getToken(UserDetails usuario) {
-        return getToken(new HashMap<>(), usuario);
+
+        Map<String, Object> claims = new HashMap<>();
+
+        //Añado rol a Token
+        claims.put("rol", ((Usuario)usuario).getRol());
+
+        return getToken(claims, usuario);
     }
 
     private String getToken(Map<String, Object> extraClaims, UserDetails usuario) {
