@@ -16,6 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.tup.buensabor.JWT.JWTAuthenticationFilter;
+import com.tup.buensabor.enums.Rol;
 
 import java.util.List;
 
@@ -41,9 +42,9 @@ public class SecurityConfig { //Security filter chain
             authRequest
                 .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/api/v1/ingredientes/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
-                .requestMatchers(new AntPathRequestMatcher("/api/v1/pedido/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
-                .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/admin/**")).hasAnyRole("ADMIN", "EMPLEADO")
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/ingredientes/admin/**")).hasAnyAuthority(Rol.ADMIN.name(), Rol.EMPLEADO.name())
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/pedido/admin/**")).hasAnyAuthority(Rol.ADMIN.name(), Rol.EMPLEADO.name())
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/admin/**")).hasAnyAuthority(Rol.ADMIN.name(), Rol.EMPLEADO.name())
                 .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/list")).permitAll()
                 .anyRequest().authenticated()
                 )

@@ -48,7 +48,14 @@ public class AuthService {
                 persona.setTelefono(request.getTelefono());
 
                 usuario.setPersona(persona);
-                usuario.setRol(Rol.CLIENTE);
+                
+                if (request.rolUsuario.equals(Rol.ADMIN)) {
+                    usuario.setRol(Rol.ADMIN);
+                } else if (request.rolUsuario.equals(Rol.EMPLEADO)) {
+                    usuario.setRol(Rol.EMPLEADO);
+                } else {
+                    usuario.setRol(Rol.CLIENTE);
+                }
 
                 usuarioRepository.save(usuario);
 
