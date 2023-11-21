@@ -1,5 +1,7 @@
 package com.tup.buensabor.Auth;
 
+import com.tup.buensabor.enums.Rol;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +19,6 @@ public class RegisterRequest {
     String nombre;
     String apellido;
     String telefono;
+    Rol rolUsuario;
 
 }

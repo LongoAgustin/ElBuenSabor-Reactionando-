@@ -15,6 +15,8 @@ import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
+
+
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
@@ -46,4 +48,5 @@ public class ApplicationConfig {
     public UserDetailsService userDetailService() {
         return username -> usuarioRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
+
 }

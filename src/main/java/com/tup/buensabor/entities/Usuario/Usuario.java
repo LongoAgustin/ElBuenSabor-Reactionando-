@@ -71,7 +71,7 @@ public class Usuario extends Base implements UserDetails{
 
     @Override
     public String getUsername() {
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return email;
     }
 
     @Override

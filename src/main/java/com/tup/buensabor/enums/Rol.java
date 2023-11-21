@@ -1,7 +1,14 @@
 package com.tup.buensabor.enums;
 
-public enum Rol {
-    ADMINISTRADOR,
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Rol implements GrantedAuthority {
+    ADMIN,
     CLIENTE,
-    EMPLEADO
+    EMPLEADO;
+
+    @Override
+    public String getAuthority() {
+        return this.name();
+    }
 }

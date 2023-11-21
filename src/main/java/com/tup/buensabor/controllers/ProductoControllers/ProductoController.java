@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
 @RequestMapping(path = "api/v1/productos")
 public class ProductoController extends BaseControllerImpl<Producto, ProductoServiceImpl> {
 
@@ -22,7 +22,7 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public ResponseEntity<?> agregarProducto(@RequestBody DTOProducto dtoProducto){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.agregarProducto(dtoProducto));
@@ -31,7 +31,7 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/admin/update/{id}")
     public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody DTOProducto DTOProducto){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.actualizarProducto(DTOProducto, id));
@@ -40,7 +40,7 @@ public class ProductoController extends BaseControllerImpl<Producto, ProductoSer
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public ResponseEntity<?> bajaProducto(@PathVariable Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.bajaProducto(id));

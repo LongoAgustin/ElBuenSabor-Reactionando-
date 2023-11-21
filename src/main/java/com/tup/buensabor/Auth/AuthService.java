@@ -1,10 +1,13 @@
 package com.tup.buensabor.Auth;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.tup.buensabor.repositories.UsuarioRepository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tup.buensabor.JWT.JwtService;
@@ -13,16 +16,26 @@ import com.tup.buensabor.entities.Usuario.Usuario;
 import com.tup.buensabor.enums.Rol;
 import com.tup.buensabor.repositories.UsuarioRepository.UsuarioRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AuthService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
+
     @Autowired
     PersonaRepository personaRepository;
 
+
+    @Autowired
     JwtService jwt;
+    @Autowired
+    AuthenticationManager authenticationManager;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public AuthResponse register(RegisterRequest request) throws Exception {
         try {
@@ -33,7 +46,7 @@ public class AuthService {
                 Usuario usuario = new Usuario();
 
                 usuario.setEmail(request.getEmail());
-                usuario.setPassword(request.getPassword());
+                usuario.setPassword(passwordEncoder.encode(request.getPassword()));
 
                 Persona persona = new Persona();
 
@@ -42,7 +55,14 @@ public class AuthService {
                 persona.setTelefono(request.getTelefono());
 
                 usuario.setPersona(persona);
-                usuario.setRol(Rol.CLIENTE);
+                
+                if (request.rolUsuario.equals(Rol.ADMIN)) {
+                    usuario.setRol(Rol.ADMIN);
+                } else if (request.rolUsuario.equals(Rol.EMPLEADO)) {
+                    usuario.setRol(Rol.EMPLEADO);
+                } else {
+                    usuario.setRol(Rol.CLIENTE);
+                }
 
                 usuarioRepository.save(usuario);
                 personaRepository.save(persona);
@@ -59,7 +79,11 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest request){
-        return null;
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
+        UserDetails usuario = usuarioRepository.findByEmail(request.getEmail()).orElseThrow();
+        String token = jwt.getToken(usuario);
+        return new AuthResponse(token);
     }
 
 }
