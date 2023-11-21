@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/ingredientes")
 public class IngredienteController extends BaseControllerImpl<Ingrediente, IngredienteServiceImpl> {
 
-    @PostMapping("/newIngrediente")
+    @PostMapping("/admin/newIngrediente")
     public ResponseEntity<?> newIngrediente(@RequestBody Ingrediente ingrediente) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.newIngrediente(ingrediente));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
 
-    @PostMapping("/updateIngrediente/{id}")
+    @PutMapping("/admin/updateIngrediente/{id}")
     public ResponseEntity<?> updateIngrediente(@PathVariable Long id, @RequestBody Ingrediente ingrediente) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.updateIngrediente(id, ingrediente));

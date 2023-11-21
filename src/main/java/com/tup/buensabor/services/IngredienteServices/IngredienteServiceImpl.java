@@ -1,8 +1,13 @@
 package com.tup.buensabor.services.IngredienteServices;
 
 import com.tup.buensabor.entities.Ingrediente.Ingrediente;
+import com.tup.buensabor.entities.Ingrediente.RubroIngrediente;
+import com.tup.buensabor.entities.Ingrediente.UnidadMedida;
+import com.tup.buensabor.entities.Producto.RubroProducto;
 import com.tup.buensabor.repositories.IngredienteRepository.IngredienteRepository;
 import com.tup.buensabor.repositories.BaseRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.RubroIngredienteRepository;
+import com.tup.buensabor.repositories.IngredienteRepository.UnidadMedidaRepository;
 import com.tup.buensabor.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +22,12 @@ public class IngredienteServiceImpl extends BaseServiceImpl<Ingrediente, Long> i
     @Autowired
     protected IngredienteRepository ingredienteRepository;
 
+    @Autowired
+    protected RubroIngredienteRepository rubroIngredienteRepository;
+
+    @Autowired
+    protected UnidadMedidaRepository unidadMedidaRepository;
+
     public IngredienteServiceImpl(BaseRepository<Ingrediente,Long> baseRepository, IngredienteRepository ingredienteRepository) {
         super(baseRepository);
         this.ingredienteRepository = ingredienteRepository;
@@ -29,6 +40,28 @@ public class IngredienteServiceImpl extends BaseServiceImpl<Ingrediente, Long> i
         try{
             List<Ingrediente> ingredientesEncontrados = ingredienteRepository.verificarIngrediente(ingrediente.getDenominacion());
             if (ingredientesEncontrados.isEmpty()){
+                Ingrediente nuevoingrediente = new Ingrediente();
+
+                nuevoingrediente.setDenominacion(ingrediente.getDenominacion());
+                nuevoingrediente.setPrecioCompra(ingrediente.getPrecioCompra());
+                nuevoingrediente.setFechaHoraAlta(new Date());
+
+                Optional<RubroIngrediente> rubroIngrediente = rubroIngredienteRepository.findById(ingrediente.getRubroIngrediente().getId());
+
+                if (rubroIngrediente.isPresent()) {
+                    nuevoingrediente.setRubroIngrediente(rubroIngrediente.get());
+                } else {
+                    throw new Exception("No existe este rubro");
+                }
+
+                Optional<UnidadMedida> unidadMedida = unidadMedidaRepository.findById(ingrediente.getUnidadMedida().getId());
+
+                if (unidadMedida.isPresent()) {
+                    nuevoingrediente.setUnidadMedida(unidadMedida.get());
+                } else {
+                    throw new Exception("No existe esta unidad de medida");
+                }
+
                 ingredienteRepository.save(ingrediente);
                 return ingrediente;
             }else {
