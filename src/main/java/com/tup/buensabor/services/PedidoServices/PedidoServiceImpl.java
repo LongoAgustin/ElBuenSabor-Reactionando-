@@ -203,8 +203,10 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
                         if (contieneCocina) {
                             cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
                         } else {
                             cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
+                            cambioestadoPedido.setFechaHoraModificacion(new Date());
                         }
 
                     break;
