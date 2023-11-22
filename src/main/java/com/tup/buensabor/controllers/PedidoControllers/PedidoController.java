@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
 @RequestMapping(path = "api/v1/pedido")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl> {
 
@@ -60,16 +60,17 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
     }
 
-    @PutMapping("/updatePedido")
-    public ResponseEntity<?> updatePedido(@RequestBody DTOPedidoRequest dtoPedidoRequest) {
+
+    @PutMapping("/admin/updatePedido")
+    public ResponseEntity<?> updatePedido(@RequestParam Long pedidoID) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(dtoPedidoRequest));
+            return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(pedidoID));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public ResponseEntity<?> newPedido(@RequestBody DTOPedidoABM dtoPedidoABM){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.newPedido(dtoPedidoABM));

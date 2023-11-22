@@ -63,6 +63,9 @@ public class BuensaborApplication {
 	NotaCreditoRepository notaCreditoRepository;
 	@Autowired
 	CompraIngredienteRepository compraIngredienteRepository;
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
