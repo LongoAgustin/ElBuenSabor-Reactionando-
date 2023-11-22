@@ -59,7 +59,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
     }
 
-    @PutMapping("/updatePedido")
+    @PutMapping("/admin/updatePedido")
     public ResponseEntity<?> updatePedido(@RequestParam Long pedidoID) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.cambioEstado(pedidoID));

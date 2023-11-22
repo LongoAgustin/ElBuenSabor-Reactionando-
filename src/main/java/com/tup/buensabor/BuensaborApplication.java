@@ -31,6 +31,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -63,6 +64,9 @@ public class BuensaborApplication {
 	@Autowired
 	CompraIngredienteRepository compraIngredienteRepository;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	public static void main(String[] args) {
 		SpringApplication.run(BuensaborApplication.class, args);
 		System.out.println("Programa en Ejecucion");
@@ -84,10 +88,10 @@ public class BuensaborApplication {
 			//User
 
 			Usuario usuario = new Usuario();
-			usuario.setEmail("agustinsula@gmail.com");
-			usuario.setRol(Rol.CLIENTE);
+			usuario.setEmail("admin@gmail.com");
+			usuario.setRol(Rol.ADMIN);
 			usuario.setFechaHoraAlta(LocalDateTime.now());
-			usuario.setPassword("asdfasdf");
+			usuario.setPassword(passwordEncoder.encode("123"));
 			usuario.setFirst_login(LocalDateTime.now());
 
 
