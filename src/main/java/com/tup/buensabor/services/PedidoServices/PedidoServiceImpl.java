@@ -187,17 +187,29 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
             } else {
                 Pedido cambioestadoPedido = pedido.get();
                 switch(pedido.get().getEstado()){
+                        
                     case A_CONFIRMAR:
+
+                        boolean contieneBebida = false;
+                        boolean contieneCocina = false;
+
                         for (DetallePedido detalle : detallePedido) {
-                            if (detalle.getProducto().getTipoProducto().equals(TipoProducto.BEBIDA)) {
-                                cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
-                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                            if (detalle.getProducto().getTipoProducto().equals(TipoProducto.COCINA)) {
+                                contieneCocina = true;
                             } else {
-                                cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
-                                cambioestadoPedido.setFechaHoraModificacion(new Date());
+                                contieneBebida = true;
                             }
                         }
+
+                        if (contieneCocina) {
+                            cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
+                        } else {
+                            cambioestadoPedido.setEstado(PENDIENTE_PAGO);
+                        }
+
                     break;
+
+                        
                     case PREPARACION:
                         if (pedido.get().getTipoEnvio().equals(TipoEnvio.DELIVERY)){
                             cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_ENTREGA);
@@ -207,22 +219,26 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                             cambioestadoPedido.setFechaHoraModificacion(new Date());
                         }
                     break;
+                        
                     case PENDIENTE_ENTREGA:
                         cambioestadoPedido.setEstado(EstadoPedido.EN_CAMINO);
                         cambioestadoPedido.setFechaHoraModificacion(new Date());
-                        break;
+                    break;
+                        
                     case EN_CAMINO, PAGADO:
                         cambioestadoPedido.setEstado(EstadoPedido.COMPLETADO);
                         cambioestadoPedido.setFechaHoraModificacion(new Date());
-                        break;
+                    break;
+                        
                     case PENDIENTE_PAGO:
                         cambioestadoPedido.setEstado(EstadoPedido.PAGADO);
                         cambioestadoPedido.setFechaHoraModificacion(new Date());
-                        break;
+                    break;
+                        
                     case CANCELADO:
                         cambioestadoPedido.setEstado(EstadoPedido.NOTA_CREDITO);
                         cambioestadoPedido.setFechaHoraModificacion(new Date());
-                        break;
+                    break;
                 }
                 pedidoRepository.save(cambioestadoPedido);
                 return cambioestadoPedido;
