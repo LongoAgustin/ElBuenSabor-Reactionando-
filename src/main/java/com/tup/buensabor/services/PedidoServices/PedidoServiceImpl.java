@@ -204,7 +204,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
                         if (contieneCocina) {
                             cambioestadoPedido.setEstado(EstadoPedido.PREPARACION);
                         } else {
-                            cambioestadoPedido.setEstado(PENDIENTE_PAGO);
+                            cambioestadoPedido.setEstado(EstadoPedido.PENDIENTE_PAGO);
                         }
 
                     break;
