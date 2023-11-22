@@ -114,13 +114,11 @@ public class BuensaborApplication {
 			RubroIngrediente rubroIngrediente1 = new RubroIngrediente();
 			rubroIngrediente1.setDenominacion("verdura");
 			rubroIngrediente1.setFechaHoraAlta(new Date());
-			rubroIngrediente1.setFechaHoraBaja(new Date());
 			rubroIngrediente1.setFechaHoraModificacion(new Date());
 
 			RubroIngrediente rubroIngrediente2 = new RubroIngrediente();
 			rubroIngrediente2.setDenominacion("condimento");
 			rubroIngrediente2.setFechaHoraAlta(new Date());
-			rubroIngrediente2.setFechaHoraBaja(new Date());
 			rubroIngrediente2.setFechaHoraModificacion(new Date());
 
 			//RubroProducto
@@ -141,13 +139,18 @@ public class BuensaborApplication {
 			unidadMedida.setAbreviatura("g");
 			unidadMedida.setFechaHoraAlta(new Date());
 
+			UnidadMedida unidadMedida2 = new UnidadMedida();
+
+			unidadMedida2.setDenominacion("litros");
+			unidadMedida2.setAbreviatura("lts");
+			unidadMedida2.setFechaHoraAlta(new Date());
+
 			//Ingrediente
 
 			Ingrediente ingrediente = new Ingrediente();
 
 			ingrediente.setDenominacion("Orégano");
 			ingrediente.setFechaHoraAlta(new Date());
-			ingrediente.setFechaHoraBaja(new Date());
 			ingrediente.setFechaHoraModificacion(new Date());
 			ingrediente.setPrecioCompra(new BigDecimal(13215));
 			ingrediente.setStockMinimo(new BigDecimal(2165));
@@ -160,7 +163,6 @@ public class BuensaborApplication {
 
 			ingrediente1.setDenominacion("Perejil");
 			ingrediente1.setFechaHoraAlta(new Date());
-			ingrediente1.setFechaHoraBaja(new Date());
 			ingrediente1.setFechaHoraModificacion(new Date());
 			ingrediente1.setPrecioCompra(new BigDecimal(1321));
 			ingrediente1.setStockMinimo(new BigDecimal(2195));
@@ -297,6 +299,7 @@ public class BuensaborApplication {
 			localidadRepository.save(localidad);
 			domicilioRepository.save(domicilio);
 			unidadMedidaRepository.save(unidadMedida);
+			unidadMedidaRepository.save(unidadMedida2);
 			rubroIngredienteRepository.save(rubroIngrediente1);
 			rubroIngredienteRepository.save(rubroIngrediente2);
 			ingredienteRepository.save(ingrediente);

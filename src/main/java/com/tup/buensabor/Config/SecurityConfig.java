@@ -46,6 +46,7 @@ public class SecurityConfig { //Security filter chain
                 .requestMatchers(new AntPathRequestMatcher("/api/v1/pedido/admin/**")).hasAnyAuthority(Rol.ADMIN.name(), Rol.EMPLEADO.name())
                 .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/admin/**")).hasAnyAuthority(Rol.ADMIN.name(), Rol.EMPLEADO.name())
                 .requestMatchers(new AntPathRequestMatcher("/api/v1/productos/list")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/ingredientes/list")).permitAll()
                 .anyRequest().authenticated()
                 )
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) //H2
