@@ -1,7 +1,6 @@
 package com.tup.buensabor.DTO;
 
 import com.tup.buensabor.entities.Pedido.DetallePedido;
-import com.tup.buensabor.enums.EstadoPedido;
 import com.tup.buensabor.enums.FormaPago;
 import com.tup.buensabor.enums.TipoEnvio;
 import lombok.AllArgsConstructor;

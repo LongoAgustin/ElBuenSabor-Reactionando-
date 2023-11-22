@@ -131,6 +131,8 @@ public class BuensaborApplication {
 			rubroProducto2.setDenominacion("Gaseosa");
 			rubroProducto2.setFechaHoraAlta(new Date());
 
+
+
 			//UnidadMedida
 
 			UnidadMedida unidadMedida = new UnidadMedida();
@@ -151,38 +153,37 @@ public class BuensaborApplication {
 
 			ingrediente.setDenominacion("Orégano");
 			ingrediente.setFechaHoraAlta(new Date());
-			ingrediente.setFechaHoraModificacion(new Date());
 			ingrediente.setPrecioCompra(new BigDecimal(13215));
 			ingrediente.setStockMinimo(new BigDecimal(2165));
 			ingrediente.setStockActual(new BigDecimal(5900));
 			ingrediente.setUnidadMedida(unidadMedida);
-			ingrediente.setUrlImagen("");
+			ingrediente.setUrlImagen("https://plazavea.vteximg.com.br/arquivos/ids/419765-1000-1000/20146602.jpg?v=637375895601400000");
 			ingrediente.setRubroIngrediente(rubroIngrediente2);
 
 			Ingrediente ingrediente1 = new Ingrediente();
 
 			ingrediente1.setDenominacion("Perejil");
 			ingrediente1.setFechaHoraAlta(new Date());
-			ingrediente1.setFechaHoraModificacion(new Date());
 			ingrediente1.setPrecioCompra(new BigDecimal(1321));
 			ingrediente1.setStockMinimo(new BigDecimal(2195));
 			ingrediente1.setStockActual(new BigDecimal(590));
 			ingrediente1.setUnidadMedida(unidadMedida);
-			ingrediente1.setUrlImagen("");
+			ingrediente1.setUrlImagen("https://a1.soysuper.com/ecd11b05499d59551b6cfd055513fc54.1500.0.0.0.wmark.eacfaba2.jpg");
 			ingrediente1.setRubroIngrediente(rubroIngrediente2);
 
 			Ingrediente ingrediente2 = new Ingrediente();
 
 			ingrediente2.setDenominacion("Cebolla");
 			ingrediente2.setFechaHoraAlta(new Date());
-			ingrediente2.setFechaHoraBaja(new Date());
-			ingrediente2.setFechaHoraModificacion(new Date());
+			ingrediente2.setFechaHoraBaja(null);
+			ingrediente2.setFechaHoraModificacion(null);
 			ingrediente2.setPrecioCompra(new BigDecimal(13215));
 			ingrediente2.setStockMinimo(new BigDecimal(2165));
 			ingrediente2.setStockActual(new BigDecimal(5900));
 			ingrediente2.setUnidadMedida(unidadMedida);
-			ingrediente2.setUrlImagen("");
+			ingrediente2.setUrlImagen("https://tse1.mm.bing.net/th?id=OIP.3qpe49-14kITm2Hh5owIgwHaFJ&pid=Api&P=0&h=180");
 			ingrediente2.setRubroIngrediente(rubroIngrediente1);
+
 
 			//DetalleProductoCocina
 
@@ -303,6 +304,8 @@ public class BuensaborApplication {
 			rubroIngredienteRepository.save(rubroIngrediente1);
 			rubroIngredienteRepository.save(rubroIngrediente2);
 			ingredienteRepository.save(ingrediente);
+			ingredienteRepository.save(ingrediente1);
+			ingredienteRepository.save(ingrediente2);
 			rubroProductoRepository.save(rubroProducto1);
 			rubroProductoRepository.save(rubroProducto2);
 			productoRepository.save(cocina1);
@@ -311,6 +314,7 @@ public class BuensaborApplication {
 			facturaRepository.save(factura1);
 			notaCreditoRepository.save(notaCredito);
 			compraIngredienteRepository.save(compraIngredientes1);
+
 		};
 	}
 

@@ -4,7 +4,6 @@ import com.tup.buensabor.entities.Base;
 import com.tup.buensabor.enums.EstadoProducto;
 import com.tup.buensabor.enums.TipoProducto;
 import jakarta.persistence.*;
-
 import lombok.*;
 
 import java.math.BigDecimal;
